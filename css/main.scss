@@ -213,8 +213,8 @@ main {
   }
 }
 footer {
-  margin-top: calc( $padding * calc(1 / 2));
-  margin-bottom: calc( $padding * calc(3 / 4));
+  margin-top: calc(var(--padding) * calc(1 / 2));
+  margin-bottom: calc(var(--padding) * calc(3 / 4));
 }
 #title {
   white-space: nowrap;
@@ -262,7 +262,7 @@ footer {
     @include desktop { @include g7(2); }
     opacity: 0;
     position: absolute;
-    bottom: calc( $padding * (3 / 4));
+    bottom: calc(var(--padding) * (3 / 4));
   }
   &.show {
     h1 {
