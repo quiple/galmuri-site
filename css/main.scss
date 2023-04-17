@@ -2,7 +2,7 @@
 ---
 
 @charset 'utf-8';
-@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css/minireset.min.css");
 
 @mixin font-face($family, $weight: 400, $stretch: normal) {
   @font-face {
@@ -13,8 +13,8 @@
       stretch: $stretch;
       display: swap;
     }
-    src: url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/#{$family}#{if($stretch == condensed, -Condensed, null)}#{if($weight == 700, -Bold, null)}.woff2') format('woff2'),
-         url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/#{$family}#{if($stretch == condensed, -Condensed, null)}#{if($weight == 700, -Bold, null)}.ttf') format('truetype');
+    src: url('https://cdn.jsdelivr.net/npm/galmuri/dist/#{$family}#{if($stretch == condensed, -Condensed, null)}#{if($weight == 700, -Bold, null)}.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/npm/galmuri/dist/#{$family}#{if($stretch == condensed, -Condensed, null)}#{if($weight == 700, -Bold, null)}.ttf') format('truetype');
   }
 }
 
