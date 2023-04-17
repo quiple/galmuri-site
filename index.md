@@ -195,7 +195,10 @@ font-family: 'Galmuri7';
   <pre>1,879,425원<br>2,624,560원<br>1,751,853원</pre>
   <pre><span>1,879,425</span>원<br><span>2,624,560</span>원<br><span>1,751,853</span>원</pre>
 </div>
-<pre>font-variant-numeric: tabular-nums; 또는 font-feature-settings: "tnum" 1;</pre>
+
+```css
+font-variant-numeric: tabular-nums; /* 또는 */ font-feature-settings: "tnum" 1;
+```
 
 ### 슬래시 0 (zero)
 
@@ -203,7 +206,10 @@ font-family: 'Galmuri7';
   <pre>0123456789</pre>
   <pre><span>0</span>123456789</pre>
 </div>
-<pre>font-variant-numeric: slashed-zero; 또는 font-feature-settings: "zero" 1;</pre>
+
+```css
+font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1;
+```
 
 ## 쇼케이스
 
