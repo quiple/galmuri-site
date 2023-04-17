@@ -62,7 +62,6 @@ body {
   @include g9;
   font-size: 1rem;
   @include desktop { @include g9(2); }
-  margin: 0 $padding;
   color: $foreground;
   background-color: $background;
   line-height: 1.5;
@@ -70,33 +69,24 @@ body {
 }
 h2 {
   margin-top: 2.5rem;
-  @include g11b(2);
+  @include g11b;
+  font-size: 1.2rem;
+  @include desktop { @include g11b(2); }
 }
 h3 {
   margin-top: 1.5rem;
 }
 p { margin: .75rem 0; }
 code, pre {
-  @include gm7(2);
+  @include gm7;
+  font-size: .8rem;
+  @include desktop { @include gm7(2); }
   white-space: pre-line;
   background-color: $black !important;
 }
 pre {
   padding: .625rem 1rem;
   &:not(.fea *) { margin: .75rem 0; }
-}
-textarea {
-  @include g11(4);
-  color: $foreground;
-  border: none;
-  margin: .75rem 0;
-  padding: .625rem 1rem;
-  resize: vertical;
-  width: 100%;
-  height: calc(40px * 4 + .625rem * 2);
-  min-height: calc(32px * 2 + .625rem * 2);
-  background-color: $black;
-  &:focus-visible { outline: none; }
 }
 #test-control {
   margin-top: .75rem;
@@ -105,7 +95,9 @@ textarea {
   gap: .75rem 1rem;
   flex-wrap: wrap;
   select {
-    @include g7(2);
+    @include g7;
+    font-size: .8rem;
+    @include desktop { @include g7(2); }
     max-width: 100%;
     border: none;
     padding: .625rem 1rem;
@@ -125,15 +117,29 @@ a {
   text-decoration: none;
   &:hover { text-decoration: underline; }
 }
-img { image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; image-rendering: pixelated; }
-small { @include g7(2); display: block; color: #{$foreground}3f; }
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  max-width: 100%;
+  max-height: 100%;
+}
+small {
+  @include g7;
+  font-size: .8rem;
+  @include desktop { @include g7(2); }
+  display: block;
+  color: #{$foreground}3f;
+}
 .btns {
   display: flex;
   margin: .75rem 0;
   gap: .75rem;
   flex-wrap: wrap;
   .btn {
-    @include g7(2);
+    @include g7;
+    font-size: .8rem;
+    @include desktop { @include g7(2); }
     transition: .25s $cubic;
     color: $black;
     background-color: $foreground;
@@ -162,7 +168,9 @@ small { @include g7(2); display: block; color: #{$foreground}3f; }
   flex-direction: column;
   @include desktop { flex-direction: row; }
   pre {
-    @include g11(2);
+    @include g11;
+    font-size: 1.2rem;
+    @include desktop { @include g11(2); }
     flex: 1;
     span { color: $anchor; }
   }
@@ -184,13 +192,24 @@ small { @include g7(2); display: block; color: #{$foreground}3f; }
   }
 }
 main {
+  > :not(.splide) {
+    margin: {
+      left: $padding;
+      right: $padding;
+    }
+  }
   p {
     max-width: 100%;
     @include desktop { max-width: calc(100vw * (3 / 5)); }
   }
-  ul {
-    margin: .75rem 0;
-    @include g7(2);
+  ul:not([class]) {
+    margin: {
+      top: .75rem;
+      bottom: .75rem;
+    }
+    @include g7;
+    font-size: .8rem;
+    @include desktop { @include g7(2); }
     padding-left: 1em;
     list-style-type: none;
     position: relative;
@@ -205,14 +224,27 @@ main {
   }
   details {
     margin: .75rem 0;
-    summary {
-      cursor: pointer;
-      &::marker {
-      }
-    }
+    summary { cursor: pointer; }
+  }
+  textarea {
+    display: block;
+    @include g11;
+    font-size: 1.2rem;
+    @include desktop { @include g11(4); }
+    color: $foreground;
+    border: none;
+    margin: .75rem 0;
+    padding: .625rem 1rem;
+    resize: vertical;
+    height: calc(40px * 4 + .625rem * 2);
+    min-height: calc(32px * 2 + .625rem * 2);
+    background-color: $black;
+    width: calc(100% - var(--padding) * 2);
+    &:focus-visible { outline: none; }
   }
 }
 footer {
+  margin: 0 $padding;
   margin-top: 3rem;
   margin-bottom: 4rem;
 }
@@ -225,7 +257,6 @@ footer {
   }
   display: flex;
   align-items: flex-start;
-  width: 100%;
   height: 100vh;
   flex-direction: column;
   justify-content: center;
@@ -258,7 +289,7 @@ footer {
     margin: 1.5rem 0 0 0;
   }
   small {
-    font-size: 4vw;
+    font-size: .8rem;
     @include desktop { @include g7(2); }
     opacity: 0;
     position: absolute;
@@ -299,6 +330,26 @@ footer {
   }
   .btns {
     margin: 1.5rem 0 0 0;
+  }
+}
+.splide {
+  margin: {
+    top: .75rem;
+    bottom: .75rem;
+  }
+  .splide__slide {
+    img {
+      height: calc(100% - .5rem - .8rem * 1.5);
+      @include desktop {
+        height: calc(100% - .5rem - 16px * 1.5);
+      }
+    }
+    p {
+      margin: .5rem 0 0 0;
+      @include g7;
+      font-size: .8rem;
+      @include desktop { @include g7(2); }
+    }
   }
 }
 @keyframes b {

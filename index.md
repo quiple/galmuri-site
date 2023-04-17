@@ -222,6 +222,61 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
 
 ## 쇼케이스
 
+<section class="splide" aria-label="Splide Basic HTML Example">
+  <div class="splide__track">
+		<ul class="splide__list">
+			<li class="splide__slide">
+        <img src="./assets/showcase/not-yet.png" alt="Keylocker">
+        <p><a href="https://store.steampowered.com/app/1325040" target="_blank" rel="noreferrer noopener">Keylocker</a> &copy; Moonana</p>
+      </li>
+			<li class="splide__slide">
+        <img src="./assets/showcase/221127.png" alt="Papers, Please">
+        <p><a href="https://store.steampowered.com/app/239030" target="_blank" rel="noreferrer noopener">Papers, Please</a> &copy; Lucas Pope</p>
+      </li>
+			<li class="splide__slide">
+        <img src="./assets/showcase/221006.png" alt="Dungeon Squad">
+        <p><a href="https://apps.apple.com/kr/app/dungeonsquad/id1642733080" target="_blank" rel="noreferrer noopener">Dungeon Squad</a> &copy; GameCoaster</p>
+      </li>
+			<li class="splide__slide">
+        <img src="./assets/showcase/220621.jpg" alt="Shotgun King: The Final Checkmate">
+        <p><a href="https://store.steampowered.com/app/1972440" target="_blank" rel="noreferrer noopener">Shotgun King: The Final Checkmate</a> &copy; PUNKCAKE Delicieux</p>
+      </li>
+			<li class="splide__slide">
+        <img src="./assets/showcase/220507.png" alt="Monster Sanctuary">
+        <p><a href="https://blog.naver.com/ansewo/222702695752" target="_blank" rel="noreferrer noopener">Monster Sanctuary</a> (사용자 패치) by 솔라리어스</p>
+      </li>
+			<li class="splide__slide">
+        <img src="./assets/showcase/220220.jpg" alt="NEEDY GIRL OVERDOSE">
+        <p><a href="https://cosmicdeluge.tistory.com/5" target="_blank" rel="noreferrer noopener">NEEDY GIRL OVERDOSE</a> (사용자 패치) by 코스믹딜루즈 & Quiple</p>
+      </li>
+			<li class="splide__slide">
+        <img src="./assets/showcase/210302.jpg" alt="Teamfight Manager">
+        <p><a href="https://store.steampowered.com/app/1372810" target="_blank" rel="noreferrer noopener">Teamfight Manager</a> &copy; Team Samoyed</p>
+      </li>
+			<li class="splide__slide">
+        <img src="./assets/showcase/210223.jpg" alt="BLUE REVOLVER">
+        <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2405396574" target="_blank" rel="noreferrer noopener">BLUE REVOLVER</a> (사용자 패치) by Sepheille</p>
+      </li>
+			<li class="splide__slide">
+        <img src="./assets/showcase/210105.jpg" alt="Duke Dashington Remastered">
+        <p><a href="https://blog.naver.com/bleach1491/222196942354" target="_blank" rel="noreferrer noopener">Duke Dashington Remastered</a> (사용자 패치) by 바람 번역단</p>
+      </li>
+			<li class="splide__slide">
+        <img src="./assets/showcase/201221.jpg" alt="Rev">
+        <p><a href="https://blog.naver.com/bleach1491/222180900832" target="_blank" rel="noreferrer noopener">Rev</a> (사용자 패치) by 바람 번역단</p>
+      </li>
+			<li class="splide__slide">
+        <img src="./assets/showcase/200622.jpg" alt="Alwa's Legacy">
+        <p><a href="https://blog.naver.com/bleach1491/222008221688" target="_blank" rel="noreferrer noopener">Alwa's Legacy</a> (사용자 패치) by 바람 번역단</p>
+      </li>
+			<li class="splide__slide">
+        <img src="./assets/showcase/200223.png" alt="Westerado: Double Barreled">
+        <p><a href="https://blog.naver.com/bleach1491/221820971383" target="_blank" rel="noreferrer noopener">Westerado: Double Barreled</a> (사용자 패치) by 바람 번역단</p>
+      </li>
+		</ul>
+  </div>
+</section>
+
 ### Galmuri를 포함하여 파생된 폰트
 
 * [Fusion Pixel Font](https://github.com/TakWolf/fusion-pixel-font){:target="_blank" rel="noreferrer noopener"} by TakWolf  

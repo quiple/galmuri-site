@@ -2,8 +2,25 @@
 layout: default
 ---
 {{ content }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide-core.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
 <script>
   window.addEventListener('load', function() {
+    var splide = new Splide('.splide', {
+      gap: '1rem',
+      height: '20vw',
+      arrows: false,
+      pagination: false,
+      type: 'loop',
+      padding: '10vw',
+      drag: 'free',
+      autoWidth: true,
+      snap: true,
+      breakpoints: {
+        640: { height: '50vw' }
+      }
+    });
+    splide.mount();
     setTimeout(function() {
       document.querySelector('#title').classList.add('show');
     }, 500);
