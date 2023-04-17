@@ -160,7 +160,7 @@ font-family: 'Galmuri11';
 
 /* Galmuri11 Bold를 사용하려면 */
 font-family: 'Galmuri11';
-font-weight: Bold;
+font-weight: bold;
 
 /* Galmuri11 Condensed를 사용하려면 */
 font-family: 'Galmuri11';
