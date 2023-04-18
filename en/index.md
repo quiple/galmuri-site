@@ -11,7 +11,7 @@ lang: en
     <span>한글 비트맵 폰트</span>
   </div>
   <div class="btns">
-    <a class="btn" href="#Download">Download</a>
+    <a class="btn" href="#download">Download</a>
     <a class="btn" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}" target="_blank" rel="noreferrer noopener">View on GitHub</a>
   </div>
   <small>Scroll down to see details</small>
