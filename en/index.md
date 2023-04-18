@@ -1,5 +1,6 @@
 ---
 layout: home
+lang: en
 ---
 
 <div id="title">
@@ -10,17 +11,17 @@ layout: home
     <span>한글 비트맵 폰트</span>
   </div>
   <div class="btns">
-    <a class="btn" href="#다운로드">다운로드</a>
-    <a class="btn" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}" target="_blank" rel="noreferrer noopener">GitHub에서 보기</a>
+    <a class="btn" href="#Download">Download</a>
+    <a class="btn" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}" target="_blank" rel="noreferrer noopener">View on GitHub</a>
   </div>
-  <small>아래로 스크롤하여 더 많은 내용 확인하기</small>
+  <small>Scroll down to see details</small>
 </div>
 
-Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디자인에서 영감을 받은 비트맵 폰트입니다. 2019년 10월 9일 한글날에 처음 공개되었으며, Galmuri의 이름은 2008년 6월 사용자 한글화 커뮤니티인 [한식구](https://cafe.naver.com/hansicgu){:target="_blank" rel="noreferrer noopener"}에서 김동한 님께서 만들어 배포하신 비트맵 폰트 ‘[갈무리M](https://cafe.naver.com/hansicgu/174){:target="_blank" rel="noreferrer noopener"}’에서 유래하였습니다.
+Bitmap fonts inspired by the font design from Nintendo DS.
 
 <div class="btns">
   <!--a class="btn" href="./glyphs">문자 미리보기</a-->
-  <a class="btn" href="./charsets">문자 집합별 지원 현황</a>
+  <a class="btn" href="./charsets">Supported ranges by charsets</a>
   <!--a class="btn" href="./diff">주요 변경점</a-->
 </div>
 
@@ -42,17 +43,17 @@ Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디�
   </div>
 </div>
 
-<textarea id="test">The quick brown fox jumps over the lazy dog.&NewLine;정 참판 양반댁 규수 큰 교자 타고 혼례 치른 날.</textarea>
+<textarea id="test">The quick brown fox jumps over the lazy dog.</textarea>
 
-## 라이선스
+## License
 
 Copyright &copy; 2019-2023 {{ site.author }} ({{ site.email }})
 
-Galmuri는 [SIL 오픈 폰트 라이선스 1.1](https://scripts.sil.org/OFL){:target="_blank" rel="noreferrer noopener"}에 따라 사용할 수 있으며, 폰트가 자체적으로 판매되지 않는 한 자유롭게 사용·연구·수정·재배포할 수 있습니다.
+Galmuri is licensed under the [SIL Open Font License 1.1](https://scripts.sil.org/OFL){:target="_blank" rel="noreferrer noopener"} and to be used, studied, modified and redistributed freely as long as it is not sold by itself.
 
-OFL 1.1을 한국어로 번역한 내용은 [이곳](https://github.com/{{ site.github_username }}/{{ site.github_reponame }}/blob/main/OFL-ko.md){:target="_blank" rel="noreferrer noopener"}에서 확인할 수 있으며, 라이선스 원문은 [이곳](https://github.com/{{ site.github_username }}/{{ site.github_reponame }}/blob/main/OFL.md){:target="_blank" rel="noreferrer noopener"}에서 확인할 수 있습니다.
+The original license can be found [here](https://github.com/{{ site.github_username }}/{{ site.github_reponame }}/blob/main/OFL.md){:target="_blank" rel="noreferrer noopener"}.
 
-## 다운로드
+## Download
 
 <details>
   <summary>Galmuri14</summary>
@@ -128,12 +129,12 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](https://github.com/{{ site.
 </details>
 
 <div class="btns">
-  <a class="btn" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}/releases/latest" target="_blank" rel="noreferrer noopener">GitHub 릴리스 페이지에서 다운로드하기</a>
+  <a class="btn" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}/releases/latest" target="_blank" rel="noreferrer noopener">Download from GitHub</a>
 </div>
 
-Galmuri14는 15px (11pt), Galmuri11은 12px (9pt), Galmuri9는 10px (7.5pt), Galmuri7은 8px (6pt) 크기와 그 배수에서 가장 명확하게 표시됩니다.
+Galmuri only look best at 15px (11pt) size for Galmuri14, 12px (9pt) size for Galmuri11, 10px (7.5pt) size for Galmuri9, 8px (6pt) size for Galmuri7, or at integer multiples thereof.
 
-## 웹폰트로 사용
+## Use as web fonts
 
 ### HTML
 
@@ -147,67 +148,67 @@ Galmuri14는 15px (11pt), Galmuri11은 12px (9pt), Galmuri9는 10px (7.5pt), Gal
 @import url('https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css');
 ```
 
-### CSS 규칙
+### CSS rules
 
 ```css
-/* Galmuri14를 사용하려면 */
+/* Galmuri14 */
 font-family: 'Galmuri14', sans-serif;
 
-/* Galmuri11을 사용하려면 */
+/* Galmuri11 */
 font-family: 'Galmuri11', sans-serif;
 
-/* Galmuri11 Bold를 사용하려면 */
+/* Galmuri11 Bold */
 font-family: 'Galmuri11', sans-serif;
 font-weight: bold;
 
-/* Galmuri11 Condensed를 사용하려면 */
+/* Galmuri11 Condensed */
 font-family: 'Galmuri11', sans-serif;
 font-stretch: condensed;
 
-/* Galmuri9를 사용하려면 */
+/* Galmuri9 */
 font-family: 'Galmuri9', sans-serif;
 
-/* Galmuri7을 사용하려면 */
+/* Galmuri7 */
 font-family: 'Galmuri7', sans-serif;
 
-/* GalmuriMono11을 사용하려면 */
+/* GalmuriMono11 */
 font-family: 'GalmuriMono11', monospace;
 
-/* GalmuriMono9를 사용하려면 */
+/* GalmuriMono9 */
 font-family: 'GalmuriMono9', monospace;
 
-/* GalmuriMono7을 사용하려면 */
+/* GalmuriMono7 */
 font-family: 'GalmuriMono7', monospace;
 ```
 
-## 사용할 수 있는 오픈타입 기능
+## Available OpenType features
 
-### 합자 (liga)
+### Ligature
 
 <div class="fea liga">
   <pre>Affection Official Shuffle</pre>
   <pre>A<span>ff</span>ection O<span>ffi</span>cial Shu<span>ffl</span>e</pre>
 </div>
 
-### 커닝 (kern)
+### Kerning
 
 <div class="fea kern">
   <pre>Test TV/Audio Million LTE</pre>
   <pre><span>Te</span>st T<span>V/A</span>udio M<span>illi</span>on <span>LT</span>E</pre>
 </div>
 
-### 고정폭 숫자 (tnum)
+### Tabular numbers
 
 <div class="fea tnum">
-  <pre>1,879,425원<br>2,624,560원<br>1,751,853원</pre>
-  <pre><span>1,879,425</span>원<br><span>2,624,560</span>원<br><span>1,751,853</span>원</pre>
+  <pre>$1,879<br>$2,624<br>$1,710</pre>
+  <pre>$<span>1,879</span><br>$<span>2,624</span><br>$<span>1,710</span></pre>
 </div>
 
 ```css
-font-variant-numeric: tabular-nums; /* 또는 */ font-feature-settings: "tnum" 1;
+font-variant-numeric: tabular-nums; /* or */ font-feature-settings: "tnum" 1;
 ```
 
-### 슬래시 0 (zero)
+### Slashed zero
 
 <div class="fea zero">
   <pre>0123456789</pre>
@@ -215,77 +216,77 @@ font-variant-numeric: tabular-nums; /* 또는 */ font-feature-settings: "tnum" 1
 </div>
 
 ```css
-font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1;
+font-variant-numeric: slashed-zero; /* or */ font-feature-settings: "zero" 1;
 ```
 
-## 쇼케이스
+## Showcase
 
 <section class="splide" aria-label="Splide Basic HTML Example">
   <div class="splide__track">
 		<ul class="splide__list">
 			<li class="splide__slide">
-        <img src="./assets/showcase/not-yet.png" alt="Keylocker">
+        <img src="/assets/showcase/not-yet.png" alt="Keylocker">
         <p><a href="https://store.steampowered.com/app/1325040" target="_blank" rel="noreferrer noopener">Keylocker</a> &copy; Moonana</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/221127.png" alt="Papers, Please">
+        <img src="/assets/showcase/221127.png" alt="Papers, Please">
         <p><a href="https://store.steampowered.com/app/239030" target="_blank" rel="noreferrer noopener">Papers, Please</a> &copy; Lucas Pope</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/221006.png" alt="Dungeon Squad">
+        <img src="/assets/showcase/221006.png" alt="Dungeon Squad">
         <p><a href="https://apps.apple.com/kr/app/dungeonsquad/id1642733080" target="_blank" rel="noreferrer noopener">Dungeon Squad</a> &copy; GameCoaster</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/220621.jpg" alt="Shotgun King: The Final Checkmate">
+        <img src="/assets/showcase/220621.jpg" alt="Shotgun King: The Final Checkmate">
         <p><a href="https://store.steampowered.com/app/1972440" target="_blank" rel="noreferrer noopener">Shotgun King: The Final Checkmate</a> &copy; PUNKCAKE Delicieux</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/220507.png" alt="Monster Sanctuary">
-        <p><a href="https://blog.naver.com/ansewo/222702695752" target="_blank" rel="noreferrer noopener">Monster Sanctuary</a> (사용자 패치) by 솔라리어스</p>
+        <img src="/assets/showcase/220507.png" alt="Monster Sanctuary">
+        <p><a href="https://blog.naver.com/ansewo/222702695752" target="_blank" rel="noreferrer noopener">Monster Sanctuary</a> (user patch) by 솔라리어스</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/220220.jpg" alt="NEEDY GIRL OVERDOSE">
-        <p><a href="https://cosmicdeluge.tistory.com/5" target="_blank" rel="noreferrer noopener">NEEDY GIRL OVERDOSE</a> (사용자 패치) by 코스믹딜루즈 & Quiple</p>
+        <img src="/assets/showcase/220220.jpg" alt="NEEDY GIRL OVERDOSE">
+        <p><a href="https://cosmicdeluge.tistory.com/5" target="_blank" rel="noreferrer noopener">NEEDY GIRL OVERDOSE</a> (user patch) by 코스믹딜루즈 & Quiple</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/210302.jpg" alt="Teamfight Manager">
+        <img src="/assets/showcase/210302.jpg" alt="Teamfight Manager">
         <p><a href="https://store.steampowered.com/app/1372810" target="_blank" rel="noreferrer noopener">Teamfight Manager</a> &copy; Team Samoyed</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/210223.jpg" alt="BLUE REVOLVER">
-        <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2405396574" target="_blank" rel="noreferrer noopener">BLUE REVOLVER</a> (사용자 패치) by Sepheille</p>
+        <img src="/assets/showcase/210223.jpg" alt="BLUE REVOLVER">
+        <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2405396574" target="_blank" rel="noreferrer noopener">BLUE REVOLVER</a> (user patch) by Sepheille</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/210105.jpg" alt="Duke Dashington Remastered">
-        <p><a href="https://blog.naver.com/bleach1491/222196942354" target="_blank" rel="noreferrer noopener">Duke Dashington Remastered</a> (사용자 패치) by 바람 번역단</p>
+        <img src="/assets/showcase/210105.jpg" alt="Duke Dashington Remastered">
+        <p><a href="https://blog.naver.com/bleach1491/222196942354" target="_blank" rel="noreferrer noopener">Duke Dashington Remastered</a> (user patch) by 바람 번역단</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/201221.jpg" alt="Rev">
-        <p><a href="https://blog.naver.com/bleach1491/222180900832" target="_blank" rel="noreferrer noopener">Rev</a> (사용자 패치) by 바람 번역단</p>
+        <img src="/assets/showcase/201221.jpg" alt="Rev">
+        <p><a href="https://blog.naver.com/bleach1491/222180900832" target="_blank" rel="noreferrer noopener">Rev</a> (user patch) by 바람 번역단</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/200622.jpg" alt="Alwa's Legacy">
-        <p><a href="https://blog.naver.com/bleach1491/222008221688" target="_blank" rel="noreferrer noopener">Alwa's Legacy</a> (사용자 패치) by 바람 번역단</p>
+        <img src="/assets/showcase/200622.jpg" alt="Alwa's Legacy">
+        <p><a href="https://blog.naver.com/bleach1491/222008221688" target="_blank" rel="noreferrer noopener">Alwa's Legacy</a> (user patch) by 바람 번역단</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/200223.png" alt="Westerado: Double Barreled">
-        <p><a href="https://blog.naver.com/bleach1491/221820971383" target="_blank" rel="noreferrer noopener">Westerado: Double Barreled</a> (사용자 패치) by 바람 번역단</p>
+        <img src="/assets/showcase/200223.png" alt="Westerado: Double Barreled">
+        <p><a href="https://blog.naver.com/bleach1491/221820971383" target="_blank" rel="noreferrer noopener">Westerado: Double Barreled</a> (user patch) by 바람 번역단</p>
       </li>
 		</ul>
   </div>
 </section>
 
-### Galmuri를 포함하여 파생된 폰트
+### Derived fonts, including Galmuri
 
 * [Fusion Pixel Font](https://github.com/TakWolf/fusion-pixel-font){:target="_blank" rel="noreferrer noopener"} by TakWolf  
-  SIL 오픈 폰트 라이선스 1.1 • 포함 폰트: [Ark Pixel Font](https://github.com/TakWolf/ark-pixel-font){:target="_blank" rel="noreferrer noopener"}, [Cubic 11](https://github.com/ACh-K/Cubic-11){:target="_blank" rel="noreferrer noopener"}, Galmuri11
+  SIL Open Font License 1.1 • included fonts: [Ark Pixel Font](https://github.com/TakWolf/ark-pixel-font){:target="_blank" rel="noreferrer noopener"}, [Cubic 11](https://github.com/ACh-K/Cubic-11){:target="_blank" rel="noreferrer noopener"}, Galmuri11
 * [QuanPixel](https://diaowinner.itch.io/galmuri-extended){:target="_blank" rel="noreferrer noopener"} by diaowinner  
-  SIL 오픈 폰트 라이선스 1.1 • 포함 폰트: Galmuri7, [Chill-Bitmap](https://github.com/Warren2060/Chill-Bitmap){:target="_blank" rel="noreferrer noopener"} ([MisakiGothic](https://littlelimit.net/misaki.htm){:target="_blank" rel="noreferrer noopener"}, [BoutiqueBitmap7x7](https://github.com/scott0107000/BoutiqueBitmap7x7){:target="_blank" rel="noreferrer noopener"}, [Guanzhi 8px](https://bbs.themex.net/showthread.php?t=16850810){:target="_blank" rel="noreferrer noopener"})
+  SIL Open Font License 1.1 • included fonts: Galmuri7, [Chill-Bitmap](https://github.com/Warren2060/Chill-Bitmap){:target="_blank" rel="noreferrer noopener"} ([MisakiGothic](https://littlelimit.net/misaki.htm){:target="_blank" rel="noreferrer noopener"}, [BoutiqueBitmap7x7](https://github.com/scott0107000/BoutiqueBitmap7x7){:target="_blank" rel="noreferrer noopener"}, [Guanzhi 8px](https://bbs.themex.net/showthread.php?t=16850810){:target="_blank" rel="noreferrer noopener"})
 
-## 사용한 도구
+## Tools used
 
-* 바이너리 문자 집합 추출: [CrystalTile2](https://www.romhacking.net/utilities/818/){:target="_blank" rel="noreferrer noopener"} by angel-team
-* GNU Unifont 폰트 변환: [Unifont Utilities](http://unifoundry.com/unifont/unifont-utilities.html){:target="_blank" rel="noreferrer noopener"} by Unifoundry.com
-* 비트맵 폰트 편집 및 트루타입 윤곽선 폰트 생성: [Bits'N'Picas](https://github.com/kreativekorp/bitsnpicas){:target="_blank" rel="noreferrer noopener"} by Kreative Software
-* 폰트 재작성 및 오픈타입 기능 추가: [Adobe Font Development Kit for OpenType](https://github.com/adobe-type-tools/afdko){:target="_blank" rel="noreferrer noopener"} by Adobe
-* WOFF2 압축 및 트루타입 콜렉션 생성: [fontTools](https://github.com/fonttools/fonttools){:target="_blank" rel="noreferrer noopener"} by Just van Rossum
+* Binary charset extraction: [CrystalTile2](https://www.romhacking.net/utilities/818/){:target="_blank" rel="noreferrer noopener"} by angel-team
+* GNU Unifont conversion: [Unifont Utilities](http://unifoundry.com/unifont/unifont-utilities.html){:target="_blank" rel="noreferrer noopener"} by Unifoundry.com
+* Edit bitmap fonts and generate TrueType fonts: [Bits'N'Picas](https://github.com/kreativekorp/bitsnpicas){:target="_blank" rel="noreferrer noopener"} by Kreative Software
+* Rewriting fonts and add OpenType features: [Adobe Font Development Kit for OpenType](https://github.com/adobe-type-tools/afdko){:target="_blank" rel="noreferrer noopener"} by Adobe
+* WOFF2 compression and make TrueType Collection: [fontTools](https://github.com/fonttools/fonttools){:target="_blank" rel="noreferrer noopener"} by Just van Rossum

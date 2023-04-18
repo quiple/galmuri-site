@@ -2,7 +2,7 @@
 ---
 
 @charset 'utf-8';
-@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css/minireset.min.css");
+@import url('https://cdn.jsdelivr.net/gh/jgthms/minireset.css/minireset.min.css');
 
 @mixin font-face($family, $weight: 400, $stretch: normal) {
   @font-face {
@@ -133,7 +133,10 @@ small {
 }
 .btns {
   display: flex;
-  margin: .75rem 0;
+  margin: {
+    top: 1rem;
+    bottom: 1rem;
+  }
   gap: .75rem;
   flex-wrap: wrap;
   .btn {
