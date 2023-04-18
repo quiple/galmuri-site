@@ -44,7 +44,7 @@ Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디�
   </div>
 </div>
 
-<textarea id="test">정 참판 양반댁 규수 큰 교자 타고 혼례 치른 날.</textarea>
+<textarea id="test">The quick brown fox jumps over the lazy dog.&NewLine;정 참판 양반댁 규수 큰 교자 타고 혼례 치른 날.</textarea>
 
 ## 라이선스
 
