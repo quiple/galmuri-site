@@ -57,73 +57,73 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](https://github.com/{{ site.
 <details>
   <summary>Galmuri14</summary>
   <div class="btns">
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri14.ttf">TTF</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri14.woff2">WOFF2</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri14.bdf">BDF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri14.ttf">TTF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri14.woff2">WOFF2</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri14.bdf">BDF</a>
   </div>
 </details>
 <details>
   <summary>Galmuri11</summary>
   <div class="btns">
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri11.ttf">TTF</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri11.woff2">WOFF2</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri11.bdf">BDF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri11.ttf">TTF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri11.woff2">WOFF2</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri11.bdf">BDF</a>
   </div>
 </details>
 <details>
   <summary>Galmuri11 Bold</summary>
   <div class="btns">
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri11-Bold.ttf">TTF</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri11-Bold.woff2">WOFF2</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri11-Bold.bdf">BDF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri11-Bold.ttf">TTF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri11-Bold.woff2">WOFF2</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri11-Bold.bdf">BDF</a>
   </div>
 </details>
 <details>
   <summary>Galmuri11 Condensed</summary>
   <div class="btns">
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri11-Condensed.ttf">TTF</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri11-Condensed.woff2">WOFF2</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri11-Condensed.bdf">BDF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri11-Condensed.ttf">TTF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri11-Condensed.woff2">WOFF2</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri11-Condensed.bdf">BDF</a>
   </div>
 </details>
 <details>
   <summary>Galmuri9</summary>
   <div class="btns">
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri9.ttf">TTF</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri9.woff2">WOFF2</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri9.bdf">BDF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri9.ttf">TTF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri9.woff2">WOFF2</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri9.bdf">BDF</a>
   </div>
 </details>
 <details>
   <summary>Galmuri7</summary>
   <div class="btns">
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri7.ttf">TTF</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri7.woff2">WOFF2</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri7.bdf">BDF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri7.ttf">TTF</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri7.woff2">WOFF2</a>
+    <a download class="btn" href="../galmuri/dist/Galmuri7.bdf">BDF</a>
   </div>
 </details>
 <details>
   <summary>GalmuriMono11</summary>
   <div class="btns">
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/GalmuriMono11.ttf">TTF</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/GalmuriMono11.woff2">WOFF2</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/GalmuriMono11.bdf">BDF</a>
+    <a download class="btn" href="../galmuri/dist/GalmuriMono11.ttf">TTF</a>
+    <a download class="btn" href="../galmuri/dist/GalmuriMono11.woff2">WOFF2</a>
+    <a download class="btn" href="../galmuri/dist/GalmuriMono11.bdf">BDF</a>
   </div>
 </details>
 <details>
   <summary>GalmuriMono9</summary>
   <div class="btns">
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/GalmuriMono9.ttf">TTF</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/GalmuriMono9.woff2">WOFF2</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/GalmuriMono9.bdf">BDF</a>
+    <a download class="btn" href="../galmuri/dist/GalmuriMono9.ttf">TTF</a>
+    <a download class="btn" href="../galmuri/dist/GalmuriMono9.woff2">WOFF2</a>
+    <a download class="btn" href="../galmuri/dist/GalmuriMono9.bdf">BDF</a>
   </div>
 </details>
 <details>
   <summary>GalmuriMono7</summary>
   <div class="btns">
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/GalmuriMono7.ttf">TTF</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/GalmuriMono7.woff2">WOFF2</a>
-    <a download class="btn" href="https://cdn.jsdelivr.net/npm/galmuri/dist/GalmuriMono7.bdf">BDF</a>
+    <a download class="btn" href="../galmuri/dist/GalmuriMono7.ttf">TTF</a>
+    <a download class="btn" href="../galmuri/dist/GalmuriMono7.woff2">WOFF2</a>
+    <a download class="btn" href="../galmuri/dist/GalmuriMono7.bdf">BDF</a>
   </div>
 </details>
 

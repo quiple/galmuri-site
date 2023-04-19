@@ -46,4 +46,13 @@ kramdown:
 # their entries' file path in the `include:` list.
 
 exclude:
+  - galmuri/.github/
+  - galmuri/bitsnpicas/
+  - galmuri/files/
+  - galmuri/mkttf/
+  - galmuri/src/
+  - galmuri/.gitmodules
+  - galmuri/.npmignore
+  - galmuri/package-lock.json
+  - galmuri/package.json
   - galmuri/README.md
