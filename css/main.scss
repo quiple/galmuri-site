@@ -67,6 +67,12 @@ body {
   line-height: 1.5;
   word-break: keep-all;
 }
+h1 {
+  margin-top: 2.5rem;
+  @include g14;
+  font-size: 1.5rem;
+  @include desktop { @include g14(3); }
+}
 h2 {
   margin-top: 2.5rem;
   @include g11b;
