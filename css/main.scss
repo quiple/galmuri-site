@@ -13,8 +13,8 @@
       stretch: $stretch;
       display: block;
     }
-    src: url('https://cdn.jsdelivr.net/npm/galmuri/dist/#{$family}#{if($stretch == condensed, -Condensed, null)}#{if($weight == 700, -Bold, null)}.woff2') format('woff2'),
-         url('https://cdn.jsdelivr.net/npm/galmuri/dist/#{$family}#{if($stretch == condensed, -Condensed, null)}#{if($weight == 700, -Bold, null)}.ttf') format('truetype');
+    src: url('../galmuri/dist/#{$family}#{if($stretch == condensed, -Condensed, null)}#{if($weight == 700, -Bold, null)}.woff2') format('woff2'),
+         url('../galmuri/dist/#{$family}#{if($stretch == condensed, -Condensed, null)}#{if($weight == 700, -Bold, null)}.ttf') format('truetype');
   }
 }
 
