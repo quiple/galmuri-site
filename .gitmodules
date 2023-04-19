@@ -1,0 +1,3 @@
+[submodule "galmuri"]
+	path = galmuri
+	url = https://github.com/quiple/galmuri
