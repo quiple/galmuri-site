@@ -50,7 +50,7 @@ Copyright &copy; 2019-2023 {{ site.author }} ({{ site.email }})
 
 Galmuri는 [SIL 오픈 폰트 라이선스 1.1](https://scripts.sil.org/OFL){:target="_blank" rel="noreferrer noopener"}에 따라 사용할 수 있으며, 폰트가 자체적으로 판매되지 않는 한 자유롭게 사용·연구·수정·재배포할 수 있습니다.
 
-OFL 1.1을 한국어로 번역한 내용은 [이곳](https://github.com/{{ site.github_username }}/{{ site.github_reponame }}/blob/main/OFL-ko.md){:target="_blank" rel="noreferrer noopener"}에서 확인할 수 있으며, 라이선스 원문은 [이곳](https://github.com/{{ site.github_username }}/{{ site.github_reponame }}/blob/main/OFL.md){:target="_blank" rel="noreferrer noopener"}에서 확인할 수 있습니다.
+OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확인할 수 있으며, 라이선스 원문은 [이곳](/galmuri/ofl)에서 확인할 수 있습니다.
 
 ## 다운로드
 
