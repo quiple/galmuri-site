@@ -188,16 +188,16 @@ small {
     pre:last-child { font-feature-settings: 'liga' 1; }
   }
   &.kern {
-    pre:first-child { font-feature-settings: 'kern' 0; }
-    pre:last-child { font-feature-settings: 'kern' 1; }
+    pre:first-child { font-feature-settings: 'kern' 0; font-kerning: none; }
+    pre:last-child { font-feature-settings: 'kern' 1; font-kerning: normal; }
   }
   &.tnum {
-    pre:first-child { font-feature-settings: 'tnum' 0; }
-    pre:last-child { font-feature-settings: 'tnum' 1; }
+    pre:first-child { font-feature-settings: 'tnum' 0; font-variant-numeric: normal; }
+    pre:last-child { font-feature-settings: 'tnum' 1; font-variant-numeric: tabular-nums; }
   }
   &.zero {
-    pre:first-child { font-feature-settings: 'zero' 0; }
-    pre:last-child { font-feature-settings: 'zero' 1; }
+    pre:first-child { font-feature-settings: 'zero' 0; font-variant-numeric: normal; }
+    pre:last-child { font-feature-settings: 'zero' 1;  font-variant-numeric: slashed-zero; }
   }
 }
 main {
