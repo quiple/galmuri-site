@@ -46,4 +46,4 @@ kramdown:
 # their entries' file path in the `include:` list.
 
 exclude:
-  - galmuri/
+  - galmuri/README.md
