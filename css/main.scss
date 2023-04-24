@@ -212,6 +212,21 @@ main {
     max-width: 100%;
     @include desktop { max-width: calc(100vw * (3 / 5)); }
   }
+  ol:not([class]) {
+    margin: {
+      top: .75rem;
+      bottom: .75rem;
+    }
+    @include g7;
+    font-size: .8rem;
+    @include desktop { @include g7(2); }
+    padding-left: 1em;
+    list-style-type: none;
+    position: relative;
+    li {
+      margin: .5rem 0;
+    }
+  }
   ul:not([class]) {
     margin: {
       top: .75rem;
