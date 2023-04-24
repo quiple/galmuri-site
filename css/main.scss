@@ -220,7 +220,7 @@ main {
     @include g7;
     font-size: .8rem;
     @include desktop { @include g7(2); }
-    padding-left: 1em;
+    padding-left: 20px;
     position: relative;
     li {
       margin: .5rem 0;
