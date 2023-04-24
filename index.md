@@ -228,6 +228,10 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
         <p><a href="https://store.steampowered.com/app/1325040" target="_blank" rel="noreferrer noopener">Keylocker</a> &copy; Moonana</p>
       </li>
 			<li class="splide__slide">
+        <img src="./assets/showcase/230420.png" alt="Papers, Please">
+        <p><a href="https://store.steampowered.com/app/1663220" target="_blank" rel="noreferrer noopener">Coffee Talk Episode 2: Hibiscus & Butterfly</a> &copy; Toge Productions</p>
+      </li>
+			<li class="splide__slide">
         <img src="./assets/showcase/221127.png" alt="Papers, Please">
         <p><a href="https://store.steampowered.com/app/239030" target="_blank" rel="noreferrer noopener">Papers, Please</a> &copy; Lucas Pope</p>
       </li>
