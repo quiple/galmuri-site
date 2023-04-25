@@ -301,7 +301,7 @@ footer {
       &:first-child::before { content: '작은 크기에서도'; }
       &:nth-child(2)::before { content: '가독성 좋고 균형 있는'; }
       &:last-child::before { content: '한글 비트맵 폰트'; }
-      &::before { position: absolute; top: 0; right: 0; bottom: 0; left: 0; text-shadow: 0 0 0 currentColor; opacity: .25; }
+      &::before { position: absolute; top: 0; right: 0; bottom: 0; left: 0; text-shadow: 0 0 0 currentColor; opacity: .25; z-index: -1; }
     }
   }
   .btns {
