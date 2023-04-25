@@ -144,40 +144,40 @@ Galmuri14는 15px (11pt), Galmuri11은 12px (9pt), Galmuri9는 10px (7.5pt), Gal
 ### CSS
 
 ```css
-@import url('https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css');
+@import url("https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css");
 ```
 
 ### CSS 규칙
 
 ```css
 /* Galmuri14를 사용하려면 */
-font-family: 'Galmuri14', sans-serif;
+font-family: "Galmuri14", sans-serif;
 
 /* Galmuri11을 사용하려면 */
-font-family: 'Galmuri11', sans-serif;
+font-family: "Galmuri11", sans-serif;
 
 /* Galmuri11 Bold를 사용하려면 */
-font-family: 'Galmuri11', sans-serif;
+font-family: "Galmuri11", sans-serif;
 font-weight: bold;
 
 /* Galmuri11 Condensed를 사용하려면 */
-font-family: 'Galmuri11', sans-serif;
+font-family: "Galmuri11", sans-serif;
 font-stretch: condensed;
 
 /* Galmuri9를 사용하려면 */
-font-family: 'Galmuri9', sans-serif;
+font-family: "Galmuri9", sans-serif;
 
 /* Galmuri7을 사용하려면 */
-font-family: 'Galmuri7', sans-serif;
+font-family: "Galmuri7", sans-serif;
 
 /* GalmuriMono11을 사용하려면 */
-font-family: 'GalmuriMono11', monospace;
+font-family: "GalmuriMono11", monospace;
 
 /* GalmuriMono9를 사용하려면 */
-font-family: 'GalmuriMono9', monospace;
+font-family: "GalmuriMono9", monospace;
 
 /* GalmuriMono7을 사용하려면 */
-font-family: 'GalmuriMono7', monospace;
+font-family: "GalmuriMono7", monospace;
 ```
 
 ## 사용할 수 있는 오픈타입 기능
