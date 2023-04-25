@@ -183,10 +183,6 @@ small {
     flex: 1;
     span { color: $anchor; }
   }
-  &.liga {
-    pre:first-child { font-feature-settings: 'liga' 0; }
-    pre:last-child { font-feature-settings: 'liga' 1; }
-  }
   &.kern {
     pre:first-child { font-feature-settings: 'kern' 0; font-kerning: none; }
     pre:last-child { font-feature-settings: 'kern' 1; font-kerning: normal; }

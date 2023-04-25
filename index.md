@@ -182,13 +182,6 @@ font-family: 'GalmuriMono7', monospace;
 
 ## 사용할 수 있는 오픈타입 기능
 
-### 합자 (liga)
-
-<div class="fea liga">
-  <pre>Affection Official Shuffle</pre>
-  <pre>A<span>ff</span>ection O<span>ffi</span>cial Shu<span>ffl</span>e</pre>
-</div>
-
 ### 커닝 (kern)
 
 <div class="fea kern">
