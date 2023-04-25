@@ -88,7 +88,7 @@ code, pre {
   font-size: .8rem;
   @include desktop { @include gm7(2); }
   white-space: pre-line;
-  background-color: $black !important;
+  background-color: $black;
 }
 pre {
   padding: .625rem 1rem;
