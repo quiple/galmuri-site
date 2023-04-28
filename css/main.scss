@@ -113,8 +113,7 @@ pre {
   div { display: flex; gap: .75rem; align-items: center; }
   input[type=range] {
     flex: 1;
-    width: 100%;
-    max-width: 16rem;
+    width: 16rem;
   }
   #test-size-indicator { font-variant-numeric: tabular-nums; }
 }
