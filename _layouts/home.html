@@ -9,8 +9,41 @@ layout: default
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide-core.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
 <script>
+  const pangramEn = [
+    'The quick brown fox jumps over the lazy dog',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    'I wanna be an ordinary man, not just an ego caught inside a trend',
+    'Waltz, bad nymph, for quick jigs vex',
+    'Glib jocks quiz nymph to vex dwarf',
+    'Sphinx of black quartz, judge my vow',
+    'How quickly daft jumping zebras vex',
+    'The five boxing wizards jump quickly',
+    'Jackdaws love my big sphinx of quartz',
+    'Pack my box with five dozen liquor jugs',
+    'My faxed joke won a pager in the cable TV quiz show',
+    'Grumpy wizards make toxic brew for the evil Queen and Jack'
+  ];
+  const pangramKo = [
+    '다람쥐 헌 쳇바퀴에 타고파',
+    '정 참판 양반댁 규수 큰 교자 타고 혼례 치른 날',
+    '키스의 고유 조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다',
+    '뭉탱이로 있다가 유링게숭 아니그냥',
+    '콩고물과 우유가 들어간 빙수는 차게 먹어야 특별한 맛이 잘 표현된다',
+    '참나무 타는 소리와 야경만큼 밤의 여유를 표현해 주는 것도 없다',
+    '컴퓨터 출판물의 양이 늘면 타입킷의 활용도 많아지게 된다',
+    '덧글은 통신 예절 지키면서 표현 자유 추구하는 방향으로',
+    '꽃을 잘 키우려면 수분과 윤기 먹은 토양이 필요하다',
+    '추운 겨울에는 따뜻한 커피와 티를 마셔야지요',
+    '그는 미쳐서 칼부림하는 인성파탄자일 뿐이다',
+    '동녘 구름 틈새로 퍼지는 햇빛'
+  ];
+  const test = document.getElementById('test');
+  const testFamily = document.getElementById('test-family');
+  const testSize = document.getElementById('test-size');
+  const testSizeIndicator = document.getElementById('test-size-indicator');
+  test.textContent = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
   window.addEventListener('load', function() {
-    var splide = new Splide('.splide', {
+    const splide = new Splide('.splide', {
       autoplay: true,
       gap: '1rem',
       height: '20vw',
@@ -32,10 +65,6 @@ layout: default
       document.querySelector('#title').classList.add('show');
     }, 500);
   });
-  const test = document.getElementById('test');
-  const testFamily = document.getElementById('test-family');
-  const testSize = document.getElementById('test-size');
-  const testSizeIndicator = document.getElementById('test-size-indicator');
   testFamily.addEventListener('change', function() {
     let testFontValue = this.value;
     if (testFontValue == 'g14') {
