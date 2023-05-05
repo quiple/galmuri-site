@@ -61,6 +61,7 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
     <a download class="btn" href="../galmuri/dist/Galmuri14.woff2">WOFF2</a>
     <a download class="btn" href="../galmuri/dist/Galmuri14.bdf">BDF</a>
   </div>
+  <p><a href="https://isfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri14.ttf">글리프 미리보기</a></p>
 </details>
 <details>
   <summary>Galmuri11</summary>
@@ -69,6 +70,7 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
     <a download class="btn" href="../galmuri/dist/Galmuri11.woff2">WOFF2</a>
     <a download class="btn" href="../galmuri/dist/Galmuri11.bdf">BDF</a>
   </div>
+  <p><a href="https://isfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri11.ttf">글리프 미리보기</a></p>
 </details>
 <details>
   <summary>Galmuri11 Bold</summary>
@@ -77,6 +79,7 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
     <a download class="btn" href="../galmuri/dist/Galmuri11-Bold.woff2">WOFF2</a>
     <a download class="btn" href="../galmuri/dist/Galmuri11-Bold.bdf">BDF</a>
   </div>
+  <p><a href="https://isfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri11-Bold.ttf">글리프 미리보기</a></p>
 </details>
 <details>
   <summary>Galmuri11 Condensed</summary>
@@ -85,6 +88,7 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
     <a download class="btn" href="../galmuri/dist/Galmuri11-Condensed.woff2">WOFF2</a>
     <a download class="btn" href="../galmuri/dist/Galmuri11-Condensed.bdf">BDF</a>
   </div>
+  <p><a href="https://isfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri11-Condensed.ttf">글리프 미리보기</a></p>
 </details>
 <details>
   <summary>Galmuri9</summary>
@@ -93,6 +97,7 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
     <a download class="btn" href="../galmuri/dist/Galmuri9.woff2">WOFF2</a>
     <a download class="btn" href="../galmuri/dist/Galmuri9.bdf">BDF</a>
   </div>
+  <p><a href="https://isfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri9.ttf">글리프 미리보기</a></p>
 </details>
 <details>
   <summary>Galmuri7</summary>
@@ -101,6 +106,7 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
     <a download class="btn" href="../galmuri/dist/Galmuri7.woff2">WOFF2</a>
     <a download class="btn" href="../galmuri/dist/Galmuri7.bdf">BDF</a>
   </div>
+  <p><a href="https://isfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri7.ttf">글리프 미리보기</a></p>
 </details>
 <details>
   <summary>GalmuriMono11</summary>
@@ -109,6 +115,7 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
     <a download class="btn" href="../galmuri/dist/GalmuriMono11.woff2">WOFF2</a>
     <a download class="btn" href="../galmuri/dist/GalmuriMono11.bdf">BDF</a>
   </div>
+  <p><a href="https://isfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/GalmuriMono11.ttf">글리프 미리보기</a></p>
 </details>
 <details>
   <summary>GalmuriMono9</summary>
@@ -117,6 +124,7 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
     <a download class="btn" href="../galmuri/dist/GalmuriMono9.woff2">WOFF2</a>
     <a download class="btn" href="../galmuri/dist/GalmuriMono9.bdf">BDF</a>
   </div>
+  <p><a href="https://isfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/GalmuriMono9.ttf">글리프 미리보기</a></p>
 </details>
 <details>
   <summary>GalmuriMono7</summary>
@@ -125,6 +133,7 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
     <a download class="btn" href="../galmuri/dist/GalmuriMono7.woff2">WOFF2</a>
     <a download class="btn" href="../galmuri/dist/GalmuriMono7.bdf">BDF</a>
   </div>
+  <p><a href="https://isfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/GalmuriMono7.ttf">글리프 미리보기</a></p>
 </details>
 
 <div class="btns">
