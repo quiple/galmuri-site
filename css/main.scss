@@ -141,7 +141,13 @@ a {
   &:hover { text-decoration: underline; }
   &.new::after {
     background-image: url('../assets/new-anchor.svg');
-    margin: 0 .125em;
+    .btns &,
+    small &,
+    ol:not([class]) &,
+    ul:not([class]) &,
+    .splide__slide p & {
+      margin: 0 .125em;
+    }
   }
 }
 img {
