@@ -42,7 +42,7 @@ Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디�
   </div>
 </div>
 
-<textarea id="test"></textarea>
+<textarea id="test" spellcheck="false"></textarea>
 
 ## 라이선스
 
