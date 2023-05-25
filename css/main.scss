@@ -97,12 +97,20 @@ pre {
 .new::after {
   content: '';
   display: inline-block;
-  background-size: contain;
+  background: {
+    repeat: no-repeat;
+    position: center;
+    size: calc(100% - .125em * 2);
+  }
   width: 1em;
   height: 1em;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
+  .btns &,
+  small &,
+  ol:not([class]) &,
+  ul:not([class]) &,
+  .splide__slide p & {
+    background-size: 100%;
+  }
 }
 #test-control {
   margin-top: .75rem;
@@ -132,7 +140,7 @@ a {
   text-decoration: none;
   &:hover { text-decoration: underline; }
   &.new::after {
-    background-image: url('../assets/new-anchor.png');
+    background-image: url('../assets/new-anchor.svg');
     margin: 0 .125em;
   }
 }
@@ -182,7 +190,7 @@ small {
       transform: none;
     }
     &.new::after {
-      background-image: url('../assets/new.png');
+      background-image: url('../assets/new.svg');
       margin-left: .375em;
     }
   }
