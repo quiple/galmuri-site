@@ -11,12 +11,12 @@ layout: home
   </div>
   <div class="btns">
     <a class="btn" href="#다운로드">다운로드</a>
-    <a class="btn" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}" target="_blank" rel="noreferrer noopener">GitHub에서 보기</a>
+    <a class="btn new" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}" target="_blank" rel="noreferrer noopener">GitHub에서 보기</a>
   </div>
   <small>아래로 스크롤하여 더 많은 내용 확인하기</small>
 </div>
 
-Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디자인에서 영감을 받은 비트맵 폰트입니다. 2019년 10월 9일 한글날에 처음 공개되었으며, Galmuri의 이름은 2008년 6월 사용자 한글화 커뮤니티인 [한식구](https://cafe.naver.com/hansicgu){:target="_blank" rel="noreferrer noopener"}에서 김동한 님께서 만들어 배포하신 비트맵 폰트 ‘[갈무리M](https://cafe.naver.com/hansicgu/174){:target="_blank" rel="noreferrer noopener"}’에서 유래하였습니다.
+Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디자인에서 영감을 받은 비트맵 폰트입니다. 2019년 10월 9일 한글날에 처음 공개되었으며, Galmuri의 이름은 2008년 6월 사용자 한글화 커뮤니티인 [한식구](https://cafe.naver.com/hansicgu){:class="new" target="_blank" rel="noreferrer noopener"}에서 김동한 님께서 만들어 배포하신 비트맵 폰트 ‘[갈무리M](https://cafe.naver.com/hansicgu/174){:class="new" target="_blank" rel="noreferrer noopener"}’에서 유래하였습니다.
 
 <div class="btns">
   <!--a class="btn" href="./glyphs">문자 미리보기</a-->
@@ -48,7 +48,7 @@ Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디�
 
 Copyright &copy; 2019-2023 {{ site.author }} (<{{ site.email }}>)
 
-Galmuri는 [SIL 오픈 폰트 라이선스 1.1](https://scripts.sil.org/OFL){:target="_blank" rel="noreferrer noopener"}에 따라 사용할 수 있으며, 폰트가 자체적으로 판매되지 않는 한 자유롭게 사용·연구·수정·재배포할 수 있습니다.
+Galmuri는 [SIL 오픈 폰트 라이선스 1.1](https://scripts.sil.org/OFL){:class="new" target="_blank" rel="noreferrer noopener"}에 따라 사용할 수 있으며, 폰트가 자체적으로 판매되지 않는 한 자유롭게 사용·연구·수정·재배포할 수 있습니다.
 
 OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확인할 수 있으며, 라이선스 원문은 [이곳](/galmuri/ofl)에서 확인할 수 있습니다.
 
@@ -283,15 +283,15 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
 
 ### Galmuri를 포함하여 파생된 폰트
 
-* [Fusion Pixel Font](https://github.com/TakWolf/fusion-pixel-font){:target="_blank" rel="noreferrer noopener"} by TakWolf  
-  SIL 오픈 폰트 라이선스 1.1 • 포함 폰트: [Ark Pixel Font](https://github.com/TakWolf/ark-pixel-font){:target="_blank" rel="noreferrer noopener"}, [Cubic 11](https://github.com/ACh-K/Cubic-11){:target="_blank" rel="noreferrer noopener"}, Galmuri11
-* [QuanPixel](https://diaowinner.itch.io/galmuri-extended){:target="_blank" rel="noreferrer noopener"} by diaowinner  
-  SIL 오픈 폰트 라이선스 1.1 • 포함 폰트: Galmuri7, [Chill-Bitmap](https://github.com/Warren2060/Chill-Bitmap){:target="_blank" rel="noreferrer noopener"} ([MisakiGothic](https://littlelimit.net/misaki.htm){:target="_blank" rel="noreferrer noopener"}, [BoutiqueBitmap7x7](https://github.com/scott0107000/BoutiqueBitmap7x7){:target="_blank" rel="noreferrer noopener"}, [Guanzhi 8px](https://bbs.themex.net/showthread.php?t=16850810){:target="_blank" rel="noreferrer noopener"})
+* [Fusion Pixel Font](https://github.com/TakWolf/fusion-pixel-font){:class="new" target="_blank" rel="noreferrer noopener"} by TakWolf  
+  SIL 오픈 폰트 라이선스 1.1 • 포함 폰트: [Ark Pixel Font](https://github.com/TakWolf/ark-pixel-font){:class="new" target="_blank" rel="noreferrer noopener"}, [Cubic 11](https://github.com/ACh-K/Cubic-11){:class="new" target="_blank" rel="noreferrer noopener"}, Galmuri11
+* [QuanPixel](https://diaowinner.itch.io/galmuri-extended){:class="new" target="_blank" rel="noreferrer noopener"} by diaowinner  
+  SIL 오픈 폰트 라이선스 1.1 • 포함 폰트: Galmuri7, [Chill-Bitmap](https://github.com/Warren2060/Chill-Bitmap){:class="new" target="_blank" rel="noreferrer noopener"} ([MisakiGothic](https://littlelimit.net/misaki.htm){:class="new" target="_blank" rel="noreferrer noopener"}, [BoutiqueBitmap7x7](https://github.com/scott0107000/BoutiqueBitmap7x7){:class="new" target="_blank" rel="noreferrer noopener"}, [Guanzhi 8px](https://bbs.themex.net/showthread.php?t=16850810){:class="new" target="_blank" rel="noreferrer noopener"})
 
 ## 사용한 도구
 
-* 바이너리 문자 집합 추출: [CrystalTile2](https://www.romhacking.net/utilities/818/){:target="_blank" rel="noreferrer noopener"} by angel-team
-* GNU Unifont 폰트 변환: [Unifont Utilities](http://unifoundry.com/unifont/unifont-utilities.html){:target="_blank" rel="noreferrer noopener"} by Unifoundry.com
-* 비트맵 폰트 편집 및 트루타입 윤곽선 폰트 생성: [Bits'N'Picas](https://github.com/kreativekorp/bitsnpicas){:target="_blank" rel="noreferrer noopener"} by Kreative Software
-* 폰트 재작성 및 오픈타입 기능 추가: [Adobe Font Development Kit for OpenType](https://github.com/adobe-type-tools/afdko){:target="_blank" rel="noreferrer noopener"} by Adobe
-* WOFF2 압축 및 트루타입 콜렉션 생성: [fontTools](https://github.com/fonttools/fonttools){:target="_blank" rel="noreferrer noopener"} by Just van Rossum
+* 바이너리 문자 집합 추출: [CrystalTile2](https://www.romhacking.net/utilities/818/){:class="new" target="_blank" rel="noreferrer noopener"} by angel-team
+* GNU Unifont 폰트 변환: [Unifont Utilities](http://unifoundry.com/unifont/unifont-utilities.html){:class="new" target="_blank" rel="noreferrer noopener"} by Unifoundry.com
+* 비트맵 폰트 편집 및 트루타입 윤곽선 폰트 생성: [Bits'N'Picas](https://github.com/kreativekorp/bitsnpicas){:class="new" target="_blank" rel="noreferrer noopener"} by Kreative Software
+* 폰트 재작성 및 오픈타입 기능 추가: [Adobe Font Development Kit for OpenType](https://github.com/adobe-type-tools/afdko){:class="new" target="_blank" rel="noreferrer noopener"} by Adobe
+* WOFF2 압축 및 트루타입 콜렉션 생성: [fontTools](https://github.com/fonttools/fonttools){:class="new" target="_blank" rel="noreferrer noopener"} by Just van Rossum
