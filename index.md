@@ -38,7 +38,7 @@ Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디�
   </select>
   <div>
     <input type="range" id="test-size" min="8" max="160" value="48">
-    <span id="test-size-indicator">48px</span>
+    <label for="test-size" id="test-size-indicator">48px</label>
   </div>
 </div>
 
