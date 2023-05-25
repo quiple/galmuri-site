@@ -167,6 +167,20 @@ small {
       box-shadow: 0 0 0 $primary;
       transform: none;
     }
+    &.new {
+      &::after {
+        content: '';
+        margin-left: .5em;
+        display: inline-block;
+        background-image: url('../assets/new.png');
+        background-size: contain;
+        width: 1em;
+        height: 1em;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+      }
+    }
   }
 }
 .fea {
