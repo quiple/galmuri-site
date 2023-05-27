@@ -225,58 +225,12 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
 <section class="splide" aria-label="Splide Basic HTML Example">
   <div class="splide__track">
 		<ul class="splide__list">
-			<li class="splide__slide">
-        <img src="./assets/showcase/not-yet.png" alt="Keylocker">
-        <p><a href="https://store.steampowered.com/app/1325040" class="new" target="_blank" rel="noreferrer noopener">Keylocker</a> &copy; Moonana</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/230420.png" alt="Coffee Talk Episode 2: Hibiscus & Butterfly">
-        <p><a href="https://store.steampowered.com/app/1663220" class="new" target="_blank" rel="noreferrer noopener">Coffee Talk Episode 2: Hibiscus & Butterfly</a> &copy; Toge Productions</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/221127.png" alt="Papers, Please">
-        <p><a href="https://store.steampowered.com/app/239030" class="new" target="_blank" rel="noreferrer noopener">Papers, Please</a> &copy; Lucas Pope</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/221006.png" alt="Dungeon Squad">
-        <p><a href="https://apps.apple.com/kr/app/dungeonsquad/id1642733080" class="new" target="_blank" rel="noreferrer noopener">Dungeon Squad</a> &copy; GameCoaster</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/220621.jpg" alt="Shotgun King: The Final Checkmate">
-        <p><a href="https://store.steampowered.com/app/1972440" class="new" target="_blank" rel="noreferrer noopener">Shotgun King: The Final Checkmate</a> &copy; PUNKCAKE Delicieux</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/220507.png" alt="Monster Sanctuary">
-        <p><a href="https://blog.naver.com/ansewo/222702695752" class="new" target="_blank" rel="noreferrer noopener">Monster Sanctuary</a> (사용자 패치) by 솔라리어스</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/220220.png" alt="NEEDY GIRL OVERDOSE">
-        <p><a href="https://cosmicdeluge.tistory.com/5" class="new" target="_blank" rel="noreferrer noopener">NEEDY GIRL OVERDOSE</a> (사용자 패치) by 코스믹딜루즈 & Quiple</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/210302.jpg" alt="Teamfight Manager">
-        <p><a href="https://store.steampowered.com/app/1372810" class="new" target="_blank" rel="noreferrer noopener">Teamfight Manager</a> &copy; Team Samoyed</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/210223.jpg" alt="BLUE REVOLVER">
-        <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2405396574" class="new" target="_blank" rel="noreferrer noopener">BLUE REVOLVER</a> (사용자 패치) by Sepheille</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/210105.jpg" alt="Duke Dashington Remastered">
-        <p><a href="https://blog.naver.com/bleach1491/222196942354" class="new" target="_blank" rel="noreferrer noopener">Duke Dashington Remastered</a> (사용자 패치) by 바람 번역단</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/201221.jpg" alt="Rev">
-        <p><a href="https://blog.naver.com/bleach1491/222180900832" class="new" target="_blank" rel="noreferrer noopener">Rev</a> (사용자 패치) by 바람 번역단</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/200622.jpg" alt="Alwa's Legacy">
-        <p><a href="https://blog.naver.com/bleach1491/222008221688" class="new" target="_blank" rel="noreferrer noopener">Alwa's Legacy</a> (사용자 패치) by 바람 번역단</p>
-      </li>
-			<li class="splide__slide">
-        <img src="./assets/showcase/200223.png" alt="Westerado: Double Barreled">
-        <p><a href="https://blog.naver.com/bleach1491/221820971383" class="new" target="_blank" rel="noreferrer noopener">Westerado: Double Barreled</a> (사용자 패치) by 바람 번역단</p>
-      </li>
+      {% for game in site.showcase %}
+        <li class="splide__slide">
+          <img src="./assets/showcase/{{ game.file }}" alt="{{ game.title }}">
+          <p><a href="{% if game.type == 'steam' %}https://store.steampowered.com/app/{% elsif game.type == 'appstore' %}https://apps.apple.com/kr/app/dungeonsquad/id{% else %}https://{% endif %}{{ game.link }}" class="new" target="_blank" rel="noreferrer noopener">{{ game.title }}</a> {% if game.type == 'patch' %}(사용자 패치) by{% else %}&copy;{% endif %} {{ game.author }}</p>
+        </li>
+      {% endfor %}
 		</ul>
   </div>
 </section>
