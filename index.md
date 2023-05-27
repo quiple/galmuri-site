@@ -230,7 +230,7 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
         <p><a href="https://store.steampowered.com/app/1325040" class="new" target="_blank" rel="noreferrer noopener">Keylocker</a> &copy; Moonana</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/230420.png" alt="Papers, Please">
+        <img src="./assets/showcase/230420.png" alt="Coffee Talk Episode 2: Hibiscus & Butterfly">
         <p><a href="https://store.steampowered.com/app/1663220" class="new" target="_blank" rel="noreferrer noopener">Coffee Talk Episode 2: Hibiscus & Butterfly</a> &copy; Toge Productions</p>
       </li>
 			<li class="splide__slide">
@@ -250,7 +250,7 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
         <p><a href="https://blog.naver.com/ansewo/222702695752" class="new" target="_blank" rel="noreferrer noopener">Monster Sanctuary</a> (사용자 패치) by 솔라리어스</p>
       </li>
 			<li class="splide__slide">
-        <img src="./assets/showcase/220220.jpg" alt="NEEDY GIRL OVERDOSE">
+        <img src="./assets/showcase/220220.png" alt="NEEDY GIRL OVERDOSE">
         <p><a href="https://cosmicdeluge.tistory.com/5" class="new" target="_blank" rel="noreferrer noopener">NEEDY GIRL OVERDOSE</a> (사용자 패치) by 코스믹딜루즈 & Quiple</p>
       </li>
 			<li class="splide__slide">
