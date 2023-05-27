@@ -4,29 +4,27 @@
 @charset 'utf-8';
 @import url('https://cdn.jsdelivr.net/gh/jgthms/minireset.css/minireset.min.css');
 
-@mixin font-face($family, $weight: 400, $stretch: normal) {
+{% for font in site.fonts %}
   @font-face {
     font: {
-      family: #{$family}-web;
+      family: {{ font.family }}-web;
       style: normal;
-      weight: $weight;
-      stretch: $stretch;
       display: block;
+      {% if font.style == 'Bold' %}
+        weight: 700;
+        stretch: normal;
+      {% elsif font.style == 'Condensed' %}
+        weight: 400;
+        stretch: condensed;
+      {% else %}
+        weight: 400;
+        stretch: normal;
+      {% endif %}
     }
-    src: url('../galmuri/dist/#{$family}#{if($stretch == condensed, -Condensed, null)}#{if($weight == 700, -Bold, null)}.woff2') format('woff2'),
-         url('../galmuri/dist/#{$family}#{if($stretch == condensed, -Condensed, null)}#{if($weight == 700, -Bold, null)}.ttf') format('truetype');
+    src: url('../galmuri/dist/{{ font.file }}.woff2') format('woff2'),
+         url('../galmuri/dist/{{ font.file }}.ttf') format('truetype');
   }
-}
-
-@include font-face(Galmuri14);
-@include font-face(Galmuri11);
-@include font-face(Galmuri11, 700);
-@include font-face(Galmuri11, 400, condensed);
-@include font-face(Galmuri9);
-@include font-face(Galmuri7);
-@include font-face(GalmuriMono11);
-@include font-face(GalmuriMono9);
-@include font-face(GalmuriMono7);
+{% endfor %}
 
 @mixin g14($size: 1) { font: { family: Galmuri14-web, sans-serif; size: 15px * $size; weight: 400; stretch: normal; } }
 @mixin g11($size: 1) { font: { family: Galmuri11-web, sans-serif; size: 12px * $size; weight: 400; stretch: normal; } }

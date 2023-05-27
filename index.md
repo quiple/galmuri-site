@@ -19,22 +19,14 @@ layout: home
 Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디자인에서 영감을 받은 비트맵 폰트입니다. 2019년 10월 9일 한글날에 처음 공개되었으며, Galmuri의 이름은 2008년 6월 사용자 한글화 커뮤니티인 [한식구](https://cafe.naver.com/hansicgu){:class="new" target="_blank" rel="noreferrer noopener"}에서 김동한 님께서 만들어 배포하신 비트맵 폰트 ‘[갈무리M](https://cafe.naver.com/hansicgu/174){:class="new" target="_blank" rel="noreferrer noopener"}’에서 유래하였습니다.
 
 <div class="btns">
-  <!--a class="btn" href="./glyphs">문자 미리보기</a-->
   <a class="btn" href="./charsets">문자 집합별 지원 현황</a>
-  <!--a class="btn" href="./diff">주요 변경점</a-->
 </div>
 
 <div id="test-control">
   <select id="test-family">
-    <option value="g14">Galmuri14</option>
-    <option value="g11" selected>Galmuri11</option>
-    <option value="g11b">Galmuri11 Bold</option>
-    <option value="g11c">Galmuri11 Condensed</option>
-    <option value="g9">Galmuri9</option>
-    <option value="g7">Galmuri7</option>
-    <option value="gm11">GalmuriMono11</option>
-    <option value="gm9">GalmuriMono9</option>
-    <option value="gm7">GalmuriMono7</option>
+    {% for font in site.fonts %}
+      <option value="{{ font.file }}"{% if font.file == 'Galmuri11' %} selected{% endif %}>{{ font.name }}</option>
+    {% endfor %}
   </select>
   <div>
     <input type="range" id="test-size" min="8" max="160" value="48">
@@ -54,87 +46,17 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
 
 ## 다운로드
 
-<details>
-  <summary>Galmuri14</summary>
-  <div class="btns">
-    <a download class="btn" href="../galmuri/dist/Galmuri14.ttf">TTF</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri14.woff2">WOFF2</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri14.bdf">BDF</a>
-    <a class="btn new" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri14.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
-  </div>
-</details>
-<details>
-  <summary>Galmuri11</summary>
-  <div class="btns">
-    <a download class="btn" href="../galmuri/dist/Galmuri11.ttf">TTF</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri11.woff2">WOFF2</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri11.bdf">BDF</a>
-    <a class="btn new" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri11.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
-  </div>
-</details>
-<details>
-  <summary>Galmuri11 Bold</summary>
-  <div class="btns">
-    <a download class="btn" href="../galmuri/dist/Galmuri11-Bold.ttf">TTF</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri11-Bold.woff2">WOFF2</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri11-Bold.bdf">BDF</a>
-    <a class="btn new" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri11-Bold.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
-  </div>
-</details>
-<details>
-  <summary>Galmuri11 Condensed</summary>
-  <div class="btns">
-    <a download class="btn" href="../galmuri/dist/Galmuri11-Condensed.ttf">TTF</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri11-Condensed.woff2">WOFF2</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri11-Condensed.bdf">BDF</a>
-    <a class="btn new" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri11-Condensed.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
-  </div>
-</details>
-<details>
-  <summary>Galmuri9</summary>
-  <div class="btns">
-    <a download class="btn" href="../galmuri/dist/Galmuri9.ttf">TTF</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri9.woff2">WOFF2</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri9.bdf">BDF</a>
-    <a class="btn new" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri9.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
-  </div>
-</details>
-<details>
-  <summary>Galmuri7</summary>
-  <div class="btns">
-    <a download class="btn" href="../galmuri/dist/Galmuri7.ttf">TTF</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri7.woff2">WOFF2</a>
-    <a download class="btn" href="../galmuri/dist/Galmuri7.bdf">BDF</a>
-    <a class="btn new" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/Galmuri7.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
-  </div>
-</details>
-<details>
-  <summary>GalmuriMono11</summary>
-  <div class="btns">
-    <a download class="btn" href="../galmuri/dist/GalmuriMono11.ttf">TTF</a>
-    <a download class="btn" href="../galmuri/dist/GalmuriMono11.woff2">WOFF2</a>
-    <a download class="btn" href="../galmuri/dist/GalmuriMono11.bdf">BDF</a>
-    <a class="btn new" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/GalmuriMono11.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
-  </div>
-</details>
-<details>
-  <summary>GalmuriMono9</summary>
-  <div class="btns">
-    <a download class="btn" href="../galmuri/dist/GalmuriMono9.ttf">TTF</a>
-    <a download class="btn" href="../galmuri/dist/GalmuriMono9.woff2">WOFF2</a>
-    <a download class="btn" href="../galmuri/dist/GalmuriMono9.bdf">BDF</a>
-    <a class="btn new" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/GalmuriMono9.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
-  </div>
-</details>
-<details>
-  <summary>GalmuriMono7</summary>
-  <div class="btns">
-    <a download class="btn" href="../galmuri/dist/GalmuriMono7.ttf">TTF</a>
-    <a download class="btn" href="../galmuri/dist/GalmuriMono7.woff2">WOFF2</a>
-    <a download class="btn" href="../galmuri/dist/GalmuriMono7.bdf">BDF</a>
-    <a class="btn new" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/GalmuriMono7.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
-  </div>
-</details>
+{% for font in site.fonts %}
+  <details>
+    <summary>{{ font.name }}</summary>
+    <div class="btns">
+      <a download class="btn" href="../galmuri/dist/{{ font.file }}.ttf">TTF</a>
+      <a download class="btn" href="../galmuri/dist/{{ font.file }}.woff2">WOFF2</a>
+      <a download class="btn" href="../galmuri/dist/{{ font.file }}.bdf">BDF</a>
+      <a class="btn new" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/{{ font.file }}.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
+    </div>
+  </details>
+{% endfor %}
 
 <div class="btns">
   <a class="btn new" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}/releases/latest" target="_blank" rel="noreferrer noopener">GitHub 릴리스 페이지에서 다운로드하기</a>
@@ -159,35 +81,12 @@ Galmuri14는 15px (11pt), Galmuri11은 12px (9pt), Galmuri9는 10px (7.5pt), Gal
 ### CSS 규칙
 
 ```css
-/* Galmuri14를 사용하려면 */
-font-family: "Galmuri14", sans-serif;
-
-/* Galmuri11을 사용하려면 */
-font-family: "Galmuri11", sans-serif;
-
-/* Galmuri11 Bold를 사용하려면 */
-font-family: "Galmuri11", sans-serif;
-font-weight: bold;
-
-/* Galmuri11 Condensed를 사용하려면 */
-font-family: "Galmuri11", sans-serif;
-font-stretch: condensed;
-
-/* Galmuri9를 사용하려면 */
-font-family: "Galmuri9", sans-serif;
-
-/* Galmuri7을 사용하려면 */
-font-family: "Galmuri7", sans-serif;
-
-/* GalmuriMono11을 사용하려면 */
-font-family: "GalmuriMono11", monospace;
-
-/* GalmuriMono9를 사용하려면 */
-font-family: "GalmuriMono9", monospace;
-
-/* GalmuriMono7을 사용하려면 */
-font-family: "GalmuriMono7", monospace;
-```
+{% for font in site.fonts %} /* {{ font.name }}을(를) 사용하려면 */
+  font-family: "{{ font.family }}", sans-serif;
+  {% if font.style == 'Bold' %} font-weight: bold;
+  {% elsif font.style == 'Condensed' %} font-stretch: condensed;
+  {% endif %}
+{% endfor %}```
 
 ## 사용할 수 있는 오픈타입 기능
 

@@ -22,6 +22,43 @@ exclude:
   - galmuri/package-lock.json
   - galmuri/package.json
   - galmuri/README.md
+fonts:
+  - name: Galmuri14
+    file: Galmuri14
+    family: Galmuri14
+    style: Regular
+  - name: Galmuri11
+    file: Galmuri11
+    family: Galmuri11
+    style: Regular
+  - name: Galmuri11 Bold
+    file: Galmuri11-Bold
+    family: Galmuri11
+    style: Bold
+  - name: Galmuri11 Condensed
+    file: Galmuri11-Condensed
+    family: Galmuri11
+    style: Condensed
+  - name: Galmuri9
+    file: Galmuri9
+    family: Galmuri9
+    style: Regular
+  - name: Galmuri7
+    file: Galmuri7
+    family: Galmuri7
+    style: Regular
+  - name: GalmuriMono11
+    file: GalmuriMono11
+    family: GalmuriMono11
+    style: Monospaced
+  - name: GalmuriMono9
+    file: GalmuriMono9
+    family: GalmuriMono9
+    style: Monospaced
+  - name: GalmuriMono7
+    file: GalmuriMono7
+    family: GalmuriMono7
+    style: Monospaced
 showcase:
   - title: "Keylocker"
     author: "Moonana"
