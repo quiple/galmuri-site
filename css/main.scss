@@ -199,6 +199,9 @@ small {
       background-image: url('../assets/new.svg');
       margin-left: .375em;
     }
+    &.new:active::after {
+      background-image: url('../assets/new-white.svg');
+    }
   }
 }
 .fea {
