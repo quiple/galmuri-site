@@ -46,20 +46,22 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
 
 ## 다운로드
 
-{% for font in site.fonts %}
-  <details>
-    <summary>{{ font.name }}</summary>
-    <div class="btns">
-      <a download class="btn" href="../galmuri/dist/{{ font.file }}.ttf">TTF</a>
-      <a download class="btn" href="../galmuri/dist/{{ font.file }}.woff2">WOFF2</a>
-      <a download class="btn" href="../galmuri/dist/{{ font.file }}.bdf">BDF</a>
-      <a class="btn new" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/{{ font.file }}.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
+<section class="download">
+  {% for font in site.fonts %}
+    <div class="item">
+      <h3>{{ font.name }}</h3>
+      <div class="btns">
+        <a download class="btn" href="../galmuri/dist/{{ font.file }}.ttf">TTF</a>
+        <a download class="btn" href="../galmuri/dist/{{ font.file }}.woff2">WOFF2</a>
+        <a download class="btn" href="../galmuri/dist/{{ font.file }}.bdf">BDF</a>
+        <a class="btn new outline" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/{{ font.file }}.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
+      </div>
     </div>
-  </details>
-{% endfor %}
+  {% endfor %}
+</section>
 
 <div class="btns">
-  <a class="btn new" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}/releases/latest" target="_blank" rel="noreferrer noopener">GitHub 릴리스 페이지에서 다운로드하기</a>
+  <a class="btn new outline" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}/releases/latest" target="_blank" rel="noreferrer noopener">GitHub 릴리스 페이지에서 다운로드하기</a>
 </div>
 
 Galmuri14는 15px (11pt), Galmuri11은 12px (9pt), Galmuri9는 10px (7.5pt), Galmuri7은 8px (6pt) 크기와 그 배수에서 가장 명확하게 표시됩니다.

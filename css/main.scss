@@ -43,7 +43,8 @@
   }
 {% endfor %}
 
-@mixin desktop { @media (min-width: 640px) { @content; } }
+@mixin desktop { @media (min-width: 800px) { @content; } }
+@mixin widescreen { @media (min-width: 1200px) { @content; } }
 
 $primary: #6171eb;
 $anchor: #b6bef6;
@@ -191,7 +192,7 @@ small {
     padding: .625rem calc(1rem - .125em) .625rem 1rem;
     box-shadow: 0 0 0 $primary;
     text-decoration: none;
-    border: .25em solid $foreground;
+    border: .125em solid $foreground;
     &:focus { border-color: $primary; }
     &:hover {
       box-shadow: .25em .25em 0 $primary;
@@ -208,8 +209,12 @@ small {
       background-image: url('../assets/new.svg');
       margin-left: .375em;
     }
-    &.new:active::after {
-      background-image: url('../assets/new-white.svg');
+    &.new:active::after { background-image: url('../assets/new-white.svg'); }
+    &.outline {
+      background-color: transparent;
+      color: $foreground;
+      &:active { background-color: $primary; }
+      &.new::after { background-image: url('../assets/new-white.svg'); }
     }
   }
 }
@@ -249,7 +254,8 @@ main {
   }
   p {
     max-width: 100%;
-    @include desktop { max-width: calc(100vw * (3 / 5)); }
+    @include desktop { max-width: 70vw; }
+    @include widescreen { max-width: 60vw; }
   }
   ol:not([class]) {
     margin: {
@@ -416,6 +422,22 @@ footer {
       font-size: .8rem;
       @include desktop { @include Galmuri7(2); }
     }
+  }
+}
+.download {
+  margin: .75rem 0;
+  background-color: $black;
+  display: grid;
+  padding: 1rem;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  @include desktop { grid-template-columns: 1fr 1fr; }
+  @include widescreen { grid-template-columns: 1fr 1fr 1fr; }
+  .item {
+    padding: 1rem;
+    background-color: $background;
+    h3 { margin: 0; }
+    .btns { margin-bottom: 0; }
   }
 }
 @keyframes b {
