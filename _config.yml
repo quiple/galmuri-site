@@ -6,6 +6,7 @@ url: https://galmuri.quiple.dev
 twitter_username: kuipuru
 github_username: quiple
 github_reponame: galmuri
+copyright_date: 2019-2023
 sass:
   style: compressed
 kramdown:

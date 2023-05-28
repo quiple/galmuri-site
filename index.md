@@ -38,7 +38,7 @@ Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디�
 
 ## 라이선스
 
-Copyright &copy; 2019-2023 {{ site.author }} (<{{ site.email }}>)
+&copy; {{ site.copyright_date }} {{ site.author }} (<{{ site.email }}>)
 
 Galmuri는 [SIL 오픈 폰트 라이선스 1.1](https://scripts.sil.org/OFL){:class="new" target="_blank" rel="noreferrer noopener"}에 따라 사용할 수 있으며, 폰트가 자체적으로 판매되지 않는 한 자유롭게 사용·연구·수정·재배포할 수 있습니다.
 
