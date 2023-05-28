@@ -11,7 +11,7 @@ layout: home
   </div>
   <div class="btns">
     <a class="btn" href="#다운로드">다운로드</a>
-    <a class="btn new" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}" target="_blank" rel="noreferrer noopener">GitHub에서 보기</a>
+    <a class="btn new outline" href="https://github.com/{{ site.github_username }}/{{ site.github_reponame }}" target="_blank" rel="noreferrer noopener">GitHub에서 보기</a>
   </div>
   <small>아래로 스크롤하여 더 많은 내용 확인하기</small>
 </div>
