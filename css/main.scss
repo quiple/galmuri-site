@@ -85,9 +85,22 @@ h2 {
   @include Galmuri11-Bold;
   font-size: 1.2rem;
   @include desktop { @include Galmuri11-Bold(2); }
+  .anchor {
+    display: none;
+    font-weight: 400;
+  }
+  &:hover .anchor {
+    display: inline;
+  }
 }
 h3 {
   margin-top: 1.5rem;
+  .anchor {
+    display: none;
+  }
+  &:hover .anchor {
+    display: inline;
+  }
 }
 p { margin: .75rem 0; }
 code, pre {
