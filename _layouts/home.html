@@ -94,16 +94,11 @@ layout: default
       {% for font in site.fonts %}
         case '{{ font.file }}':
           test.style.fontFamily = '{{ font.family }}-web, {% if font.style == 'Monospaced' %}monospace{% else %}sans-serif{% endif %}';
-          {% if font.style == 'Bold' %}
-            test.style.fontWeight = '700';
-            test.style.fontStretch = 'normal';
-          {% elsif font.style == 'Condensed' %}
-            test.style.fontWeight = '400';
-            test.style.fontStretch = 'condensed';
-          {% else %}
-            test.style.fontWeight = '400';
-            test.style.fontStretch = 'normal';
-          {% endif %}
+          {% case font.style %}
+          {% when 'Bold' %} test.style.fontWeight = '700'; test.style.fontStretch = 'normal';
+          {% when 'Condensed' %} test.style.fontWeight = '400'; test.style.fontStretch = 'condensed';
+          {% else %} test.style.fontWeight = '400'; test.style.fontStretch = 'normal';
+          {% endcase %}
           break;
       {% endfor %}
     }

@@ -83,9 +83,10 @@ Galmuri14는 15px (11pt), Galmuri11은 12px (9pt), Galmuri9는 10px (7.5pt), Gal
 ```css
 {% for font in site.fonts %} /* {{ font.name }}을(를) 사용하려면 */
   font-family: "{{ font.family }}", {% if font.style == 'Monospaced' %}monospace{% else %}sans-serif{% endif %};
-  {% if font.style == 'Bold' %} font-weight: bold;
-  {% elsif font.style == 'Condensed' %} font-stretch: condensed;
-  {% endif %}
+  {% case font.style %}
+  {% when 'Bold' %} font-weight: bold;
+  {% when 'Condensed' %} font-stretch: condensed;
+  {% endcase %}
 {% endfor %}```
 
 ## 사용할 수 있는 오픈타입 기능
