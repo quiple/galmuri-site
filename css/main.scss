@@ -205,6 +205,7 @@ small {
       box-shadow: 0 0 0 $primary;
       transform: none;
     }
+    &.new { padding-right: calc(1rem - .125em * 2); }
     &.new::after {
       background-image: url('../assets/new.svg');
       margin-left: .375em;
