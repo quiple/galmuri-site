@@ -15,7 +15,6 @@ kramdown:
 exclude:
   - galmuri/.github/
   - galmuri/bitsnpicas/
-  - galmuri/files/
   - galmuri/mkttf/
   - galmuri/src/
   - galmuri/.gitmodules
