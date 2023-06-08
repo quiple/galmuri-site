@@ -74,6 +74,12 @@ body {
   line-height: 1.5;
   word-break: keep-all;
 }
+.anchor {
+  opacity: 0;
+  visibility: hidden;
+  font-weight: 400;
+  transition: .25s $cubic;
+}
 h1 {
   margin-top: 2.5rem;
   @include Galmuri14;
@@ -85,21 +91,16 @@ h2 {
   @include Galmuri11-Bold;
   font-size: 1.2rem;
   @include desktop { @include Galmuri11-Bold(2); }
-  .anchor {
-    display: none;
-    font-weight: 400;
-  }
   &:hover .anchor {
-    display: inline;
+    opacity: 1;
+    visibility: visible;
   }
 }
 h3 {
   margin-top: 1.5rem;
-  .anchor {
-    display: none;
-  }
   &:hover .anchor {
-    display: inline;
+    opacity: 1;
+    visibility: visible;
   }
 }
 p { margin: .75rem 0; }
@@ -452,6 +453,20 @@ footer {
     background-color: $background;
     h3 { margin: 0; }
     .btns { margin-bottom: 0; }
+  }
+}
+#donate {
+  display: flex;
+  margin-top: .75rem;
+  margin-bottom: .75rem;
+  gap: .5rem;
+  a {
+    max-width: 50%;
+    img {
+      background-color: #fff;
+      image-rendering: auto;
+      width: 16rem;
+    }
   }
 }
 @keyframes b {
