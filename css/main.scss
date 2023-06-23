@@ -50,6 +50,7 @@ $primary: #6171eb;
 $anchor: #b6bef6;
 $foreground: #fafafa;
 $background: #18181b;
+$background-light: #27272a;
 $black: #09090b;
 $padding: 10vw;
 $cubic: cubic-bezier(0,0,0,1);
@@ -133,7 +134,8 @@ pre {
     background-size: 100%;
   }
 }
-select {
+select, input, textarea {
+  transition: background-color .25s $cubic;
   @include Galmuri7;
   font-size: .8rem;
   @include desktop { @include Galmuri7(2); }
@@ -142,6 +144,10 @@ select {
   padding: .625rem 1rem;
   color: $foreground;
   background-color: $black;
+  &:focus {
+    outline: none;
+    background-color: $background-light;
+  }
 }
 #test-control {
   margin-top: .75rem;
