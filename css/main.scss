@@ -133,22 +133,22 @@ pre {
     background-size: 100%;
   }
 }
+select {
+  @include Galmuri7;
+  font-size: .8rem;
+  @include desktop { @include Galmuri7(2); }
+  max-width: 100%;
+  border: none;
+  padding: .625rem 1rem;
+  color: $foreground;
+  background-color: $black;
+}
 #test-control {
   margin-top: .75rem;
   display: flex;
   align-items: center;
   gap: .75rem 1rem;
   flex-wrap: wrap;
-  select {
-    @include Galmuri7;
-    font-size: .8rem;
-    @include desktop { @include Galmuri7(2); }
-    max-width: 100%;
-    border: none;
-    padding: .625rem 1rem;
-    color: $foreground;
-    background-color: $black;
-  }
   div { display: flex; gap: .75rem; align-items: center; }
   input[type=range] {
     flex: 1;
