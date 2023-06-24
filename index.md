@@ -20,6 +20,7 @@ Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디�
 
 <div class="btns">
   <a class="btn" href="./charsets">문자 집합별 지원 현황</a>
+  <a class="btn" href="./generator">폰트 이미지 생성기</a>
 </div>
 
 <div id="test-control">

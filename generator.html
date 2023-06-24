@@ -1,0 +1,93 @@
+---
+layout: default
+title: 폰트 이미지 생성기
+---
+
+<style>
+  .generator { display: flex; justify-content: space-between; gap: 1rem; }
+  .canvas-wrap { flex: 1; overflow: scroll; }
+  input { width: 10rem; font-variant-numeric: tabular-nums; }
+  .form { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  .btns { margin: 0; }
+</style>
+
+<div class="generator">
+  <div class="canvas-wrap"><canvas id="image"></canvas></div>
+  <form class="form">
+    <div>
+      <label for="select">폰트:</label>
+      <select id="select">
+        <option value=""></option>
+        {% for font in site.fonts %}
+          <option value="{{ font.file }}" {% if font.style == 'Monospaced' %} hidden{% endif %}>{{ font.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="charset">한글 음절 집합:</label>
+      <select id="charset">
+        <option value=""></option>
+        <option value="set2350">2350자</option>
+        <option value="set2355">2355자</option>
+        <option value="set2780">2780자</option>
+        <option value="set4358">4358자</option>
+        <option value="set11172">11172자</option>
+      </select>
+    </div>
+    <div><label for="x-offset">오프셋:</label> <input id="x-offset" type="number">, <input id="y-offset" type="number"></div>
+    <div><label for="tile-width">타일 크기:</label> <input id="tile-width" type="number"> × <input id="tile-height" type="number"></div>
+    <div><label for="tile-column">열 수:</label> <input id="tile-column" type="number"></div>
+    <div><label for="foreground">전경색:</label> <input id="foreground" type="text" value="#"></div>
+    <div><label for="background">배경색:</label> <input id="background" type="text" value="#"></div>
+    <div class="btns"><button type="button" id="load" class="btn">만들기</button></div>
+  </form>
+</div>
+
+<p>각 한글 음절 집합에 대한 설명은 다음과 같습니다.</p>
+<ul>
+  <li>2350자: KS X 1001의 모든 한글 음절.</li>
+  <li>2355자: KS X 1001의 모든 한글 음절에 뢔, 쌰, 쎼, 쓔, 쬬 5자가 추가된 집합.</li>
+  <li>2780자: Adobe-KR-0의 모든 한글 음절. KS X 1001의 2350자를 포함합니다.</li>
+  <li>4358자: Adobe-KR-0과 Adobe-KR-1의 모든 한글 음절. KS X 1001, KS X 1002, KPS 9566, GB/T 12052의 모든 한글 음절을 포함합니다.</li>
+  <li>11172자: 현대 한글의 모든 음절.</li>
+</ul>
+
+<script src="./assets/bdf.js"></script>
+<script src="./assets/charsets.js"></script>
+<script>
+  const id = s => document.getElementById(s);
+  const ctx = id('image').getContext('2d');
+
+  id('load').addEventListener('click', function() {
+    ctx.reset();
+
+    let regex = new RegExp('.{1,' + (id('tile-column').value || '32') + '}', 'g');
+    let set = (charsets[id('charset').value] || charsets['set2350']).match(regex);
+
+    id('image').width = (id('tile-width').value || 16) * (id('tile-column').value || 32);
+    id('image').height = (id('tile-height').value || 16) * set.length;
+
+    ctx.fillStyle = !id('background').value || id('background').value == '#' ? 'white' : id('background').value;
+    ctx.fillRect(0, 0, id('image').width, id('image').height);
+
+    switch (id('select').value || 'Galmuri11') {
+      {% for font in site.fonts %}
+        case '{{ font.file }}':
+          ctx.font = '{% case font.style %}{% when 'Bold' %}bold {% when 'Condensed' %}condensed {% endcase %}{{ font.size }}px {{ font.family }}-web';
+          fetch('./galmuri/dist/{{ font.file }}.bdf').then(data => data.text()).then(text => {
+            let bdf = new BDF(text);
+            for (let i = 0; i < set.length; i++) {
+              bdf.drawText(set[i], id('image'), {
+                colour: !id('foreground').value || id('foreground').value == '#' ? 'black' : id('foreground').value,
+                x: parseInt(id('x-offset').value || 0),
+                y: i * (id('tile-height').value || 16) + parseInt(id('y-offset').value || 0),
+                kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+              });
+              // ctx.fillText(set[i], 0, (i + 1) * (id('tile-height').value || 16));
+            }
+          });
+          break;
+      {% endfor %}
+    }
+  });
+</script>
