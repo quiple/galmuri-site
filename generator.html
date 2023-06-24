@@ -5,7 +5,7 @@ title: 폰트 이미지 생성기
 
 <style>
   .generator { display: flex; justify-content: space-between; gap: 1rem; }
-  .canvas-wrap { flex: 1; overflow: scroll; display: flex; justify-content: center; }
+  .canvas-wrap { flex: 1; overflow: scroll; display: flex; justify-content: center; align-items: center; }
   #image { max-width: 100%; }
   input { width: 10rem; font-variant-numeric: tabular-nums; }
   .form { display: flex; flex-direction: column; gap: 12px; }
@@ -69,6 +69,7 @@ title: 폰트 이미지 생성기
 
     id('image').width = parseInt(id('tile-width').value || 16) * parseInt(id('tile-column').value || 64);
     id('image').height = parseInt(id('tile-height').value || 16) * set.length;
+    id('image').style.aspectRatio = id('image').width / id('image').height;
 
     ctx.fillStyle = !id('background').value || id('background').value == '#' ? 'white' : id('background').value;
     ctx.fillRect(0, 0, id('image').width, id('image').height);
