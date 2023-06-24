@@ -5,14 +5,13 @@ title: 폰트 이미지 생성기
 
 <style>
   .generator { display: flex; justify-content: space-between; gap: 1rem; }
-  .canvas-wrap { flex: 1; overflow: scroll; }
+  .canvas-wrap { flex: 1; overflow: scroll; display: flex; justify-content: center; }
   input { width: 10rem; font-variant-numeric: tabular-nums; }
-  .form { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  .form { display: flex; flex-direction: column; gap: 12px; }
   .btns { margin: 0; }
 </style>
 
 <div class="generator">
-  <div class="canvas-wrap"><canvas id="image"></canvas></div>
   <form class="form">
     <div>
       <label for="select">폰트:</label>
@@ -41,6 +40,7 @@ title: 폰트 이미지 생성기
     <div><label for="background">배경색:</label> <input id="background" type="text" value="#"></div>
     <div class="btns"><button type="button" id="load" class="btn">만들기</button></div>
   </form>
+  <div class="canvas-wrap"><canvas id="image"></canvas></div>
 </div>
 
 <p>각 한글 음절 집합에 대한 설명은 다음과 같습니다.</p>
