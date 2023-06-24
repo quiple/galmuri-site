@@ -61,11 +61,11 @@ title: 폰트 이미지 생성기
   id('load').addEventListener('click', function() {
     ctx.reset();
 
-    let regex = new RegExp('.{1,' + (id('tile-column').value || '32') + '}', 'g');
+    let regex = new RegExp('.{1,' + (id('tile-column').value || '64') + '}', 'g');
     let set = (charsets[id('charset').value] || charsets['set2350']).match(regex);
 
-    id('image').width = (id('tile-width').value || 16) * (id('tile-column').value || 32);
-    id('image').height = (id('tile-height').value || 16) * set.length;
+    id('image').width = parseInt(id('tile-width').value || 16) * parseInt(id('tile-column').value || 64);
+    id('image').height = parseInt(id('tile-height').value || 16) * set.length;
 
     ctx.fillStyle = !id('background').value || id('background').value == '#' ? 'white' : id('background').value;
     ctx.fillRect(0, 0, id('image').width, id('image').height);
