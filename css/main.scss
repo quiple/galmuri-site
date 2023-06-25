@@ -213,6 +213,7 @@ small {
     box-shadow: 0 0 0 $primary;
     text-decoration: none;
     border: .125em solid $foreground;
+    cursor: pointer;
     &:focus { border-color: $primary; }
     &:hover {
       box-shadow: .25em .25em 0 $primary;
