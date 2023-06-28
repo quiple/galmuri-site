@@ -39,7 +39,10 @@ title: 폰트 이미지 생성기
     <div><label for="tile-column">열 수:</label> <input id="tile-column" type="number"></div>
     <div><label for="foreground">전경색:</label> <input id="foreground" type="text" value="#"></div>
     <div><label for="background">배경색:</label> <input id="background" type="text" value="#"></div>
-    <div class="btns"><button type="button" id="load" class="btn">만들기</button></div>
+    <div class="btns">
+      <button type="button" id="load" class="btn">만들기</button>
+      <a id="download" class="btn" download style="display: none;">다운로드</a>
+    </div>
   </form>
   <div class="canvas-wrap"><canvas id="image"></canvas></div>
 </div>
@@ -87,11 +90,16 @@ title: 폰트 이미지 생성기
                 y: i * (id('tile-height').value || 16) + parseInt(id('y-offset').value || 0),
                 kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
               });
-              // ctx.fillText(set[i], 0, (i + 1) * (id('tile-height').value || 16));
             }
           });
           break;
       {% endfor %}
     }
+
+    id('download').style.display = 'block';
+  });
+
+  id('download').addEventListener('click', (e) => {
+    e.target.href = id('image').toDataURL();
   });
 </script>
