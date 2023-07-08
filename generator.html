@@ -49,9 +49,13 @@ title: 폰트 이미지 생성기
       <button type="button" id="load" class="btn">만들기</button>
       <a id="download" class="btn" download style="display: none;">다운로드</a>
     </div>
+    <small>‘다운로드’를 누르기 전에 먼저 ‘만들기’를 눌러 주세요.</small>
   </form>
   <div class="canvas-wrap"><canvas id="image"></canvas></div>
 </div>
+
+
+<hr>
 
 <p>각 한글 음절 집합에 대한 설명은 다음과 같습니다.</p>
 
@@ -83,9 +87,6 @@ title: 폰트 이미지 생성기
     id('image').height = parseInt(id('tile-height').value || 16) * set.length;
     id('image').style.aspectRatio = id('image').width / id('image').height;
 
-    ctx.fillStyle = !id('background').value || id('background').value == '#' ? 'white' : id('background').value;
-    ctx.fillRect(0, 0, id('image').width, id('image').height);
-
     switch (id('select').value) {
       {% for font in site.fonts %}
         case '{{ font.file }}':
@@ -93,6 +94,13 @@ title: 폰트 이미지 생성기
           fetch('./galmuri/dist/{{ font.file }}.bdf').then(data => data.text()).then(text => {
             let bdf = new BDF(text);
             for (let i = 0; i < set.length; i++) {
+              ctx.fillStyle = !id('background').value || id('background').value == '#' ? 'white' : id('background').value;
+              ctx.fillRect(
+                0,
+                i * parseInt(id('tile-height').value || 16),
+                set[i].length * parseInt(id('tile-width').value || 16),
+                parseInt(id('tile-height').value || 16)
+              );
               if (id('outline-color').value && id('outline-color').value != '#') {
                 switch (id('outline-type').value) {
                   case 'sharp':
@@ -100,7 +108,7 @@ title: 폰트 이미지 생성기
                       bdf.drawText(set[i], id('image'), {
                         colour: !id('outline-color').value || id('outline-color').value == '#' ? 'transparent' : id('outline-color').value,
                         x: parseInt(id('x-offset').value || 0) + (outlineSharp[j][0] + 1),
-                        y: (i * (id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + (outlineSharp[j][1] + 1),
+                        y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + (outlineSharp[j][1] + 1),
                         kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                       });
                     }
@@ -110,7 +118,7 @@ title: 폰트 이미지 생성기
                       bdf.drawText(set[i], id('image'), {
                         colour: !id('outline-color').value || id('outline-color').value == '#' ? 'transparent' : id('outline-color').value,
                         x: parseInt(id('x-offset').value || 0) + (outlineSmooth[j][0] + 1),
-                        y: (i * (id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + (outlineSmooth[j][1] + 1),
+                        y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + (outlineSmooth[j][1] + 1),
                         kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                       });
                     }
@@ -119,14 +127,14 @@ title: 폰트 이미지 생성기
                 bdf.drawText(set[i], id('image'), {
                   colour: !id('foreground').value || id('foreground').value == '#' ? 'black' : id('foreground').value,
                   x: parseInt(id('x-offset').value || 0) + 1,
-                  y: (i * (id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + 1,
+                  y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + 1,
                   kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                 });
               } else {
                 bdf.drawText(set[i], id('image'), {
                   colour: !id('foreground').value || id('foreground').value == '#' ? 'black' : id('foreground').value,
                   x: parseInt(id('x-offset').value || 0),
-                  y: i * (id('tile-height').value || 16) + parseInt(id('y-offset').value || 0),
+                  y: i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value || 0),
                   kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                 });
               }

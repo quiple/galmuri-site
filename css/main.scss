@@ -194,6 +194,12 @@ small {
     opacity: .5;
   }
 }
+hr {
+  height: 2px;
+  border: none;
+  background-color: #{$foreground}3f;
+  margin: .75rem 0;
+}
 .btns {
   display: flex;
   margin: {
