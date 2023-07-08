@@ -17,17 +17,15 @@ title: 폰트 이미지 생성기
     <div>
       <label for="select">폰트:</label>
       <select id="select">
-        <option value=""></option>
         {% for font in site.fonts %}
-          <option value="{{ font.file }}" {% if font.style == 'Monospaced' %} hidden{% endif %}>{{ font.name }}</option>
+          <option value="{{ font.file }}" {% if font.style == 'Monospaced' %} hidden{% elsif font.name == 'Galmuri11' %}selected{% endif %}>{{ font.name }}</option>
         {% endfor %}
       </select>
     </div>
     <div>
       <label for="charset">한글 음절 집합:</label>
       <select id="charset">
-        <option value=""></option>
-        <option value="set2350">2350자</option>
+        <option value="set2350" selected>2350자</option>
         <option value="set2355">2355자</option>
         <option value="set2780">2780자</option>
         <option value="set4358">4358자</option>
@@ -39,6 +37,14 @@ title: 폰트 이미지 생성기
     <div><label for="tile-column">열 수:</label> <input id="tile-column" type="number"></div>
     <div><label for="foreground">전경색:</label> <input id="foreground" type="text" value="#"></div>
     <div><label for="background">배경색:</label> <input id="background" type="text" value="#"></div>
+    <div><label for="outline-color">외곽선 색:</label> <input id="outline-color" type="text" value="#"></div>
+    <div>
+      <label for="outline-type">외곽선 유형:</label>
+      <select id="outline-type">
+        <option value="sharp" selected>모서리 유지</option>
+        <option value="smooth">모서리 깎기</option>
+      </select>
+    </div>
     <div class="btns">
       <button type="button" id="load" class="btn">만들기</button>
       <a id="download" class="btn" download style="display: none;">다운로드</a>
@@ -64,12 +70,14 @@ title: 폰트 이미지 생성기
 <script>
   const id = s => document.getElementById(s);
   const ctx = id('image').getContext('2d');
+  const outlineSharp = [[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]];
+  const outlineSmooth = [[0, 1], [0, -1], [1, 0], [-1, 0]];
 
   id('load').addEventListener('click', function() {
     ctx.reset();
 
     let regex = new RegExp('.{1,' + (id('tile-column').value || '64') + '}', 'g');
-    let set = (charsets[id('charset').value] || charsets['set2350']).match(regex);
+    let set = charsets[id('charset').value].match(regex);
 
     id('image').width = parseInt(id('tile-width').value || 16) * parseInt(id('tile-column').value || 64);
     id('image').height = parseInt(id('tile-height').value || 16) * set.length;
@@ -78,19 +86,50 @@ title: 폰트 이미지 생성기
     ctx.fillStyle = !id('background').value || id('background').value == '#' ? 'white' : id('background').value;
     ctx.fillRect(0, 0, id('image').width, id('image').height);
 
-    switch (id('select').value || 'Galmuri11') {
+    switch (id('select').value) {
       {% for font in site.fonts %}
         case '{{ font.file }}':
           ctx.font = '{% case font.style %}{% when 'Bold' %}bold {% when 'Condensed' %}condensed {% endcase %}{{ font.size }}px {{ font.family }}-web';
           fetch('./galmuri/dist/{{ font.file }}.bdf').then(data => data.text()).then(text => {
             let bdf = new BDF(text);
             for (let i = 0; i < set.length; i++) {
-              bdf.drawText(set[i], id('image'), {
-                colour: !id('foreground').value || id('foreground').value == '#' ? 'black' : id('foreground').value,
-                x: parseInt(id('x-offset').value || 0),
-                y: i * (id('tile-height').value || 16) + parseInt(id('y-offset').value || 0),
-                kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
-              });
+              if (id('outline-color').value && id('outline-color').value != '#') {
+                switch (id('outline-type').value) {
+                  case 'sharp':
+                    for (let j = 0; j < outlineSharp.length; j++) {
+                      bdf.drawText(set[i], id('image'), {
+                        colour: !id('outline-color').value || id('outline-color').value == '#' ? 'transparent' : id('outline-color').value,
+                        x: parseInt(id('x-offset').value || 0) + (outlineSharp[j][0] + 1),
+                        y: (i * (id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + (outlineSharp[j][1] + 1),
+                        kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                      });
+                    }
+                    break;
+                  case 'smooth':
+                    for (let j = 0; j < outlineSmooth.length; j++) {
+                      bdf.drawText(set[i], id('image'), {
+                        colour: !id('outline-color').value || id('outline-color').value == '#' ? 'transparent' : id('outline-color').value,
+                        x: parseInt(id('x-offset').value || 0) + (outlineSmooth[j][0] + 1),
+                        y: (i * (id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + (outlineSmooth[j][1] + 1),
+                        kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                      });
+                    }
+                    break;
+                }
+                bdf.drawText(set[i], id('image'), {
+                  colour: !id('foreground').value || id('foreground').value == '#' ? 'black' : id('foreground').value,
+                  x: parseInt(id('x-offset').value || 0) + 1,
+                  y: (i * (id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + 1,
+                  kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                });
+              } else {
+                bdf.drawText(set[i], id('image'), {
+                  colour: !id('foreground').value || id('foreground').value == '#' ? 'black' : id('foreground').value,
+                  x: parseInt(id('x-offset').value || 0),
+                  y: i * (id('tile-height').value || 16) + parseInt(id('y-offset').value || 0),
+                  kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                });
+              }
             }
           });
           break;
