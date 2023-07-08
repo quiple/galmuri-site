@@ -91,12 +91,11 @@ title: 폰트 이미지 생성기
         foreground = id('foreground').value,
         background = id('background').value,
         outlineColor = id('outline-color').value,
-        outlineType = id('outline-type').value;
+        outlineType = id('outline-type').value,
+        regex = new RegExp('.{1,' + tileColumn + '}', 'g'),
+        set = charsets[charset].match(regex);
 
     ctx.reset();
-
-    let regex = new RegExp('.{1,' + tileColumn + '}', 'g');
-    let set = charsets[charset].match(regex);
 
     id('image').width = tileWidth * tileColumn;
     id('image').height = tileHeight * set.length;
