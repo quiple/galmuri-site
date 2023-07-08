@@ -212,6 +212,7 @@ hr {
     @include Galmuri7;
     font-size: .8rem;
     @include desktop { @include Galmuri7(2); }
+    line-height: 1.5;
     transition: .25s $cubic;
     color: $black;
     background-color: $foreground;

@@ -7,9 +7,11 @@ title: 폰트 이미지 생성기
   .generator { display: flex; justify-content: space-between; gap: 1rem; }
   .canvas-wrap { flex: 1; display: flex; justify-content: center; align-items: center; }
   #image { max-width: 100%; }
-  input { width: 10rem; font-variant-numeric: tabular-nums; }
+  input:not([type="checkbox"]) { width: 10rem; font-variant-numeric: tabular-nums; }
   .form { display: flex; flex-direction: column; gap: 12px; }
+  .form > div { display: flex; align-items: center; gap: .5rem; }
   .btns { margin: 0; }
+  .form .outline-use { display: none; }
 </style>
 
 <div class="generator">
@@ -37,8 +39,9 @@ title: 폰트 이미지 생성기
     <div><label for="tile-column">열 수:</label> <input id="tile-column" type="number"></div>
     <div><label for="foreground">전경색:</label> <input id="foreground" type="text" value="#"></div>
     <div><label for="background">배경색:</label> <input id="background" type="text" value="#"></div>
-    <div><label for="outline-color">외곽선 색:</label> <input id="outline-color" type="text" value="#"></div>
-    <div>
+    <div><input type="checkbox" id="outline-use"><label for="outline-use">외곽선</label></div>
+    <div class="outline-use"><label for="outline-color">외곽선 색:</label> <input id="outline-color" type="text" value="#"></div>
+    <div class="outline-use">
       <label for="outline-type">외곽선 유형:</label>
       <select id="outline-type">
         <option value="sharp" selected>모서리 유지</option>
@@ -47,7 +50,7 @@ title: 폰트 이미지 생성기
     </div>
     <div class="btns">
       <button type="button" id="load" class="btn">만들기</button>
-      <a id="download" class="btn" download style="display: none;">다운로드</a>
+      <a id="download" class="btn outline" download style="display: none;">다운로드</a>
     </div>
     <small>‘다운로드’를 누르기 전에 먼저 ‘만들기’를 눌러 주세요.</small>
   </form>
@@ -73,6 +76,7 @@ title: 폰트 이미지 생성기
 <script>
   const id = s => document.getElementById(s);
   const ctx = id('image').getContext('2d');
+  const outline = document.querySelectorAll('.outline-use');
   const outlineSharp = [[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]];
   const outlineSmooth = [[0, 1], [0, -1], [1, 0], [-1, 0]];
 
@@ -100,7 +104,7 @@ title: 폰트 이미지 생성기
                 set[i].length * parseInt(id('tile-width').value || 16),
                 parseInt(id('tile-height').value || 16)
               );
-              if (id('outline-color').value && id('outline-color').value != '#') {
+              if (id('outline-use').checked) {
                 switch (id('outline-type').value) {
                   case 'sharp':
                     for (let j = 0; j < outlineSharp.length; j++) {
@@ -148,5 +152,13 @@ title: 폰트 이미지 생성기
 
   id('download').addEventListener('click', (e) => {
     e.target.href = id('image').toDataURL();
+  });
+
+  id('outline-use').addEventListener('change', function() {
+    if (this.checked) {
+      outline.forEach(e => e.style.display = 'flex');
+    } else {
+      outline.forEach(e => e.style.display = 'none');
+    }
   });
 </script>
