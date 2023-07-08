@@ -54,6 +54,7 @@ $background-light: #27272a;
 $black: #09090b;
 $padding: 10vw;
 $cubic: cubic-bezier(0,0,0,1);
+$duration: .15s;
 
 :root {
   --primary: #6171eb;
@@ -79,7 +80,7 @@ body {
   opacity: 0;
   visibility: hidden;
   font-weight: 400;
-  transition: .25s $cubic;
+  transition: $duration $cubic;
 }
 h1 {
   margin-top: 2.5rem;
@@ -134,20 +135,25 @@ pre {
     background-size: 100%;
   }
 }
-select, input, textarea {
-  transition: background-color .25s $cubic;
+select, input:not([type="checkbox"]):not([type="radio"]), textarea {
+  transition: background-color, border-color $duration $cubic;
   @include Galmuri7;
   font-size: .8rem;
   @include desktop { @include Galmuri7(2); }
   max-width: 100%;
-  border: none;
+  line-height: 1.5;
+  border: .125em solid transparent;
   padding: .625rem 1rem;
   color: $foreground;
   background-color: $black;
   &:focus {
     outline: none;
-    background-color: $background-light;
+    background-color: $background;
+    border-color: $foreground;
   }
+}
+input[type="number"] {
+  font-variant-numeric: tabular-nums;
 }
 #test-control {
   margin-top: .75rem;
@@ -208,43 +214,44 @@ hr {
   }
   gap: .75rem;
   flex-wrap: wrap;
-  .btn {
-    @include Galmuri7;
-    font-size: .8rem;
-    @include desktop { @include Galmuri7(2); }
-    line-height: 1.5;
-    transition: .25s $cubic;
-    color: $black;
-    background-color: $foreground;
-    padding: .625rem calc(1rem - .125em) .625rem 1rem;
-    box-shadow: 0 0 0 $primary;
+}
+.btn {
+  @include Galmuri7;
+  font-size: .8rem;
+  @include desktop { @include Galmuri7(2); }
+  line-height: 1.5;
+  transition: $duration $cubic;
+  color: $black;
+  background-color: $foreground;
+  padding: .625rem calc(1rem - .125em) .625rem 1rem;
+  box-shadow: 0 0 0 $primary;
+  text-decoration: none;
+  border: .125em solid $foreground;
+  cursor: pointer;
+  &:focus { border-color: $primary; }
+  &:hover {
+    box-shadow: .25em .25em 0 $primary;
+    transform: translate(-.25em, -.25em);
     text-decoration: none;
-    border: .125em solid $foreground;
-    cursor: pointer;
-    &:focus { border-color: $primary; }
-    &:hover {
-      box-shadow: .25em .25em 0 $primary;
-      transform: translate(-.25em, -.25em);
-    }
-    &:active {
-      color: $foreground;
-      background-color: $primary;
-      border-color: $primary;
-      box-shadow: 0 0 0 $primary;
-      transform: none;
-    }
-    &.new { padding-right: calc(1rem - .125em * 2); }
-    &.new::after {
-      background-image: url('../assets/new.svg');
-      margin-left: .375em;
-    }
-    &.new:active::after { background-image: url('../assets/new-white.svg'); }
-    &.outline {
-      background-color: transparent;
-      color: $foreground;
-      &:active { background-color: $primary; }
-      &.new::after { background-image: url('../assets/new-white.svg'); }
-    }
+  }
+  &:active {
+    color: $foreground;
+    background-color: $primary;
+    border-color: $primary;
+    box-shadow: 0 0 0 $primary;
+    transform: none;
+  }
+  &.new { padding-right: calc(1rem - .125em * 2); }
+  &.new::after {
+    background-image: url('../assets/new.svg');
+    margin-left: .375em;
+  }
+  &.new:active::after { background-image: url('../assets/new-white.svg'); }
+  &.outline {
+    background-color: transparent;
+    color: $foreground;
+    &:active { background-color: $primary; }
+    &.new::after { background-image: url('../assets/new-white.svg'); }
   }
 }
 .fea {
@@ -507,4 +514,25 @@ footer {
   40.1% { background-color: $foreground; color: $background; }
   60%   { background-color: $foreground; color: $background; }
   100%  { background-color: $background; color: $foreground; }
+}
+#palette {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: calc(100% + .5rem);
+  width: 20rem;
+  background-color: $black;
+  z-index: 99;
+  padding: .5rem;
+
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 0;
+    width: 100%;
+  }
+  .palette-grid div {
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+  }
 }
