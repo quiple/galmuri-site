@@ -17,8 +17,8 @@ title: 폰트 이미지 생성기
 <div class="generator">
   <form class="form">
     <div>
-      <label for="select">폰트:</label>
-      <select id="select">
+      <label for="font">폰트:</label>
+      <select id="font">
         {% for font in site.fonts %}
           <option value="{{ font.file }}" {% if font.style == 'Monospaced' %} hidden{% elsif font.name == 'Galmuri11' %}selected{% endif %}>{{ font.name }}</option>
         {% endfor %}
@@ -35,12 +35,12 @@ title: 폰트 이미지 생성기
       </select>
     </div>
     <div><label for="x-offset">오프셋:</label><input id="x-offset" type="number" value="0">, <input id="y-offset" type="number" value="0"></div>
-    <div><label for="tile-width">타일 크기:</label><input id="tile-width" type="number"> × <input id="tile-height" type="number"></div>
-    <div><label for="tile-column">열 수:</label><input id="tile-column" type="number"></div>
-    <div><label for="foreground">전경색:</label><input id="foreground" type="text" value="#"></div>
-    <div><label for="background">배경색:</label><input id="background" type="text" value="#"></div>
+    <div><label for="tile-width">타일 크기:</label><input id="tile-width" type="number" value="16"> × <input id="tile-height" type="number" value="16"></div>
+    <div><label for="tile-column">열 수:</label><input id="tile-column" type="number" value="32"></div>
+    <div><label for="foreground">전경색:</label><input id="foreground" type="text" value="#63cf63"></div>
+    <div><label for="background">배경색:</label><input id="background" type="text" value="#000"></div>
     <div><input type="checkbox" id="outline-use"><label for="outline-use">외곽선</label></div>
-    <div class="outline-use"><label for="outline-color">외곽선 색:</label><input id="outline-color" type="text" value="#"></div>
+    <div class="outline-use"><label for="outline-color">외곽선 색:</label><input id="outline-color" type="text" value="#3933ff"></div>
     <div class="outline-use">
       <label for="outline-type">외곽선 유형:</label>
       <select id="outline-type">
@@ -74,71 +74,83 @@ title: 폰트 이미지 생성기
 <script src="./assets/bdf.js"></script>
 <script src="./assets/charsets.js"></script>
 <script>
-  const id = s => document.getElementById(s);
-  const ctx = id('image').getContext('2d');
-  const outline = document.querySelectorAll('.outline-use');
-  const outlineSharp = [[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]];
-  const outlineSmooth = [[0, 1], [0, -1], [1, 0], [-1, 0]];
+  const id = s => document.getElementById(s),
+        ctx = id('image').getContext('2d'),
+        outline = document.querySelectorAll('.outline-use'),
+        outlineSharp = [[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]],
+        outlineSmooth = [[0, 1], [0, -1], [1, 0], [-1, 0]];
 
   id('load').addEventListener('click', function() {
+    let font = id('font').value,
+        charset = id('charset').value,
+        xOffset = parseInt(id('x-offset').value),
+        yOffset = parseInt(id('y-offset').value),
+        tileWidth = parseInt(id('tile-width').value),
+        tileHeight = parseInt(id('tile-height').value),
+        tileColumn = parseInt(id('tile-column').value),
+        foreground = id('foreground').value,
+        background = id('background').value,
+        outlineColor = id('outline-color').value,
+        outlineType = id('outline-type').value;
+
     ctx.reset();
 
-    let regex = new RegExp('.{1,' + (id('tile-column').value || '64') + '}', 'g');
-    let set = charsets[id('charset').value].match(regex);
+    let regex = new RegExp('.{1,' + tileColumn + '}', 'g');
+    let set = charsets[charset].match(regex);
 
-    id('image').width = parseInt(id('tile-width').value || 16) * parseInt(id('tile-column').value || 64);
-    id('image').height = parseInt(id('tile-height').value || 16) * set.length;
+    id('image').width = tileWidth * tileColumn;
+    id('image').height = tileHeight * set.length;
     id('image').style.aspectRatio = id('image').width / id('image').height;
 
-    switch (id('select').value) {
+    switch (font) {
       {% for font in site.fonts %}
         case '{{ font.file }}':
           ctx.font = '{% case font.style %}{% when 'Bold' %}bold {% when 'Condensed' %}condensed {% endcase %}{{ font.size }}px {{ font.family }}-web';
           fetch('./galmuri/dist/{{ font.file }}.bdf').then(data => data.text()).then(text => {
             let bdf = new BDF(text);
             for (let i = 0; i < set.length; i++) {
-              ctx.fillStyle = !id('background').value || id('background').value == '#' ? '#000' : id('background').value;
+              ctx.fillStyle = background;
               ctx.fillRect(
                 0,
-                i * parseInt(id('tile-height').value || 16),
-                set[i].length * parseInt(id('tile-width').value || 16),
-                parseInt(id('tile-height').value || 16)
+                i * tileHeight,
+                set[i].length * tileWidth,
+                tileHeight
               );
               if (id('outline-use').checked) {
-                switch (id('outline-type').value) {
+                switch (outlineType) {
                   case 'sharp':
                     for (let j = 0; j < outlineSharp.length; j++) {
                       bdf.drawText(set[i], id('image'), {
-                        colour: !id('outline-color').value || id('outline-color').value == '#' ? '#3933ff' : id('outline-color').value,
-                        x: parseInt(id('x-offset').value) + (outlineSharp[j][0] + 1),
-                        y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value)) + (outlineSharp[j][1] + 1),
-                        kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                        colour: outlineColor,
+                        x: xOffset + (outlineSharp[j][0] + 1),
+                        y: (i * tileHeight + yOffset) + (outlineSharp[j][1] + 1),
+                        kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                       });
                     }
                     break;
                   case 'smooth':
                     for (let j = 0; j < outlineSmooth.length; j++) {
                       bdf.drawText(set[i], id('image'), {
-                        colour: !id('outline-color').value || id('outline-color').value == '#' ? '#3933ff' : id('outline-color').value,
-                        x: parseInt(id('x-offset').value) + (outlineSmooth[j][0] + 1),
-                        y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value)) + (outlineSmooth[j][1] + 1),
-                        kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                        colour: outlineColor,
+                        x: xOffset + (outlineSmooth[j][0] + 1),
+                        y: (i * tileHeight + yOffset) + (outlineSmooth[j][1] + 1),
+                        kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                       });
                     }
                     break;
                 }
                 bdf.drawText(set[i], id('image'), {
-                  colour: !id('foreground').value || id('foreground').value == '#' ? '#63cf63' : id('foreground').value,
-                  x: parseInt(id('x-offset').value) + 1,
-                  y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value)) + 1,
-                  kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                  colour: foreground,
+                  x: xOffset + 1,
+                  y: (i * tileHeight + yOffset) + 1,
+                  kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                 });
               } else {
                 bdf.drawText(set[i], id('image'), {
-                  colour: !id('foreground').value || id('foreground').value == '#' ? '#63cf63' : id('foreground').value,
-                  x: parseInt(id('x-offset').value),
-                  y: i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value),
-                  kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                  colour: foreground,
+                  x: xOffset,
+                  y: i * tileHeight + yOffset,
+                  kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                 });
               }
             }
