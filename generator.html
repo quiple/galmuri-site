@@ -34,7 +34,7 @@ title: 폰트 이미지 생성기
         <option value="set11172">11172자</option>
       </select>
     </div>
-    <div><label for="x-offset">오프셋:</label><input id="x-offset" type="number">, <input id="y-offset" type="number"></div>
+    <div><label for="x-offset">오프셋:</label><input id="x-offset" type="number" value="0">, <input id="y-offset" type="number" value="0"></div>
     <div><label for="tile-width">타일 크기:</label><input id="tile-width" type="number"> × <input id="tile-height" type="number"></div>
     <div><label for="tile-column">열 수:</label><input id="tile-column" type="number"></div>
     <div><label for="foreground">전경색:</label><input id="foreground" type="text" value="#"></div>
@@ -110,8 +110,8 @@ title: 폰트 이미지 생성기
                     for (let j = 0; j < outlineSharp.length; j++) {
                       bdf.drawText(set[i], id('image'), {
                         colour: !id('outline-color').value || id('outline-color').value == '#' ? '#3933ff' : id('outline-color').value,
-                        x: parseInt(id('x-offset').value || 0) + (outlineSharp[j][0] + 1),
-                        y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + (outlineSharp[j][1] + 1),
+                        x: parseInt(id('x-offset').value) + (outlineSharp[j][0] + 1),
+                        y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value)) + (outlineSharp[j][1] + 1),
                         kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                       });
                     }
@@ -120,8 +120,8 @@ title: 폰트 이미지 생성기
                     for (let j = 0; j < outlineSmooth.length; j++) {
                       bdf.drawText(set[i], id('image'), {
                         colour: !id('outline-color').value || id('outline-color').value == '#' ? '#3933ff' : id('outline-color').value,
-                        x: parseInt(id('x-offset').value || 0) + (outlineSmooth[j][0] + 1),
-                        y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + (outlineSmooth[j][1] + 1),
+                        x: parseInt(id('x-offset').value) + (outlineSmooth[j][0] + 1),
+                        y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value)) + (outlineSmooth[j][1] + 1),
                         kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                       });
                     }
@@ -129,15 +129,15 @@ title: 폰트 이미지 생성기
                 }
                 bdf.drawText(set[i], id('image'), {
                   colour: !id('foreground').value || id('foreground').value == '#' ? '#63cf63' : id('foreground').value,
-                  x: parseInt(id('x-offset').value || 0) + 1,
-                  y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value || 0)) + 1,
+                  x: parseInt(id('x-offset').value) + 1,
+                  y: (i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value)) + 1,
                   kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                 });
               } else {
                 bdf.drawText(set[i], id('image'), {
                   colour: !id('foreground').value || id('foreground').value == '#' ? '#63cf63' : id('foreground').value,
-                  x: parseInt(id('x-offset').value || 0),
-                  y: i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value || 0),
+                  x: parseInt(id('x-offset').value),
+                  y: i * parseInt(id('tile-height').value || 16) + parseInt(id('y-offset').value),
                   kerningBias: (id('tile-width').value || 16) - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                 });
               }
