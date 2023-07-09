@@ -11,7 +11,8 @@ title: 폰트 이미지 생성기
   .form { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
   .form > div { display: flex; align-items: center; gap: .5rem; position: relative; }
   .btns { margin: 0; }
-  .form .outline-use { display: none; }
+  .form .outline-use,
+  .form .shadow-use { display: none; }
 </style>
 
 <div class="generator">
@@ -60,6 +61,19 @@ title: 폰트 이미지 생성기
         <option value="smooth">모서리 깎기</option>
       </select>
     </div>
+    <div><input type="checkbox" id="shadow-use"><label for="shadow-use">그림자</label></div>
+    <div class="shadow-use">
+      <label for="shadow-color">그림자 색:</label>
+      <input id="shadow-color" type="text" value="#3933ff">
+      <button type="button" class="btn outline palette" onclick="palette(this)">팔레트</button>
+    </div>
+    <div class="shadow-use">
+      <label for="shadow-type">그림자 유형:</label>
+      <select id="shadow-type">
+        <option value="sharp" selected>모서리 유지</option>
+        <option value="smooth">모서리 깎기</option>
+      </select>
+    </div>
     <div class="btns">
       <button type="button" id="load" class="btn">만들기</button>
       <a id="download" class="btn outline" download style="display: none;">다운로드</a>
@@ -91,7 +105,12 @@ title: 폰트 이미지 생성기
         ctx = id('image').getContext('2d'),
         outline = document.querySelectorAll('.outline-use'),
         outlineSharp = [[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]],
-        outlineSmooth = [[0, 1], [0, -1], [1, 0], [-1, 0]];
+        outlineSmooth = [[0, 1], [0, -1], [1, 0], [-1, 0]],
+        shadow = document.querySelectorAll('.shadow-use'),
+        shadowSharp = [[1, 1], [0, 1], [1, 0]],
+        shadowSmooth = [[1, 1]],
+        shadowOutlineSharp = [[1, 1], [0, 1], [1, 0], [1, -1], [-1, 1], [1, -2], [-2, 1]],
+        shadowOutlineSmooth = [[1, 1], [0, 1], [1, 0], [1, -1], [-1, 1]];
 
   id('load').addEventListener('click', function() {
     let font = id('font').value,
@@ -105,6 +124,8 @@ title: 폰트 이미지 생성기
         background = id('background').value,
         outlineColor = id('outline-color').value,
         outlineType = id('outline-type').value,
+        shadowColor = id('shadow-color').value,
+        shadowType = id('shadow-type').value,
         regex = new RegExp('.{1,' + tileColumn + '}', 'g'),
         set = charsets[charset].match(regex);
 
@@ -124,6 +145,30 @@ title: 폰트 이미지 생성기
               ctx.fillStyle = background;
               ctx.fillRect(0, i * tileHeight, set[i].length * tileWidth, tileHeight);
               if (id('outline-use').checked) {
+                if (id('shadow-use').checked) {
+                  switch (shadowType) {
+                    case 'sharp':
+                      for (let j = 0; j < shadowOutlineSharp.length; j++) {
+                        bdf.drawText(set[i], id('image'), {
+                          colour: shadowColor,
+                          x: xOffset + (shadowOutlineSharp[j][0] + 2),
+                          y: (i * tileHeight + yOffset) + (shadowOutlineSharp[j][1] + 2),
+                          kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                        });
+                      }
+                      break;
+                    case 'smooth':
+                      for (let j = 0; j < shadowOutlineSmooth.length; j++) {
+                        bdf.drawText(set[i], id('image'), {
+                          colour: shadowColor,
+                          x: xOffset + (shadowOutlineSmooth[j][0] + 2),
+                          y: (i * tileHeight + yOffset) + (shadowOutlineSmooth[j][1] + 2),
+                          kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                        });
+                      }
+                      break;
+                  }
+                }
                 switch (outlineType) {
                   case 'sharp':
                     for (let j = 0; j < outlineSharp.length; j++) {
@@ -153,6 +198,30 @@ title: 폰트 이미지 생성기
                   kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
                 });
               } else {
+                if (id('shadow-use').checked) {
+                  switch (shadowType) {
+                    case 'sharp':
+                      for (let j = 0; j < shadowSharp.length; j++) {
+                        bdf.drawText(set[i], id('image'), {
+                          colour: shadowColor,
+                          x: xOffset + shadowSharp[j][0],
+                          y: (i * tileHeight + yOffset) + shadowSharp[j][1],
+                          kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                        });
+                      }
+                      break;
+                    case 'smooth':
+                      for (let j = 0; j < shadowSmooth.length; j++) {
+                        bdf.drawText(set[i], id('image'), {
+                          colour: shadowColor,
+                          x: xOffset + shadowSmooth[j][0],
+                          y: (i * tileHeight + yOffset) + shadowSmooth[j][1],
+                          kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                        });
+                      }
+                      break;
+                  }
+                }
                 bdf.drawText(set[i], id('image'), {
                   colour: foreground,
                   x: xOffset,
@@ -178,6 +247,14 @@ title: 폰트 이미지 생성기
       outline.forEach(e => e.style.display = 'flex');
     } else {
       outline.forEach(e => e.style.display = '');
+    }
+  });
+
+  id('shadow-use').addEventListener('change', function() {
+    if (this.checked) {
+      shadow.forEach(e => e.style.display = 'flex');
+    } else {
+      shadow.forEach(e => e.style.display = '');
     }
   });
 
