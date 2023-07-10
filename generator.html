@@ -135,8 +135,10 @@ title: 폰트 이미지 생성기
         shadow = document.querySelectorAll('.shadow-use'),
         shadowSharp = [[1, 1], [0, 1], [1, 0]],
         shadowSmooth = [[1, 1]],
-        shadowOutlineSharp = [[1, 1], [0, 1], [1, 0], [1, -1], [-1, 1], [1, -2], [-2, 1]],
-        shadowOutlineSmooth = [[1, 1], [0, 1], [1, 0], [1, -1], [-1, 1]];
+        shadowSharpOutlineSharp = [[1, 1], [0, 1], [1, 0], [1, -1], [-1, 1], [1, -2], [-2, 1]],
+        shadowSmoothOutlineSharp = [[1, 1], [0, 1], [1, 0], [1, -1], [-1, 1]],
+        shadowSharpOutlineSmooth = [[0, 0], [0, 1], [1, 0], [-1, 1], [1, -1], [-2, 0], [0, -2]],
+        shadowSmoothOutlineSmooth = [[0, 0], [0, 1], [1, 0]];
 
   id('load').addEventListener('click', function() {
     let font = id('font').value,
@@ -171,32 +173,32 @@ title: 폰트 이미지 생성기
               ctx.fillStyle = background;
               ctx.fillRect(0, i * tileHeight, set[i].length * tileWidth, tileHeight);
               if (id('outline-use').checked) {
-                if (id('shadow-use').checked) {
-                  switch (shadowType) {
-                    case 'sharp':
-                      for (let j = 0; j < shadowOutlineSharp.length; j++) {
-                        bdf.drawText(set[i], id('image'), {
-                          colour: shadowColor,
-                          x: xOffset + (shadowOutlineSharp[j][0] + 2),
-                          y: (i * tileHeight + yOffset) + (shadowOutlineSharp[j][1] + 2),
-                          kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
-                        });
-                      }
-                      break;
-                    case 'smooth':
-                      for (let j = 0; j < shadowOutlineSmooth.length; j++) {
-                        bdf.drawText(set[i], id('image'), {
-                          colour: shadowColor,
-                          x: xOffset + (shadowOutlineSmooth[j][0] + 2),
-                          y: (i * tileHeight + yOffset) + (shadowOutlineSmooth[j][1] + 2),
-                          kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
-                        });
-                      }
-                      break;
-                  }
-                }
                 switch (outlineType) {
                   case 'sharp':
+                    if (id('shadow-use').checked) {
+                      switch (shadowType) {
+                        case 'sharp':
+                          for (let j = 0; j < shadowSharpOutlineSharp.length; j++) {
+                            bdf.drawText(set[i], id('image'), {
+                              colour: shadowColor,
+                              x: xOffset + (shadowSharpOutlineSharp[j][0] + 2),
+                              y: (i * tileHeight + yOffset) + (shadowSharpOutlineSharp[j][1] + 2),
+                              kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                            });
+                          }
+                          break;
+                        case 'smooth':
+                          for (let j = 0; j < shadowSmoothOutlineSharp.length; j++) {
+                            bdf.drawText(set[i], id('image'), {
+                              colour: shadowColor,
+                              x: xOffset + (shadowSmoothOutlineSharp[j][0] + 2),
+                              y: (i * tileHeight + yOffset) + (shadowSmoothOutlineSharp[j][1] + 2),
+                              kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                            });
+                          }
+                          break;
+                      }
+                    }
                     for (let j = 0; j < outlineSharp.length; j++) {
                       bdf.drawText(set[i], id('image'), {
                         colour: outlineColor,
@@ -207,6 +209,30 @@ title: 폰트 이미지 생성기
                     }
                     break;
                   case 'smooth':
+                    if (id('shadow-use').checked) {
+                      switch (shadowType) {
+                        case 'sharp':
+                          for (let j = 0; j < shadowSharpOutlineSmooth.length; j++) {
+                            bdf.drawText(set[i], id('image'), {
+                              colour: shadowColor,
+                              x: xOffset + (shadowSharpOutlineSmooth[j][0] + 2),
+                              y: (i * tileHeight + yOffset) + (shadowSharpOutlineSmooth[j][1] + 2),
+                              kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                            });
+                          }
+                          break;
+                        case 'smooth':
+                          for (let j = 0; j < shadowSmoothOutlineSmooth.length; j++) {
+                            bdf.drawText(set[i], id('image'), {
+                              colour: shadowColor,
+                              x: xOffset + (shadowSmoothOutlineSmooth[j][0] + 2),
+                              y: (i * tileHeight + yOffset) + (shadowSmoothOutlineSmooth[j][1] + 2),
+                              kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                            });
+                          }
+                          break;
+                      }
+                    }
                     for (let j = 0; j < outlineSmooth.length; j++) {
                       bdf.drawText(set[i], id('image'), {
                         colour: outlineColor,
