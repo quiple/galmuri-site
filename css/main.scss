@@ -551,7 +551,7 @@ footer {
   }
 }
 .sample {
-  @include Galmuri7(8);
+  @include Galmuri7(10);
   display: flex;
   justify-content: center;
   padding: .125em;
