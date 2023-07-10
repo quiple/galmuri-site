@@ -142,7 +142,7 @@ select, input:not([type="checkbox"]):not([type="radio"]), textarea {
   @include desktop { @include Galmuri7(2); }
   max-width: 100%;
   line-height: 1.5;
-  border: .125em solid transparent;
+  border: .125rem solid transparent;
   padding: .625rem 1rem;
   color: $foreground;
   background-color: $black;
@@ -216,8 +216,8 @@ table:not([class]) {
     font-weight: 400;
   }
   th, td {
-    padding: .625rem calc(1rem - .125em) .625rem 1rem;
-    border: .125em solid #{$foreground}3f;
+    padding: .625rem calc(1rem - .125rem) .625rem 1rem;
+    border: .125rem solid #{$foreground}3f;
   }
 }
 .btns {
@@ -240,7 +240,7 @@ table:not([class]) {
   padding: .625rem calc(1rem - .125em) .625rem 1rem;
   box-shadow: 0 0 0 $primary;
   text-decoration: none;
-  border: .125em solid $foreground;
+  border: .125rem solid $foreground;
   cursor: pointer;
   &:focus { border-color: $primary; }
   &:hover {
@@ -351,7 +351,6 @@ main {
     font-size: 1.2rem;
     @include desktop { @include Galmuri11(4); }
     color: $foreground;
-    border: none;
     margin: .75rem 0;
     padding: .625rem 1rem;
     resize: vertical;
