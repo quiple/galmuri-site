@@ -206,6 +206,20 @@ hr {
   background-color: #{$foreground}3f;
   margin: .75rem 0;
 }
+table:not([class]) {
+  min-width: 18rem;
+  margin: .75rem 0;
+  @include Galmuri7;
+  font-size: .8rem;
+  @include desktop { @include Galmuri7(2); }
+  th {
+    font-weight: 400;
+  }
+  th, td {
+    padding: .625rem calc(1rem - .125em) .625rem 1rem;
+    border: .125em solid #{$foreground}3f;
+  }
+}
 .btns {
   display: flex;
   margin: {
@@ -288,7 +302,7 @@ main {
       right: $padding;
     }
   }
-  p {
+  p, table:not([class]) {
     max-width: 100%;
     @include desktop { max-width: 70vw; }
     @include widescreen { max-width: 60vw; }
@@ -534,5 +548,25 @@ footer {
   .palette-grid div {
     cursor: pointer;
     aspect-ratio: 1 / 1;
+  }
+}
+.sample {
+  @include Galmuri7(8);
+  display: flex;
+  justify-content: center;
+  padding: .125em;
+  padding-right: 0;
+  line-height: 1.125;
+  &.outline-sharp {
+    text-shadow: .125em 0 0 $primary, -.125em 0 0 $primary, 0 .125em 0 $primary, 0 -.125em 0 $primary, .125em .125em 0 $primary, -.125em -.125em 0 $primary, .125em -.125em 0 $primary, -.125em .125em 0 $primary;
+  }
+  &.outline-smooth {
+    text-shadow: .125em 0 0 $primary, -.125em 0 0 $primary, 0 .125em 0 $primary, 0 -.125em 0 $primary;
+  }
+  &.shadow-smooth {
+    text-shadow: .125em .125em 0 $primary;
+  }
+  &.shadow-sharp {
+    text-shadow: .125em .125em 0 $primary, .125em 0 0 $primary, 0 .125em 0 $primary;
   }
 }
