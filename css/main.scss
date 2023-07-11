@@ -68,6 +68,7 @@ $duration: .15s;
 ::selection { color: $foreground; background-color: $primary; }
 html { scroll-behavior: smooth; }
 body {
+  accent-color: $primary;
   @include Galmuri9;
   font-size: 1rem;
   @include desktop { @include Galmuri9(2); }
