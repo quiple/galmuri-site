@@ -23,6 +23,7 @@ title: 폰트 이미지 생성기
         {% for font in site.fonts %}
           <option value="{{ font.file }}" {% if font.style == 'Monospaced' %} hidden{% elsif font.name == 'Galmuri11' %}selected{% endif %}>{{ font.name }}</option>
         {% endfor %}
+        <option value="bdf">파일 선택 (BDF)</option>
       </select>
     </div>
     <div>
@@ -131,6 +132,8 @@ title: 폰트 이미지 생성기
 <script>
   const id = s => document.getElementById(s),
         ctx = id('image').getContext('2d'),
+        reader = new FileReader(),
+        fontUpload = document.createElement('input'),
         outline = document.querySelectorAll('.outline-use'),
         outlineSharp = [[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]],
         outlineSmooth = [[0, 1], [0, -1], [1, 0], [-1, 0]],
@@ -141,6 +144,9 @@ title: 폰트 이미지 생성기
         shadowSmoothOutlineSharp = [[1, 1], [0, 1], [1, 0], [1, -1], [-1, 1]],
         shadowSharpOutlineSmooth = [[0, 0], [0, 1], [1, 0], [-1, 1], [1, -1], [-2, 0], [0, -2]],
         shadowSmoothOutlineSmooth = [[0, 0], [0, 1], [1, 0]];
+
+  fontUpload.type = 'file';
+  fontUpload.accept = '.bdf';
 
   id('load').addEventListener('click', function() {
     let font = id('font').value,
@@ -168,9 +174,9 @@ title: 폰트 이미지 생성기
     switch (font) {
       {% for font in site.fonts %}
         case '{{ font.file }}':
-          ctx.font = '{% case font.style %}{% when 'Bold' %}bold {% when 'Condensed' %}condensed {% endcase %}{{ font.size }}px {{ font.family }}-web';
           fetch('./galmuri/dist/{{ font.file }}.bdf').then(data => data.text()).then(text => {
             let bdf = new BDF(text);
+            let w = bdf.glyphs[44032] ? bdf.glyphs[44032].deviceWidthX : bdf.glyphs[12288].deviceWidthX;
             for (let i = 0; i < set.length; i++) {
               ctx.fillStyle = background;
               ctx.fillRect(0, i * tileHeight, set[i].length * tileWidth, tileHeight);
@@ -185,7 +191,7 @@ title: 폰트 이미지 생성기
                               colour: shadowColor,
                               x: xOffset + (shadowSharpOutlineSharp[j][0] + 2),
                               y: (i * tileHeight + yOffset) + (shadowSharpOutlineSharp[j][1] + 2),
-                              kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                              kerningBias: tileWidth - w
                             });
                           }
                           break;
@@ -195,7 +201,7 @@ title: 폰트 이미지 생성기
                               colour: shadowColor,
                               x: xOffset + (shadowSmoothOutlineSharp[j][0] + 2),
                               y: (i * tileHeight + yOffset) + (shadowSmoothOutlineSharp[j][1] + 2),
-                              kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                              kerningBias: tileWidth - w
                             });
                           }
                           break;
@@ -206,7 +212,7 @@ title: 폰트 이미지 생성기
                         colour: outlineColor,
                         x: xOffset + (outlineSharp[j][0] + 1),
                         y: (i * tileHeight + yOffset) + (outlineSharp[j][1] + 1),
-                        kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                        kerningBias: tileWidth - w
                       });
                     }
                     break;
@@ -219,7 +225,7 @@ title: 폰트 이미지 생성기
                               colour: shadowColor,
                               x: xOffset + (shadowSharpOutlineSmooth[j][0] + 2),
                               y: (i * tileHeight + yOffset) + (shadowSharpOutlineSmooth[j][1] + 2),
-                              kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                              kerningBias: tileWidth - w
                             });
                           }
                           break;
@@ -229,7 +235,7 @@ title: 폰트 이미지 생성기
                               colour: shadowColor,
                               x: xOffset + (shadowSmoothOutlineSmooth[j][0] + 2),
                               y: (i * tileHeight + yOffset) + (shadowSmoothOutlineSmooth[j][1] + 2),
-                              kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                              kerningBias: tileWidth - w
                             });
                           }
                           break;
@@ -240,7 +246,7 @@ title: 폰트 이미지 생성기
                         colour: outlineColor,
                         x: xOffset + (outlineSmooth[j][0] + 1),
                         y: (i * tileHeight + yOffset) + (outlineSmooth[j][1] + 1),
-                        kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                        kerningBias: tileWidth - w
                       });
                     }
                     break;
@@ -249,7 +255,7 @@ title: 폰트 이미지 생성기
                   colour: foreground,
                   x: xOffset + 1,
                   y: (i * tileHeight + yOffset) + 1,
-                  kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                  kerningBias: tileWidth - w
                 });
               } else {
                 if (id('shadow-use').checked) {
@@ -260,7 +266,7 @@ title: 폰트 이미지 생성기
                           colour: shadowColor,
                           x: xOffset + shadowSharp[j][0],
                           y: (i * tileHeight + yOffset) + shadowSharp[j][1],
-                          kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                          kerningBias: tileWidth - w
                         });
                       }
                       break;
@@ -270,7 +276,7 @@ title: 폰트 이미지 생성기
                           colour: shadowColor,
                           x: xOffset + shadowSmooth[j][0],
                           y: (i * tileHeight + yOffset) + shadowSmooth[j][1],
-                          kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                          kerningBias: tileWidth - w
                         });
                       }
                       break;
@@ -280,13 +286,135 @@ title: 폰트 이미지 생성기
                   colour: foreground,
                   x: xOffset,
                   y: i * tileHeight + yOffset,
-                  kerningBias: tileWidth - {% if font.style == 'Condensed' %}{{ font.size | minus: 4 }}{% else %}{{ font.size }}{% endif %}
+                  kerningBias: tileWidth - w
                 });
               }
             }
           });
           break;
       {% endfor %}
+      case 'bdf':
+        if (fontUpload.files[0]) {
+          reader.onload = function() {
+            let bdf = new BDF(reader.result);
+            let w = bdf.glyphs[44032] ? bdf.glyphs[44032].deviceWidthX : bdf.glyphs[12288].deviceWidthX;
+            for (let i = 0; i < set.length; i++) {
+              ctx.fillStyle = background;
+              ctx.fillRect(0, i * tileHeight, set[i].length * tileWidth, tileHeight);
+              if (id('outline-use').checked) {
+                switch (outlineType) {
+                  case 'sharp':
+                    if (id('shadow-use').checked) {
+                      switch (shadowType) {
+                        case 'sharp':
+                          for (let j = 0; j < shadowSharpOutlineSharp.length; j++) {
+                            bdf.drawText(set[i], id('image'), {
+                              colour: shadowColor,
+                              x: xOffset + (shadowSharpOutlineSharp[j][0] + 2),
+                              y: (i * tileHeight + yOffset) + (shadowSharpOutlineSharp[j][1] + 2),
+                              kerningBias: tileWidth - w
+                            });
+                          }
+                          break;
+                        case 'smooth':
+                          for (let j = 0; j < shadowSmoothOutlineSharp.length; j++) {
+                            bdf.drawText(set[i], id('image'), {
+                              colour: shadowColor,
+                              x: xOffset + (shadowSmoothOutlineSharp[j][0] + 2),
+                              y: (i * tileHeight + yOffset) + (shadowSmoothOutlineSharp[j][1] + 2),
+                              kerningBias: tileWidth - w
+                            });
+                          }
+                          break;
+                      }
+                    }
+                    for (let j = 0; j < outlineSharp.length; j++) {
+                      bdf.drawText(set[i], id('image'), {
+                        colour: outlineColor,
+                        x: xOffset + (outlineSharp[j][0] + 1),
+                        y: (i * tileHeight + yOffset) + (outlineSharp[j][1] + 1),
+                        kerningBias: tileWidth - w
+                      });
+                    }
+                    break;
+                  case 'smooth':
+                    if (id('shadow-use').checked) {
+                      switch (shadowType) {
+                        case 'sharp':
+                          for (let j = 0; j < shadowSharpOutlineSmooth.length; j++) {
+                            bdf.drawText(set[i], id('image'), {
+                              colour: shadowColor,
+                              x: xOffset + (shadowSharpOutlineSmooth[j][0] + 2),
+                              y: (i * tileHeight + yOffset) + (shadowSharpOutlineSmooth[j][1] + 2),
+                              kerningBias: tileWidth - w
+                            });
+                          }
+                          break;
+                        case 'smooth':
+                          for (let j = 0; j < shadowSmoothOutlineSmooth.length; j++) {
+                            bdf.drawText(set[i], id('image'), {
+                              colour: shadowColor,
+                              x: xOffset + (shadowSmoothOutlineSmooth[j][0] + 2),
+                              y: (i * tileHeight + yOffset) + (shadowSmoothOutlineSmooth[j][1] + 2),
+                              kerningBias: tileWidth - w
+                            });
+                          }
+                          break;
+                      }
+                    }
+                    for (let j = 0; j < outlineSmooth.length; j++) {
+                      bdf.drawText(set[i], id('image'), {
+                        colour: outlineColor,
+                        x: xOffset + (outlineSmooth[j][0] + 1),
+                        y: (i * tileHeight + yOffset) + (outlineSmooth[j][1] + 1),
+                        kerningBias: tileWidth - w
+                      });
+                    }
+                    break;
+                }
+                bdf.drawText(set[i], id('image'), {
+                  colour: foreground,
+                  x: xOffset + 1,
+                  y: (i * tileHeight + yOffset) + 1,
+                  kerningBias: tileWidth - w
+                });
+              } else {
+                if (id('shadow-use').checked) {
+                  switch (shadowType) {
+                    case 'sharp':
+                      for (let j = 0; j < shadowSharp.length; j++) {
+                        bdf.drawText(set[i], id('image'), {
+                          colour: shadowColor,
+                          x: xOffset + shadowSharp[j][0],
+                          y: (i * tileHeight + yOffset) + shadowSharp[j][1],
+                          kerningBias: tileWidth - w
+                        });
+                      }
+                      break;
+                    case 'smooth':
+                      for (let j = 0; j < shadowSmooth.length; j++) {
+                        bdf.drawText(set[i], id('image'), {
+                          colour: shadowColor,
+                          x: xOffset + shadowSmooth[j][0],
+                          y: (i * tileHeight + yOffset) + shadowSmooth[j][1],
+                          kerningBias: tileWidth - w
+                        });
+                      }
+                      break;
+                  }
+                }
+                bdf.drawText(set[i], id('image'), {
+                  colour: foreground,
+                  x: xOffset,
+                  y: i * tileHeight + yOffset,
+                  kerningBias: tileWidth - w
+                });
+              }
+            }
+          }
+          reader.readAsText(fontUpload.files[0]);
+        }
+        break;
     }
 
     id('download').style.display = 'block';
@@ -340,4 +468,10 @@ title: 폰트 이미지 생성기
       e.after(paletteWindow);
     }
   }
+
+  id('font').addEventListener('change', function() {
+    if (this.value == 'bdf') {
+      fontUpload.click();
+    }
+  });
 </script>
