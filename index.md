@@ -92,7 +92,7 @@ Galmuri14는 15px (11pt), Galmuri11은 12px (9pt), Galmuri9는 10px (7.5pt), Gal
   {% endcase %}
 {% endfor %}```
 
-## 사용할 수 있는 오픈타입 기능
+## 사용할 수 있는 OpenType 기능
 
 ### 커닝 (kern)
 
@@ -149,9 +149,9 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
 
 * 바이너리 문자 집합 추출: [CrystalTile2](https://www.romhacking.net/utilities/818/){:class="new" target="_blank" rel="noreferrer noopener"} by angel-team
 * GNU Unifont .hex 형식 폰트 변환: [Unifont Utilities](http://unifoundry.com/unifont/unifont-utilities.html){:class="new" target="_blank" rel="noreferrer noopener"} by Unifoundry.com
-* 비트맵 폰트 편집 및 트루타입 윤곽선 폰트 생성: [Bits'N'Picas](https://github.com/kreativekorp/bitsnpicas){:class="new" target="_blank" rel="noreferrer noopener"} by Kreative Software
-* 폰트 재작성 및 오픈타입 기능 추가: [Adobe Font Development Kit for OpenType](https://github.com/adobe-type-tools/afdko){:class="new" target="_blank" rel="noreferrer noopener"} by Adobe
-* WOFF2 압축 및 트루타입 콜렉션 생성: [fontTools](https://github.com/fonttools/fonttools){:class="new" target="_blank" rel="noreferrer noopener"} by Just van Rossum
+* 비트맵 폰트 편집 및 TrueType 윤곽선 폰트 생성: [Bits'N'Picas](https://github.com/kreativekorp/bitsnpicas){:class="new" target="_blank" rel="noreferrer noopener"} by Kreative Software
+* 폰트 재작성 및 OpenType 기능 추가: [Adobe Font Development Kit for OpenType](https://github.com/adobe-type-tools/afdko){:class="new" target="_blank" rel="noreferrer noopener"} by Adobe
+* WOFF2 압축 및 TrueType 콜렉션 생성: [fontTools](https://github.com/fonttools/fonttools){:class="new" target="_blank" rel="noreferrer noopener"} by Just van Rossum
 
 ## 후원
 
