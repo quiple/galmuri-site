@@ -459,8 +459,12 @@ footer {
     top: .75rem;
     bottom: .75rem;
   }
+  .splide__track {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
   .splide__slide {
-    img {
+    &::before, img {
       height: calc(100% - .5rem - .8rem * 1.5);
       @include desktop {
         height: calc(100% - .5rem - 16px * 1.5);
@@ -471,6 +475,20 @@ footer {
       @include Galmuri7;
       font-size: .8rem;
       @include desktop { @include Galmuri7(2); }
+    }
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+      display: block;
+      filter: blur(1rem);
+      z-index: -1;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
     }
   }
 }
