@@ -33,7 +33,7 @@ Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디�
     <input type="range" id="test-size" min="8" max="160" value="48">
     <label for="test-size" id="test-size-indicator">48px</label>
   </div>
-  <button type="button" class="btn outline" onclick="shuffle()">팬그램 셔플</button>
+  <button type="button" class="btn outline" onclick="shuffle()">예문 셔플</button>
 </div>
 
 <textarea id="test" spellcheck="false"></textarea>
