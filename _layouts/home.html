@@ -107,4 +107,7 @@ layout: default
     test.style.fontSize = this.value + 'px';
     testSizeIndicator.innerText = this.value + 'px';
   });
+  function shuffle() {
+    test.textContent = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
+  }
 </script>
