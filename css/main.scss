@@ -359,7 +359,7 @@ main {
     // min-height: calc(32px * 2 + .625rem * 2);
     background-color: $black;
     width: calc(100% - var(--padding) * 2);
-    transition: $duration $cubic;
+    // transition: $duration $cubic;
     &:focus-visible { outline: none; }
   }
 }
