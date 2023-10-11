@@ -75,7 +75,7 @@ layout: default
     test.style.overflowY = 'hidden';
   }
   function shuffle() {
-    test.textContent = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
+    test.value = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
     resizeTest();
     test.addEventListener('input', resizeTest, false);
   }
