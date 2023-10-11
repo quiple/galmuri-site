@@ -80,6 +80,11 @@ layout: default
     test.addEventListener('input', resizeTest, false);
   }
   shuffle();
+  testSize.addEventListener('input', function() {
+    test.style.fontSize = this.value + 'px';
+    testSizeIndicator.innerText = this.value + 'px';
+    resizeTest();
+  });
   window.addEventListener('load', function() {
     const splide = new Splide('.splide', {
       autoplay: true,
@@ -116,9 +121,5 @@ layout: default
           break;
       {% endfor %}
     }
-  });
-  testSize.addEventListener('input', function() {
-    test.style.fontSize = this.value + 'px';
-    testSizeIndicator.innerText = this.value + 'px';
   });
 </script>
