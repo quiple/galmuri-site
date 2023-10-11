@@ -9,6 +9,9 @@ layout: default
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide-core.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
 <script>
+  function shuffle() {
+    test.textContent = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
+  }
   const pangramEn = [
     'The quick brown fox jumps over the lazy dog',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
@@ -51,21 +54,24 @@ layout: default
     '우리는 역시 지리멸렬히 사랑하고 사랑받지 않겠는가',
     '한 번 눈을 감고 점점 낙담해간 내가 저 앞에서는 웃고 있어',
     '여태껏 우리의 음악을 깔봐온 그 자식을 음악의 힘으로 뛰어넘고 싶어',
-    '옥상 끝에서 난간을 잡고 하늘을 올려다봐, 아래를 내려다보면 빨려들어가 내딛고 싶어지니까',
-    '사막에서 걷는 법을 알려줘, 신발에 모래가 들어가서 발을 델 것 같아',
+    '옥상 끝에서 난간을 잡고 하늘을 올려다봐\n아래를 내려다보면 빨려들어가 내딛고 싶어지니까',
+    '사막에서 걷는 법을 알려줘\n신발에 모래가 들어가서 발을 델 것 같아',
     '흔해빠진 말로도 다정함이 오고가서 절묘한 곳으로 만들어 주네',
     '세상은 그것을 사랑이라고 부른다',
     '새벽녘의 기억은 흐릿하고 집에 돌아가기 위해 살아 있는 몸',
     '사랑해 달란 말을 하지 않는 이유는 아침해가 눈부셔서, 그저 그것뿐',
     '한 번뿐인 인생이니까 좋은 추억을 만들자',
     '기적은 손으로 만드는 것이고 모든 것은 땅으로 이어진다',
-    '울고 싶은 순간에 눈물은 나오는가'
+    '울고 싶은 순간에 눈물은 나오는가',
+    '맛스타 해외승인 직불출금 십이만천육백팔십칠원',
+    '마즈피플 코스프레 나도 이제 할 수 있다 (너도 할 수 있다)',
+    '자기가 잘 못해서 죽어놓고 게임 탓하고 있으면 누가 그걸 보고 좋아하겠어요'
   ];
   const test = document.getElementById('test');
   const testFamily = document.getElementById('test-family');
   const testSize = document.getElementById('test-size');
   const testSizeIndicator = document.getElementById('test-size-indicator');
-  test.textContent = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
+  shuffle();
   window.addEventListener('load', function() {
     const splide = new Splide('.splide', {
       autoplay: true,
@@ -107,7 +113,4 @@ layout: default
     test.style.fontSize = this.value + 'px';
     testSizeIndicator.innerText = this.value + 'px';
   });
-  function shuffle() {
-    test.textContent = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
-  }
 </script>
