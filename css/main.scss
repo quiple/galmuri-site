@@ -354,9 +354,9 @@ main {
     color: $foreground;
     margin: .75rem 0;
     padding: .625rem 1rem;
-    resize: vertical;
-    height: calc(40px * 6 + .625rem * 2);
-    min-height: calc(32px * 2 + .625rem * 2);
+    resize: none;
+    // height: calc(40px * 6 + .625rem * 2);
+    // min-height: calc(32px * 2 + .625rem * 2);
     background-color: $black;
     width: calc(100% - var(--padding) * 2);
     &:focus-visible { outline: none; }

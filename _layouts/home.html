@@ -9,9 +9,6 @@ layout: default
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide-core.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
 <script>
-  function shuffle() {
-    test.textContent = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
-  }
   const pangramEn = [
     'The quick brown fox jumps over the lazy dog',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
@@ -72,6 +69,15 @@ layout: default
   const testFamily = document.getElementById('test-family');
   const testSize = document.getElementById('test-size');
   const testSizeIndicator = document.getElementById('test-size-indicator');
+  function OnInput() {
+    this.style.height = 0;
+    this.style.height = 'calc(' + this.scrollHeight + 'px + .25rem)';
+  }
+  function shuffle() {
+    test.textContent = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
+    test.setAttribute('style', 'height:calc(' + test.scrollHeight + 'px + .25rem);overflow-y:hidden;');
+    test.addEventListener('input', OnInput, false);
+  }
   shuffle();
   window.addEventListener('load', function() {
     const splide = new Splide('.splide', {
