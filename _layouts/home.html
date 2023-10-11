@@ -69,16 +69,15 @@ layout: default
   const testFamily = document.getElementById('test-family');
   const testSize = document.getElementById('test-size');
   const testSizeIndicator = document.getElementById('test-size-indicator');
-  function OnInput() {
-    this.style.height = 0;
-    this.style.height = 'calc(' + this.scrollHeight + 'px + .25rem)';
-  }
-  function shuffle() {
-    test.textContent = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
+  function resizeTest() {
     test.style.height = 0;
     test.style.height = 'calc(' + test.scrollHeight + 'px + .25rem)';
     test.style.overflowY = 'hidden';
-    test.addEventListener('input', OnInput, false);
+  }
+  function shuffle() {
+    test.textContent = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
+    resizeTest();
+    test.addEventListener('input', resizeTest, false);
   }
   shuffle();
   window.addEventListener('load', function() {
