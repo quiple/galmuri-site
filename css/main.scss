@@ -215,6 +215,7 @@ table:not([class]) {
   @include desktop { @include Galmuri7(2); }
   th {
     font-weight: 400;
+    background-color: $background-light;
   }
   th, td {
     padding: .625rem calc(1rem - .125rem) .625rem 1rem;
