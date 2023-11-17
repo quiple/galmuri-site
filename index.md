@@ -24,7 +24,7 @@ Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디�
 </div>
 
 <div id="test-control">
-  <select id="test-family">
+  <select id="test-family" aria-label="폰트 선택">
     {% for font in site.fonts %}
       <option value="{{ font.file }}"{% if font.file == 'Galmuri11' %} selected{% endif %}>{{ font.name }}</option>
     {% endfor %}
@@ -36,7 +36,7 @@ Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디�
   <button type="button" class="btn outline" onclick="shuffle()">예문 셔플</button>
 </div>
 
-<textarea id="test" spellcheck="false"></textarea>
+<textarea id="test" aria-label="테스트 입력" spellcheck="false"></textarea>
 
 ## 라이선스
 
