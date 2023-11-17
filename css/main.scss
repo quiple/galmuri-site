@@ -474,6 +474,7 @@ footer {
     }
     p {
       margin: .5rem 0 0 0;
+      max-width: 80vw;
       @include Galmuri7;
       font-size: .8rem;
       @include desktop { @include Galmuri7(2); }
