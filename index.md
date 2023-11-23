@@ -102,6 +102,8 @@ Galmuri14는 15px (11pt), Galmuri11은 12px (9pt), Galmuri9는 10px (7.5pt), Gal
   <pre><span>Te</span>st T<span>V/A</span>udio M<span>illi</span>on <span>LT</span>E</pre>
 </div>
 
+커닝은 일부 지원하지 않는 환경을 제외한 대부분의 환경에서 기본적으로 사용 설정됩니다.
+
 ### 고정폭 숫자 (tnum)
 
 <div class="fea tnum">
