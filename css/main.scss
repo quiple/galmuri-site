@@ -584,10 +584,12 @@ footer {
   &.outline-smooth {
     text-shadow: .125em 0 0 $primary, -.125em 0 0 $primary, 0 .125em 0 $primary, 0 -.125em 0 $primary;
   }
-  &.shadow-smooth {
-    text-shadow: .125em .125em 0 $primary;
-  }
-  &.shadow-sharp {
-    text-shadow: .125em .125em 0 $primary, .125em 0 0 $primary, 0 .125em 0 $primary;
-  }
+  &.shadow-topleft { text-shadow: -.125em -.125em 0 $primary; }
+  &.shadow-top { text-shadow: 0 -.125em 0 $primary; }
+  &.shadow-topright { text-shadow: .125em -.125em 0 $primary; }
+  &.shadow-left { text-shadow: -.125em 0 0 $primary; }
+  &.shadow-right { text-shadow: .125em 0 0 $primary; }
+  &.shadow-bottomleft { text-shadow: -.125em .125em 0 $primary; }
+  &.shadow-bottom { text-shadow: 0 .125em 0 $primary; }
+  &.shadow-bottomright { text-shadow: .125em .125em 0 $primary; }
 }

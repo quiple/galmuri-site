@@ -71,11 +71,18 @@ title: 폰트 이미지 생성기
       <button type="button" class="btn outline palette" onclick="palette(this)">팔레트 (TLP)</button>
     </div>
     <div class="shadow-use">
-      <label for="shadow-type">그림자 유형:</label>
-      <select id="shadow-type">
-        <option value="smooth" selected>기본</option>
-        <option value="sharp">감싸기</option>
-      </select>
+      <label for="shadow-pos">그림자 위치:</label>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+        <input type="checkbox" name="shadow" value="-1 -1" id="shadow-topleft">
+        <input type="checkbox" name="shadow" value="0 -1" id="shadow-top">
+        <input type="checkbox" name="shadow" value="1 -1" id="shadow-topright">
+        <input type="checkbox" name="shadow" value="-1 0" id="shadow-left">
+        <input type="checkbox" disabled>
+        <input type="checkbox" name="shadow" value="1 0" id="shadow-right">
+        <input type="checkbox" name="shadow" value="-1 1" id="shadow-bottomleft">
+        <input type="checkbox" name="shadow" value="0 1" id="shadow-bottom">
+        <input type="checkbox" name="shadow" value="1 1" id="shadow-bottomright">
+      </div>
     </div>
     <div class="btns">
       <button type="button" id="load" class="btn">만들기</button>
@@ -85,8 +92,6 @@ title: 폰트 이미지 생성기
   </form>
   <div class="canvas-wrap"><canvas id="image"></canvas></div>
 </div>
-
-<p>Safari는 지원하지 않습니다. Chrome 또는 Firefox에서 사용해 주세요.</p>
 
 <h2>문자 집합</h2>
 
@@ -108,28 +113,41 @@ title: 폰트 이미지 생성기
 <h3>외곽선</h3>
 
 <table>
-  <thead>
-    <th>모서리 유지</th>
-    <th>모서리 깎기</th>
-  </thead>
   <tbody>
-    <td><div class="sample outline-sharp">한</div></td>
-    <td><div class="sample outline-smooth">한</div></td>
+    <tr>
+      <td><div class="sample outline-sharp">한</div></td>
+      <td><div class="sample outline-smooth">한</div></td>
+    </tr>
+    <tr>
+      <th>모서리 유지</th>
+      <th>모서리 깎기</th>
+    </tr>
   </tbody>
 </table>
 
 <h3>그림자</h3>
 
 <table>
-  <thead>
-    <th>기본</th>
-    <th>감싸기</th>
-  </thead>
   <tbody>
-    <td><div class="sample shadow-smooth">한</div></td>
-    <td><div class="sample shadow-sharp">한</div></td>
+    <tr>
+      <td><div class="sample shadow-topleft">한</div></td>
+      <td><div class="sample shadow-top">한</div></td>
+      <td><div class="sample shadow-topright">한</div></td>
+    </tr>
+    <tr>
+      <td><div class="sample shadow-left">한</div></td>
+      <td><div class="sample"></div></td>
+      <td><div class="sample shadow-right">한</div></td>
+    <tr>
+    </tr>
+      <td><div class="sample shadow-bottomleft">한</div></td>
+      <td><div class="sample shadow-bottom">한</div></td>
+      <td><div class="sample shadow-bottomright">한</div></td>
+    </tr>
   </tbody>
 </table>
+
+<p>그림자는 여러 개를 결합할 수 있으며 외곽선과 같이 사용할 수 있습니다.</p>
 
 <script src="./assets/bdf.js"></script>
 <script src="./assets/charsets.js?ver=2"></script>
@@ -143,12 +161,7 @@ title: 폰트 이미지 생성기
         outlineSharp = [[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]],
         outlineSmooth = [[0, 1], [0, -1], [1, 0], [-1, 0]],
         shadow = document.querySelectorAll('.shadow-use'),
-        shadowSharp = [[1, 1], [0, 1], [1, 0]],
-        shadowSmooth = [[1, 1]],
-        shadowSharpOutlineSharp = [[1, 1], [0, 1], [1, 0], [1, -1], [-1, 1], [1, -2], [-2, 1]],
-        shadowSmoothOutlineSharp = [[1, 1], [0, 1], [1, 0], [1, -1], [-1, 1]],
-        shadowSharpOutlineSmooth = [[0, 0], [0, 1], [1, 0], [-1, 1], [1, -1], [-2, 0], [0, -2]],
-        shadowSmoothOutlineSmooth = [[0, 0], [0, 1], [1, 0]];
+        shadowPos = document.querySelectorAll('[name="shadow"]');
 
   fontUpload.type = 'file';
   fontUpload.accept = '.bdf';
@@ -166,7 +179,6 @@ title: 폰트 이미지 생성기
         outlineColor = id('outline-color').value,
         outlineType = id('outline-type').value,
         shadowColor = id('shadow-color').value,
-        shadowType = id('shadow-type').value,
         regex = new RegExp('.{1,' + tileColumn + '}', 'g'),
         set = charsets[charset].match(regex);
 
@@ -189,27 +201,30 @@ title: 폰트 이미지 생성기
                 switch (outlineType) {
                   case 'sharp':
                     if (id('shadow-use').checked) {
-                      switch (shadowType) {
-                        case 'sharp':
-                          for (let j = 0; j < shadowSharpOutlineSharp.length; j++) {
-                            bdf.drawText(set[i], id('image'), {
-                              colour: shadowColor,
-                              x: xOffset + (shadowSharpOutlineSharp[j][0] + 2),
-                              y: (i * tileHeight + yOffset) + (shadowSharpOutlineSharp[j][1] + 2),
-                              kerningBias: tileWidth - w
-                            });
+                      let shadowTemp = [];
+                      shadowPos.forEach(e => {
+                        if (e.checked) {
+                          let arr = [];
+                          switch (e.id) {
+                            case 'shadow-topleft': arr = [[-1, -1], [0, -1], [1, -1], [-1, 0], [-1, 1]]; break;
+                            case 'shadow-top': arr = [[0, -1], [1, -1], [2, -1]]; break;
+                            case 'shadow-topright': arr = [[1, -1], [2, -1], [3, -1], [3, 0], [3, 1]]; break;
+                            case 'shadow-left': arr = [[-1, 0], [-1, 1], [-1, 2]]; break;
+                            case 'shadow-right': arr = [[3, 0], [3, 1], [3, 2]]; break;
+                            case 'shadow-bottomleft': arr = [[-1, 1], [-1, 2], [-1, 3], [0, 3], [1, 3]]; break;
+                            case 'shadow-bottom': arr = [[0, 3], [1, 3], [2, 3]]; break;
+                            case 'shadow-bottomright': arr = [[3, 1], [3, 2], [1, 3], [2, 3], [3, 3]]; break;
                           }
-                          break;
-                        case 'smooth':
-                          for (let j = 0; j < shadowSmoothOutlineSharp.length; j++) {
-                            bdf.drawText(set[i], id('image'), {
-                              colour: shadowColor,
-                              x: xOffset + (shadowSmoothOutlineSharp[j][0] + 2),
-                              y: (i * tileHeight + yOffset) + (shadowSmoothOutlineSharp[j][1] + 2),
-                              kerningBias: tileWidth - w
-                            });
-                          }
-                          break;
+                          shadowTemp.push(...arr);
+                        }
+                      });
+                      for (let j = 0; j < shadowTemp.length; j++) {
+                        bdf.drawText(set[i], id('image'), {
+                          colour: shadowColor,
+                          x: xOffset + shadowTemp[j][0],
+                          y: (i * tileHeight + yOffset) + shadowTemp[j][1],
+                          kerningBias: tileWidth - w
+                        });
                       }
                     }
                     for (let j = 0; j < outlineSharp.length; j++) {
@@ -223,27 +238,30 @@ title: 폰트 이미지 생성기
                     break;
                   case 'smooth':
                     if (id('shadow-use').checked) {
-                      switch (shadowType) {
-                        case 'sharp':
-                          for (let j = 0; j < shadowSharpOutlineSmooth.length; j++) {
-                            bdf.drawText(set[i], id('image'), {
-                              colour: shadowColor,
-                              x: xOffset + (shadowSharpOutlineSmooth[j][0] + 2),
-                              y: (i * tileHeight + yOffset) + (shadowSharpOutlineSmooth[j][1] + 2),
-                              kerningBias: tileWidth - w
-                            });
+                      let shadowTemp = [];
+                      shadowPos.forEach(e => {
+                        if (e.checked) {
+                          let arr = [];
+                          switch (e.id) {
+                            case 'shadow-topleft': arr = [[0, 0], [0, -1], [-1, 0]]; break;
+                            case 'shadow-top': arr = [[0, -1], [1, -1], [2, -1]]; break;
+                            case 'shadow-topright': arr = [[2, -1], [2, 0], [3, 0]]; break;
+                            case 'shadow-left': arr = [[-1, 0], [-1, 1], [-1, 2]]; break;
+                            case 'shadow-right': arr = [[3, 0], [3, 1], [3, 2]]; break;
+                            case 'shadow-bottomleft': arr = [[-1, 2], [0, 2], [0, 3]]; break;
+                            case 'shadow-bottom': arr = [[0, 3], [1, 3], [2, 3]]; break;
+                            case 'shadow-bottomright': arr = [[3, 2], [2, 3], [2, 2]]; break;
                           }
-                          break;
-                        case 'smooth':
-                          for (let j = 0; j < shadowSmoothOutlineSmooth.length; j++) {
-                            bdf.drawText(set[i], id('image'), {
-                              colour: shadowColor,
-                              x: xOffset + (shadowSmoothOutlineSmooth[j][0] + 2),
-                              y: (i * tileHeight + yOffset) + (shadowSmoothOutlineSmooth[j][1] + 2),
-                              kerningBias: tileWidth - w
-                            });
-                          }
-                          break;
+                          shadowTemp.push(...arr);
+                        }
+                      });
+                      for (let j = 0; j < shadowTemp.length; j++) {
+                        bdf.drawText(set[i], id('image'), {
+                          colour: shadowColor,
+                          x: xOffset + shadowTemp[j][0],
+                          y: (i * tileHeight + yOffset) + shadowTemp[j][1],
+                          kerningBias: tileWidth - w
+                        });
                       }
                     }
                     for (let j = 0; j < outlineSmooth.length; j++) {
@@ -264,27 +282,20 @@ title: 폰트 이미지 생성기
                 });
               } else {
                 if (id('shadow-use').checked) {
-                  switch (shadowType) {
-                    case 'sharp':
-                      for (let j = 0; j < shadowSharp.length; j++) {
-                        bdf.drawText(set[i], id('image'), {
-                          colour: shadowColor,
-                          x: xOffset + shadowSharp[j][0],
-                          y: (i * tileHeight + yOffset) + shadowSharp[j][1],
-                          kerningBias: tileWidth - w
-                        });
-                      }
-                      break;
-                    case 'smooth':
-                      for (let j = 0; j < shadowSmooth.length; j++) {
-                        bdf.drawText(set[i], id('image'), {
-                          colour: shadowColor,
-                          x: xOffset + shadowSmooth[j][0],
-                          y: (i * tileHeight + yOffset) + shadowSmooth[j][1],
-                          kerningBias: tileWidth - w
-                        });
-                      }
-                      break;
+                  let shadowTemp = [];
+                  shadowPos.forEach(e => {
+                    if (e.checked) {
+                      let arr = e.value.split(' ');
+                      shadowTemp.push([Number(arr[0]), Number(arr[1])]);
+                    }
+                  });
+                  for (let j = 0; j < shadowTemp.length; j++) {
+                    bdf.drawText(set[i], id('image'), {
+                      colour: shadowColor,
+                      x: xOffset + shadowTemp[j][0],
+                      y: (i * tileHeight + yOffset) + shadowTemp[j][1],
+                      kerningBias: tileWidth - w
+                    });
                   }
                 }
                 bdf.drawText(set[i], id('image'), {
