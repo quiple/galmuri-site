@@ -74,6 +74,11 @@ showcase:
     link: 1325040
     type: steam
     file: not-yet.png
+  - title: "Momodora: Moonlit Farewell"
+    author: "Bombservice"
+    link: 1747760
+    type: steam
+    file: 240111.jpg
   - title: "Coffee Talk Episode 2: Hibiscus & Butterfly"
     author: "Toge Productions"
     link: 1663220
@@ -100,7 +105,7 @@ showcase:
     type: patch
     file: 220507.png
   - title: "NEEDY GIRL OVERDOSE"
-    author: "코스믹딜루즈 & Quiple"
+    author: "코스믹딜루즈 & quiple"
     link: cosmicdeluge.tistory.com/5
     type: patch
     file: 220220.png
