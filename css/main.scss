@@ -171,8 +171,26 @@ input[type="number"] {
 }
 a {
   color: $anchor;
-  text-decoration: none;
-  &:hover { text-decoration: underline; }
+  text-decoration-thickness: .1em;
+  text-underline-offset: .1em;
+  transition: $duration $cubic;
+  &:hover {
+    text-decoration-thickness: .2em;
+  }
+  &:active {
+    color: $primary;
+  }
+  .btns &,
+  small &,
+  ol:not([class]) &,
+  ul:not([class]) &,
+  .splide__slide p & {
+    text-decoration-thickness: .125em;
+    text-underline-offset: .125em;
+    &:hover {
+      text-decoration-thickness: .25em;
+    }
+  }
   &.new::after {
     background-image: url('../assets/new-anchor.svg');
     .btns &,
