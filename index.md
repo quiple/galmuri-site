@@ -128,7 +128,7 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
 
 ## 쇼케이스
 
-<section class="splide" aria-label="Splide Basic HTML Example">
+<section class="splide" aria-label="Galmuri 쇼케이스">
   <div class="splide__track">
 		<ul class="splide__list">
       {% for game in site.showcase %}
