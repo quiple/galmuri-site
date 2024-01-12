@@ -78,7 +78,7 @@ showcase:
     author: "Somi"
     link: 2676840
     type: steam
-    file: 240118.jpg
+    file: 240118.avif
   - title: "VVVVVV"
     author: "Terry Cavanagh"
     link: 70300
@@ -88,7 +88,7 @@ showcase:
     author: "Bombservice"
     link: 1747760
     type: steam
-    file: 240111.jpg
+    file: 240111.png
   - title: "Coffee Talk Episode 2: Hibiscus & Butterfly"
     author: "Toge Productions"
     link: 1663220
@@ -103,12 +103,12 @@ showcase:
     author: "GameCoaster"
     link: 1642733080
     type: appstore
-    file: 221006.png
+    file: 221006.avif
   - title: "Shotgun King: The Final Checkmate"
     author: "PUNKCAKE Delicieux"
     link: 1972440
     type: steam
-    file: 220621.jpg
+    file: 220621.avif
   - title: "Monster Sanctuary"
     author: "솔라리어스"
     link: blog.naver.com/ansewo/222702695752
@@ -123,7 +123,7 @@ showcase:
     author: "Team Samoyed"
     link: 1372810
     type: steam
-    file: 210302.jpg
+    file: 210302.avif
   - title: "BLUE REVOLVER"
     author: "Sepheille"
     link: steamcommunity.com/sharedfiles/filedetails/?id=2405396574
