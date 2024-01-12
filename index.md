@@ -134,7 +134,7 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
       {% for game in site.showcase %}
         <style>.img-{{ game.file | slice: 0, 6 }}::before { background-image: url('./assets/showcase/{{ game.file }}'); }</style>
         <li class="splide__slide img-{{ game.file | slice: 0, 6 }}">
-          <img src="./assets/showcase/{{ game.file }}" alt="{{ game.title }}" height="480">
+          <img src="./assets/showcase/{{ game.file }}" alt="{{ game.title }}" width="853" height="480">
           <p><a href="{% if game.type == 'steam' %}https://store.steampowered.com/app/{% elsif game.type == 'appstore' %}https://apps.apple.com/kr/app/dungeonsquad/id{% else %}https://{% endif %}{{ game.link }}" class="new" target="_blank" rel="noreferrer noopener">{{ game.title }}</a> {% if game.type == 'patch' %}(사용자 패치) by{% else %}&copy;{% endif %} {{ game.author }}</p>
         </li>
       {% endfor %}
