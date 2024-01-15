@@ -161,9 +161,9 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
 
 <div id="donate">
   <a href="https://toss.me/quiple" target="_blank" rel="noreferrer noopener">
-  <img src="/galmuri/files/toss.svg" loading="lazy" width="256" height="256" alt="토스">
+    <img src="/galmuri/files/toss.svg" loading="lazy" width="256" height="256" alt="토스">
   </a>
   <a href="https://qr.kakaopay.com/Ej8JN15fH" target="_blank" rel="noreferrer noopener">
-  <img src="/galmuri/files/kakao.svg" loading="lazy" width="256" height="256" alt="카카오페이">
+    <img src="/galmuri/files/kakao.svg" loading="lazy" width="256" height="256" alt="카카오페이">
   </a>
 </div>
