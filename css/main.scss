@@ -420,9 +420,7 @@ footer {
     bottom: calc(var(--padding) * (3 / 4));
   }
   &.show {
-    h1 {
-      animation: title .5s $cubic forwards;
-    }
+    h1 { animation: title .5s $cubic forwards; }
     div {
       span {
         &:first-child { animation: fade-in .5s $cubic forwards, slide-in-up .5s $cubic forwards; }
@@ -487,8 +485,9 @@ footer {
       left: 0;
       content: '';
       display: block;
-      filter: blur(1rem);
+      filter: blur(1em);
       z-index: -1;
+      opacity: .5;
       background-repeat: no-repeat;
       background-position: 0% 50%;
       background-size: contain;
@@ -515,7 +514,7 @@ footer {
   display: flex;
   margin-top: .75rem;
   margin-bottom: .75rem;
-  gap: .5rem;
+  gap: .5em;
   a {
     max-width: 50%;
     img {
