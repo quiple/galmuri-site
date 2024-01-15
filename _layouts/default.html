@@ -1,3 +1,7 @@
+{% capture styles %}
+{% include inline.scss %}
+{% endcapture %}
+
 <!doctype html>
 <html lang="{% if page.lang %}{{ page.lang }}{% else %}ko{% endif %}">
 
@@ -20,8 +24,11 @@
   <link rel="icon" href="/assets/galmuri.svg">
   <link rel="mask-icon" href="/assets/galmuri.svg" color="#6171eb">
   <link rel="apple-touch-icon" href="/assets/galmuri.png">
-  <link rel="stylesheet" rel="preload" href="/css/main.css">
-  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" rel="preload" as="style" href="/css/main.css">
+  <link rel="stylesheet" rel="preload" as="style" href="/css/syntax.css">
+  <style>
+    {{ styles | scssify }}
+  </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3XWK7FLW2C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
