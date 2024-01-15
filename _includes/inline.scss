@@ -1,5 +1,3 @@
-@import url('https://cdn.jsdelivr.net/gh/jgthms/minireset.css/minireset.min.css');
-
 {% for font in site.fonts %}
   @font-face {
     font: {
