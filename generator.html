@@ -4,7 +4,7 @@ title: 폰트 이미지 생성기
 ---
 
 <style>
-  .generator { display: flex; justify-content: space-between; gap: 1rem; }
+  #generator { display: flex; justify-content: space-between; gap: 1rem; }
   .canvas-wrap { flex: 1; display: flex; justify-content: center; align-items: center; }
   #image { max-width: 100%; }
   input:not([type="checkbox"]):not([type="radio"]) { width: 10rem; }
@@ -15,7 +15,9 @@ title: 폰트 이미지 생성기
   .form .shadow-use { display: none; }
 </style>
 
-<div class="generator">
+<p class="noscript">폰트 이미지 생성기는 JavaScript를 사용합니다. JavaScript를 사용 설정해 주세요.</p>
+
+<div id="generator">
   <form class="form">
     <div>
       <label for="font">폰트:</label>
