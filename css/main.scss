@@ -199,9 +199,9 @@ small {
   font-size: .8rem;
   @include desktop { @include Galmuri7(2); }
   display: block;
-  color: #{$foreground}3f;
+  color: #{$foreground}76;
   a {
-    opacity: .5;
+    opacity: .62;
   }
 }
 hr {
