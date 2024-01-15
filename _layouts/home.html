@@ -2,12 +2,12 @@
 layout: default
 ---
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide-core.min.css">
+<link rel="stylesheet" rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide-core.min.css">
 <style>main { margin-top: 0; }</style>
 
 {{ content }}
 
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
+<script async src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
 <script>
   const pangramEn = [
     'The quick brown fox jumps over the lazy dog',
