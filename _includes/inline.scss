@@ -5,12 +5,12 @@
       style: normal;
       display: block;
       {% case font.style %}
-      {% when 'Bold' %} weight: 700; stretch: normal;
-      {% when 'Condensed' %} weight: 400; stretch: condensed;
+      {% when "Bold" %} weight: 700; stretch: normal;
+      {% when "Condensed" %} weight: 400; stretch: condensed;
       {% else %} weight: 400; stretch: normal;
       {% endcase %}
     }
-    src: url('/galmuri/dist/{{ font.file }}.woff2') format('woff2'),
-         url('/galmuri/dist/{{ font.file }}.ttf') format('truetype');
+    src: url('/galmuri/dist/{{ font.name | replace: " ", "-" }}.woff2') format('woff2'),
+         url('/galmuri/dist/{{ font.name | replace: " ", "-" }}.ttf') format('truetype');
   }
 {% endfor %}

@@ -26,7 +26,7 @@ Galmuri는 닌텐도 DS 본체와 소프트웨어에 사용되었던 폰트 디�
 <div id="test-control">
   <select id="test-family" aria-label="폰트 선택">
     {% for font in site.fonts %}
-      <option value="{{ font.file }}"{% if font.file == 'Galmuri11' %} selected{% endif %}>{{ font.name }}</option>
+      <option value="{{ font.name | replace: " ", "-" }}"{% if font.name == "Galmuri11" %} selected{% endif %}>{{ font.name }}</option>
     {% endfor %}
   </select>
   <div>
@@ -53,10 +53,10 @@ OFL 1.1을 한국어로 번역한 내용은 [이곳](/galmuri/ofl-ko)에서 확�
     <div class="item">
       <h3>{{ font.name }}</h3>
       <div class="btns">
-        <a download class="btn" href="../galmuri/dist/{{ font.file }}.ttf">TTF</a>
-        <a download class="btn" href="../galmuri/dist/{{ font.file }}.woff2">WOFF2</a>
-        <a download class="btn" href="../galmuri/dist/{{ font.file }}.bdf">BDF</a>
-        <a class="btn new outline" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/{{ font.file }}.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
+        <a download class="btn" href="../galmuri/dist/{{ font.name | replace: " ", "-" }}.ttf">TTF</a>
+        <a download class="btn" href="../galmuri/dist/{{ font.name | replace: " ", "-" }}.woff2">WOFF2</a>
+        <a download class="btn" href="../galmuri/dist/{{ font.name | replace: " ", "-" }}.bdf">BDF</a>
+        <a class="btn new outline" href="https://lsfont.quiple.dev#https://galmuri.quiple.dev/galmuri/dist/{{ font.name | replace: " ", "-" }}.ttf" target="_blank" rel="noreferrer noopener">전체 글리프 목록 보기</a>
       </div>
     </div>
   {% endfor %}
@@ -86,10 +86,10 @@ Galmuri14는 15px (11pt), Galmuri11은 12px (9pt), Galmuri9는 10px (7.5pt), Gal
 
 ```css
 {% for font in site.fonts %} /* {{ font.name }}을(를) 사용하려면 */
-  font-family: "{{ font.family }}", {% if font.style == 'Monospaced' %}monospace{% else %}sans-serif{% endif %};
+  font-family: "{{ font.family }}", {% if font.style == "Monospaced" %}monospace{% else %}sans-serif{% endif %};
   {% case font.style %}
-  {% when 'Bold' %} font-weight: bold;
-  {% when 'Condensed' %} font-stretch: condensed;
+  {% when "Bold" %} font-weight: bold;
+  {% when "Condensed" %} font-stretch: condensed;
   {% endcase %}
 {% endfor %}```
 
@@ -135,7 +135,7 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
         <style>.img-{{ game.file | slice: 0, 6 }}::before { background-image: url('./assets/showcase/{{ game.file }}'); }</style>
         <li class="splide__slide img-{{ game.file | slice: 0, 6 }}">
           <img src="./assets/showcase/{{ game.file }}" alt="{{ game.title }}" height="480">
-          <p><a href="{% if game.type == 'steam' %}https://store.steampowered.com/app/{% elsif game.type == 'appstore' %}https://apps.apple.com/kr/app/dungeonsquad/id{% else %}https://{% endif %}{{ game.link }}" class="new" target="_blank" rel="noreferrer noopener">{{ game.title }}</a> {% if game.type == 'patch' %}(사용자 패치) by{% else %}&copy;{% endif %} {{ game.author }}</p>
+          <p><a href="{% if game.type == "steam" %}https://store.steampowered.com/app/{% elsif game.type == 'appstore' %}https://apps.apple.com/kr/app/dungeonsquad/id{% else %}https://{% endif %}{{ game.link }}" class="new" target="_blank" rel="noreferrer noopener">{{ game.title }}</a> {% if game.type == "patch" %}(사용자 패치) by{% else %}&copy;{% endif %} {{ game.author }}</p>
         </li>
       {% endfor %}
 		</ul>

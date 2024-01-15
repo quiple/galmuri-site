@@ -21,7 +21,7 @@ title: 폰트 이미지 생성기
       <label for="font">폰트:</label>
       <select id="font">
         {% for font in site.fonts %}
-          <option value="{{ font.file }}" {% if font.style == 'Monospaced' %} hidden{% elsif font.name == 'Galmuri11' %}selected{% endif %}>{{ font.name }}</option>
+          <option value="{{ font.name | replace: " ", "-" }}" {% if font.style == "Monospaced" %} hidden{% elsif font.name == "Galmuri11" %}selected{% endif %}>{{ font.name }}</option>
         {% endfor %}
         <option value="bdf">파일 선택 (BDF)</option>
       </select>
@@ -190,8 +190,8 @@ title: 폰트 이미지 생성기
 
     switch (font) {
       {% for font in site.fonts %}
-        case '{{ font.file }}':
-          fetch('./galmuri/dist/{{ font.file }}.bdf').then(data => data.text()).then(text => {
+        case '{{ font.name | replace: " ", "-" }}':
+          fetch('./galmuri/dist/{{ font.name | replace: " ", "-" }}.bdf').then(data => data.text()).then(text => {
             let bdf = new BDF(text);
             let w = bdf.glyphs[44032] ? bdf.glyphs[44032].deviceWidthX : bdf.glyphs[12288].deviceWidthX;
             for (let i = 0; i < set.length; i++) {
