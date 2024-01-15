@@ -3,7 +3,12 @@ layout: default
 ---
 
 <link rel="stylesheet" rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide-core.min.css">
-<style>main { margin-top: 0; }</style>
+<style>
+  main { margin-top: 0; }
+  {% for game in site.showcase %}
+    .img-{{ game.file | slice: 0, 6 }}::before { background-image: url('./assets/showcase/{{ game.file }}'); }
+  {% endfor %}
+</style>
 
 {{ content }}
 
