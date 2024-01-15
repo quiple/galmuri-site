@@ -32,6 +32,9 @@
   <style>
     {{ styles | scssify }}
   </style>
+  {% unless page.title %}
+    <script type="application/ld+json">{% include index.json %}</script>
+  {% endunless %}
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3XWK7FLW2C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
