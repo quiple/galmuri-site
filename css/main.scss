@@ -161,6 +161,7 @@ a {
   color: $anchor;
   text-decoration-thickness: .1em;
   text-underline-offset: .1em;
+  text-decoration-skip-ink: none;
   transition: $duration $cubic;
   &:hover {
     text-decoration-thickness: .2em;
@@ -175,7 +176,6 @@ a {
   .splide__slide p & {
     text-decoration-thickness: .125em;
     text-underline-offset: .125em;
-    text-decoration-skip-ink: none;
     &:hover {
       text-decoration-thickness: .25em;
     }
