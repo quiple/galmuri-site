@@ -50,7 +50,10 @@ $duration: .15s;
   --cubic: cubic-bezier(0,0,0,1);
 }
 ::selection { color: $foreground; background-color: $primary; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: .75rem;
+}
 body {
   accent-color: $primary;
   @include Galmuri9;
