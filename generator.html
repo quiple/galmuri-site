@@ -163,10 +163,10 @@ title: 폰트 이미지 생성기
         outlineSharp = [[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]],
         outlineSmooth = [[0, 1], [0, -1], [1, 0], [-1, 0]],
         shadow = document.querySelectorAll('.shadow-use'),
-        shadowPos = document.querySelectorAll('[name="shadow"]');
+        shadowPos = document.querySelectorAll('[name="shadow"]')
 
-  fontUpload.type = 'file';
-  fontUpload.accept = '.bdf';
+  fontUpload.type = 'file'
+  fontUpload.accept = '.bdf'
 
   id('load').addEventListener('click', function() {
     let font = id('font').value,
@@ -182,51 +182,51 @@ title: 폰트 이미지 생성기
         outlineType = id('outline-type').value,
         shadowColor = id('shadow-color').value,
         regex = new RegExp('.{1,' + tileColumn + '}', 'g'),
-        set = charsets[charset].match(regex);
+        set = charsets[charset].match(regex)
 
-    ctx.reset();
+    ctx.reset()
 
-    id('image').width = tileWidth * tileColumn;
-    id('image').height = tileHeight * set.length;
-    id('image').style.aspectRatio = id('image').width / id('image').height;
+    id('image').width = tileWidth * tileColumn
+    id('image').height = tileHeight * set.length
+    id('image').style.aspectRatio = id('image').width / id('image').height
 
     switch (font) {
       {% for font in site.fonts %}
         case '{{ font.name | replace: " ", "-" }}':
           fetch('./galmuri/dist/{{ font.name | replace: " ", "-" }}.bdf').then(data => data.text()).then(text => {
-            let bdf = new BDF(text);
-            let w = bdf.glyphs[44032] ? bdf.glyphs[44032].deviceWidthX : bdf.glyphs[12288].deviceWidthX;
+            let bdf = new BDF(text)
+            let w = bdf.glyphs[44032] ? bdf.glyphs[44032].deviceWidthX : bdf.glyphs[12288].deviceWidthX
             for (let i = 0; i < set.length; i++) {
-              ctx.fillStyle = background;
-              ctx.fillRect(0, i * tileHeight, set[i].length * tileWidth, tileHeight);
+              ctx.fillStyle = background
+              ctx.fillRect(0, i * tileHeight, set[i].length * tileWidth, tileHeight)
               if (id('outline-use').checked) {
                 switch (outlineType) {
                   case 'sharp':
                     if (id('shadow-use').checked) {
-                      let shadowTemp = [];
+                      let shadowTemp = []
                       shadowPos.forEach(e => {
                         if (e.checked) {
-                          let arr = [];
+                          let arr = []
                           switch (e.id) {
-                            case 'shadow-topleft': arr = [[-1, -1], [0, -1], [1, -1], [-1, 0], [-1, 1]]; break;
-                            case 'shadow-top': arr = [[0, -1], [1, -1], [2, -1]]; break;
-                            case 'shadow-topright': arr = [[1, -1], [2, -1], [3, -1], [3, 0], [3, 1]]; break;
-                            case 'shadow-left': arr = [[-1, 0], [-1, 1], [-1, 2]]; break;
-                            case 'shadow-right': arr = [[3, 0], [3, 1], [3, 2]]; break;
-                            case 'shadow-bottomleft': arr = [[-1, 1], [-1, 2], [-1, 3], [0, 3], [1, 3]]; break;
-                            case 'shadow-bottom': arr = [[0, 3], [1, 3], [2, 3]]; break;
-                            case 'shadow-bottomright': arr = [[3, 1], [3, 2], [1, 3], [2, 3], [3, 3]]; break;
+                            case 'shadow-topleft': arr = [[-1, -1], [0, -1], [1, -1], [-1, 0], [-1, 1]]; break
+                            case 'shadow-top': arr = [[0, -1], [1, -1], [2, -1]]; break
+                            case 'shadow-topright': arr = [[1, -1], [2, -1], [3, -1], [3, 0], [3, 1]]; break
+                            case 'shadow-left': arr = [[-1, 0], [-1, 1], [-1, 2]]; break
+                            case 'shadow-right': arr = [[3, 0], [3, 1], [3, 2]]; break
+                            case 'shadow-bottomleft': arr = [[-1, 1], [-1, 2], [-1, 3], [0, 3], [1, 3]]; break
+                            case 'shadow-bottom': arr = [[0, 3], [1, 3], [2, 3]]; break
+                            case 'shadow-bottomright': arr = [[3, 1], [3, 2], [1, 3], [2, 3], [3, 3]]; break
                           }
-                          shadowTemp.push(...arr);
+                          shadowTemp.push(...arr)
                         }
-                      });
+                      })
                       for (let j = 0; j < shadowTemp.length; j++) {
                         bdf.drawText(set[i], id('image'), {
                           colour: shadowColor,
                           x: xOffset + shadowTemp[j][0],
                           y: (i * tileHeight + yOffset) + shadowTemp[j][1],
                           kerningBias: tileWidth - w
-                        });
+                        })
                       }
                     }
                     for (let j = 0; j < outlineSharp.length; j++) {
@@ -235,35 +235,35 @@ title: 폰트 이미지 생성기
                         x: xOffset + (outlineSharp[j][0] + 1),
                         y: (i * tileHeight + yOffset) + (outlineSharp[j][1] + 1),
                         kerningBias: tileWidth - w
-                      });
+                      })
                     }
-                    break;
+                    break
                   case 'smooth':
                     if (id('shadow-use').checked) {
-                      let shadowTemp = [];
+                      let shadowTemp = []
                       shadowPos.forEach(e => {
                         if (e.checked) {
-                          let arr = [];
+                          let arr = []
                           switch (e.id) {
-                            case 'shadow-topleft': arr = [[0, 0], [0, -1], [-1, 0]]; break;
-                            case 'shadow-top': arr = [[0, -1], [1, -1], [2, -1]]; break;
-                            case 'shadow-topright': arr = [[2, -1], [2, 0], [3, 0]]; break;
-                            case 'shadow-left': arr = [[-1, 0], [-1, 1], [-1, 2]]; break;
-                            case 'shadow-right': arr = [[3, 0], [3, 1], [3, 2]]; break;
-                            case 'shadow-bottomleft': arr = [[-1, 2], [0, 2], [0, 3]]; break;
-                            case 'shadow-bottom': arr = [[0, 3], [1, 3], [2, 3]]; break;
-                            case 'shadow-bottomright': arr = [[3, 2], [2, 3], [2, 2]]; break;
+                            case 'shadow-topleft': arr = [[0, 0], [0, -1], [-1, 0]]; break
+                            case 'shadow-top': arr = [[0, -1], [1, -1], [2, -1]]; break
+                            case 'shadow-topright': arr = [[2, -1], [2, 0], [3, 0]]; break
+                            case 'shadow-left': arr = [[-1, 0], [-1, 1], [-1, 2]]; break
+                            case 'shadow-right': arr = [[3, 0], [3, 1], [3, 2]]; break
+                            case 'shadow-bottomleft': arr = [[-1, 2], [0, 2], [0, 3]]; break
+                            case 'shadow-bottom': arr = [[0, 3], [1, 3], [2, 3]]; break
+                            case 'shadow-bottomright': arr = [[3, 2], [2, 3], [2, 2]]; break
                           }
-                          shadowTemp.push(...arr);
+                          shadowTemp.push(...arr)
                         }
-                      });
+                      })
                       for (let j = 0; j < shadowTemp.length; j++) {
                         bdf.drawText(set[i], id('image'), {
                           colour: shadowColor,
                           x: xOffset + shadowTemp[j][0],
                           y: (i * tileHeight + yOffset) + shadowTemp[j][1],
                           kerningBias: tileWidth - w
-                        });
+                        })
                       }
                     }
                     for (let j = 0; j < outlineSmooth.length; j++) {
@@ -272,32 +272,32 @@ title: 폰트 이미지 생성기
                         x: xOffset + (outlineSmooth[j][0] + 1),
                         y: (i * tileHeight + yOffset) + (outlineSmooth[j][1] + 1),
                         kerningBias: tileWidth - w
-                      });
+                      })
                     }
-                    break;
+                    break
                 }
                 bdf.drawText(set[i], id('image'), {
                   colour: foreground,
                   x: xOffset + 1,
                   y: (i * tileHeight + yOffset) + 1,
                   kerningBias: tileWidth - w
-                });
+                })
               } else {
                 if (id('shadow-use').checked) {
-                  let shadowTemp = [];
+                  let shadowTemp = []
                   shadowPos.forEach(e => {
                     if (e.checked) {
-                      let arr = e.value.split(' ');
-                      shadowTemp.push([Number(arr[0]), Number(arr[1])]);
+                      let arr = e.value.split(' ')
+                      shadowTemp.push([Number(arr[0]), Number(arr[1])])
                     }
-                  });
+                  })
                   for (let j = 0; j < shadowTemp.length; j++) {
                     bdf.drawText(set[i], id('image'), {
                       colour: shadowColor,
                       x: xOffset + shadowTemp[j][0],
                       y: (i * tileHeight + yOffset) + shadowTemp[j][1],
                       kerningBias: tileWidth - w
-                    });
+                    })
                   }
                 }
                 bdf.drawText(set[i], id('image'), {
@@ -305,20 +305,20 @@ title: 폰트 이미지 생성기
                   x: xOffset,
                   y: i * tileHeight + yOffset,
                   kerningBias: tileWidth - w
-                });
+                })
               }
             }
-          });
-          break;
+          })
+          break
       {% endfor %}
       case 'bdf':
         if (fontUpload.files[0]) {
           reader.onload = function() {
-            let bdf = new BDF(reader.result);
-            let w = bdf.glyphs[44032] ? bdf.glyphs[44032].deviceWidthX : bdf.glyphs[12288].deviceWidthX;
+            let bdf = new BDF(reader.result)
+            let w = bdf.glyphs[44032] ? bdf.glyphs[44032].deviceWidthX : bdf.glyphs[12288].deviceWidthX
             for (let i = 0; i < set.length; i++) {
-              ctx.fillStyle = background;
-              ctx.fillRect(0, i * tileHeight, set[i].length * tileWidth, tileHeight);
+              ctx.fillStyle = background
+              ctx.fillRect(0, i * tileHeight, set[i].length * tileWidth, tileHeight)
               if (id('outline-use').checked) {
                 switch (outlineType) {
                   case 'sharp':
@@ -331,9 +331,9 @@ title: 폰트 이미지 생성기
                               x: xOffset + (shadowSharpOutlineSharp[j][0] + 2),
                               y: (i * tileHeight + yOffset) + (shadowSharpOutlineSharp[j][1] + 2),
                               kerningBias: tileWidth - w
-                            });
+                            })
                           }
-                          break;
+                          break
                         case 'smooth':
                           for (let j = 0; j < shadowSmoothOutlineSharp.length; j++) {
                             bdf.drawText(set[i], id('image'), {
@@ -341,9 +341,9 @@ title: 폰트 이미지 생성기
                               x: xOffset + (shadowSmoothOutlineSharp[j][0] + 2),
                               y: (i * tileHeight + yOffset) + (shadowSmoothOutlineSharp[j][1] + 2),
                               kerningBias: tileWidth - w
-                            });
+                            })
                           }
-                          break;
+                          break
                       }
                     }
                     for (let j = 0; j < outlineSharp.length; j++) {
@@ -352,9 +352,9 @@ title: 폰트 이미지 생성기
                         x: xOffset + (outlineSharp[j][0] + 1),
                         y: (i * tileHeight + yOffset) + (outlineSharp[j][1] + 1),
                         kerningBias: tileWidth - w
-                      });
+                      })
                     }
-                    break;
+                    break
                   case 'smooth':
                     if (id('shadow-use').checked) {
                       switch (shadowType) {
@@ -365,9 +365,9 @@ title: 폰트 이미지 생성기
                               x: xOffset + (shadowSharpOutlineSmooth[j][0] + 2),
                               y: (i * tileHeight + yOffset) + (shadowSharpOutlineSmooth[j][1] + 2),
                               kerningBias: tileWidth - w
-                            });
+                            })
                           }
-                          break;
+                          break
                         case 'smooth':
                           for (let j = 0; j < shadowSmoothOutlineSmooth.length; j++) {
                             bdf.drawText(set[i], id('image'), {
@@ -375,9 +375,9 @@ title: 폰트 이미지 생성기
                               x: xOffset + (shadowSmoothOutlineSmooth[j][0] + 2),
                               y: (i * tileHeight + yOffset) + (shadowSmoothOutlineSmooth[j][1] + 2),
                               kerningBias: tileWidth - w
-                            });
+                            })
                           }
-                          break;
+                          break
                       }
                     }
                     for (let j = 0; j < outlineSmooth.length; j++) {
@@ -386,16 +386,16 @@ title: 폰트 이미지 생성기
                         x: xOffset + (outlineSmooth[j][0] + 1),
                         y: (i * tileHeight + yOffset) + (outlineSmooth[j][1] + 1),
                         kerningBias: tileWidth - w
-                      });
+                      })
                     }
-                    break;
+                    break
                 }
                 bdf.drawText(set[i], id('image'), {
                   colour: foreground,
                   x: xOffset + 1,
                   y: (i * tileHeight + yOffset) + 1,
                   kerningBias: tileWidth - w
-                });
+                })
               } else {
                 if (id('shadow-use').checked) {
                   switch (shadowType) {
@@ -406,9 +406,9 @@ title: 폰트 이미지 생성기
                           x: xOffset + shadowSharp[j][0],
                           y: (i * tileHeight + yOffset) + shadowSharp[j][1],
                           kerningBias: tileWidth - w
-                        });
+                        })
                       }
-                      break;
+                      break
                     case 'smooth':
                       for (let j = 0; j < shadowSmooth.length; j++) {
                         bdf.drawText(set[i], id('image'), {
@@ -416,9 +416,9 @@ title: 폰트 이미지 생성기
                           x: xOffset + shadowSmooth[j][0],
                           y: (i * tileHeight + yOffset) + shadowSmooth[j][1],
                           kerningBias: tileWidth - w
-                        });
+                        })
                       }
-                      break;
+                      break
                   }
                 }
                 bdf.drawText(set[i], id('image'), {
@@ -426,70 +426,70 @@ title: 폰트 이미지 생성기
                   x: xOffset,
                   y: i * tileHeight + yOffset,
                   kerningBias: tileWidth - w
-                });
+                })
               }
             }
           }
-          reader.readAsText(fontUpload.files[0]);
+          reader.readAsText(fontUpload.files[0])
         }
-        break;
+        break
     }
 
-    id('download').style.display = 'block';
-  });
+    id('download').style.display = 'block'
+  })
 
   id('download').addEventListener('click', (e) => {
-    e.target.href = id('image').toDataURL();
-  });
+    e.target.href = id('image').toDataURL()
+  })
 
   id('outline-use').addEventListener('change', function() {
     if (this.checked) {
-      outline.forEach(e => e.style.display = 'flex');
+      outline.forEach(e => e.style.display = 'flex')
     } else {
-      outline.forEach(e => e.style.display = '');
+      outline.forEach(e => e.style.display = '')
     }
-  });
+  })
 
   id('shadow-use').addEventListener('change', function() {
     if (this.checked) {
-      shadow.forEach(e => e.style.display = 'flex');
+      shadow.forEach(e => e.style.display = 'flex')
     } else {
-      shadow.forEach(e => e.style.display = '');
+      shadow.forEach(e => e.style.display = '')
     }
-  });
+  })
 
-  let paletteWindow = document.createElement('div');
-  paletteWindow.id = 'palette';
-  let paletteGrid = document.createElement('div');
-  paletteGrid.classList.add('palette-grid');
+  let paletteWindow = document.createElement('div')
+  paletteWindow.id = 'palette'
+  let paletteGrid = document.createElement('div')
+  paletteGrid.classList.add('palette-grid')
 
   tlp.forEach(e => {
-    let tlpItem = document.createElement('div');
-    tlpItem.style.backgroundColor = '#' + e;
+    let tlpItem = document.createElement('div')
+    tlpItem.style.backgroundColor = '#' + e
     tlpItem.addEventListener('click', function() {
-      this.parentElement.parentElement.parentElement.getElementsByTagName('input')[0].value = '#' + e;
-    });
-    paletteGrid.append(tlpItem);
-  });
+      this.parentElement.parentElement.parentElement.getElementsByTagName('input')[0].value = '#' + e
+    })
+    paletteGrid.append(tlpItem)
+  })
 
-  paletteWindow.append(paletteGrid);
+  paletteWindow.append(paletteGrid)
 
   function palette(e) {
     if (id('palette')) {
       if (e.nextElementSibling) {
-        id('palette').remove();
+        id('palette').remove()
       } else {
-        id('palette').remove();
-        e.after(paletteWindow);
+        id('palette').remove()
+        e.after(paletteWindow)
       }
     } else {
-      e.after(paletteWindow);
+      e.after(paletteWindow)
     }
   }
 
   id('font').addEventListener('change', function() {
     if (this.value == 'bdf') {
-      fontUpload.click();
+      fontUpload.click()
     }
-  });
+  })
 </script>

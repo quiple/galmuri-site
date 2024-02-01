@@ -43,7 +43,7 @@ layout: default
     'Thank you sex', // wasureranneyo
     'But the moon’s not burning through my skin tonight', // dom fera
     'I wanna be an ordinary man, not just an ego caught inside a trend', // monkey majik
-  ];
+  ]
   const pangramKo = [
     // korean pangrams
     '다람쥐 헌 쳇바퀴에 타고파',
@@ -89,27 +89,30 @@ layout: default
     '마즈피플 코스프레 나도 이제 할 수 있다 (너도 할 수 있다)',
     '마즈피플 지구인들과 친해지고 싶다\n지구의 피자와 햄버거가 그렇게 맛있다던데',
     '자기가 잘 못해서 죽어놓고 게임 탓하고 있으면 누가 그걸 보고 좋아하겠어요',
-  ];
-  const test = document.getElementById('test');
-  const testFamily = document.getElementById('test-family');
-  const testSize = document.getElementById('test-size');
-  const testSizeIndicator = document.getElementById('test-size-indicator');
+  ]
+
+  const test = document.getElementById('test')
+  const testFamily = document.getElementById('test-family')
+  const testSize = document.getElementById('test-size')
+  const testSizeIndicator = document.getElementById('test-size-indicator')
+
   function resizeTest() {
-    test.style.height = 0;
-    test.style.height = 'calc(' + test.scrollHeight + 'px + .25rem)';
-    test.style.overflowY = 'hidden';
+    test.style.height = 0
+    test.style.height = 'calc(' + test.scrollHeight + 'px + .25rem)'
+    test.style.overflowY = 'hidden'
   }
   function shuffle() {
-    test.value = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)];
-    resizeTest();
-    test.addEventListener('input', resizeTest, false);
+    test.value = pangramEn[Math.floor(Math.random() * pangramEn.length)] + '\n' + pangramKo[Math.floor(Math.random() * pangramKo.length)]
+    resizeTest()
+    test.addEventListener('input', resizeTest, false)
   }
-  shuffle();
+  shuffle()
   testSize.addEventListener('input', function() {
-    test.style.fontSize = this.value + 'px';
-    testSizeIndicator.innerText = this.value + 'px';
-    resizeTest();
-  });
+    test.style.fontSize = this.value + 'px'
+    testSizeIndicator.innerText = this.value + 'px'
+    resizeTest()
+  })
+
   window.addEventListener('load', function() {
     const splide = new Splide('.splide', {
       autoplay: true,
@@ -125,26 +128,27 @@ layout: default
       breakpoints: {
         1280: { height: '30vw' },
         960: { height: '40vw' },
-        640: { height: '50vw' }
+        640: { height: '50vw' },
       }
-    });
-    splide.mount();
+    })
+    splide.mount()
     setTimeout(function() {
-      document.querySelector('#title').classList.add('show');
-    }, 500);
-  });
+      document.querySelector('#title').classList.add('show')
+    }, 500)
+  })
+
   testFamily.addEventListener('change', function() {
     switch (this.value) {
       {% for font in site.fonts %}
         case '{{ font.name | replace: " ", "-" }}':
-          test.style.fontFamily = '{{ font.family }}-web, {% if font.style == "Monospaced" %}monospace{% else %}sans-serif{% endif %}';
+          test.style.fontFamily = '{{ font.family }}-web, {% if font.style == "Monospaced" %}monospace{% else %}sans-serif{% endif %}'
           {% case font.style %}
-          {% when "Bold" %} test.style.fontWeight = '700'; test.style.fontStretch = 'normal';
-          {% when "Condensed" %} test.style.fontWeight = '400'; test.style.fontStretch = 'condensed';
-          {% else %} test.style.fontWeight = '400'; test.style.fontStretch = 'normal';
+          {% when "Bold" %} test.style.fontWeight = '700'; test.style.fontStretch = 'normal'
+          {% when "Condensed" %} test.style.fontWeight = '400'; test.style.fontStretch = 'condensed'
+          {% else %} test.style.fontWeight = '400'; test.style.fontStretch = 'normal'
           {% endcase %}
-          break;
+          break
       {% endfor %}
     }
-  });
+  })
 </script>
