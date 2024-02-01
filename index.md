@@ -130,14 +130,14 @@ font-variant-numeric: slashed-zero; /* 또는 */ font-feature-settings: "zero" 1
 
 <section class="splide" aria-label="Galmuri 쇼케이스">
   <div class="splide__track">
-		<ul class="splide__list">
+    <div class="splide__list">
       {% for game in site.showcase %}
-        <li class="splide__slide img-{{ game.file | slice: 0, 6 }}">
+        <div class="splide__slide img-{{ game.file | slice: 0, 6 }}">
           <img src="./assets/showcase/{{ game.file }}" alt="{{ game.title }}" height="480">
           <p><a href="{% if game.type == "steam" %}https://store.steampowered.com/app/{% elsif game.type == 'appstore' %}https://apps.apple.com/kr/app/dungeonsquad/id{% else %}https://{% endif %}{{ game.link }}" class="new" target="_blank" rel="noreferrer noopener" aria-label="{{ game.title }} (새 탭에서 열림)">{{ game.title }}</a> {% if game.type == "patch" %}(사용자 패치) by{% else %}&copy;{% endif %} {{ game.author }}</p>
-        </li>
+        </div>
       {% endfor %}
-		</ul>
+    </div>
   </div>
 </section>
 
