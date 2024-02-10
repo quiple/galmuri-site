@@ -37,18 +37,9 @@ $background: #18181b;
 $background-light: #27272a;
 $black: #09090b;
 $padding: 10vw;
-$cubic: cubic-bezier(0,0,0,1);
+$cubic: cubic-bezier(0, 0, 0, 1);
 $duration: .15s;
 
-:root {
-  --primary: #6171eb;
-  --anchor: #b6bef6;
-  --foreground: #fafafa;
-  --background: #18181b;
-  --black: #09090b;
-  --padding: 10vw;
-  --cubic: cubic-bezier(0,0,0,1);
-}
 ::selection { color: $foreground; background-color: $primary; }
 html {
   scroll-behavior: smooth;
@@ -366,7 +357,7 @@ main {
     // height: calc(40px * 6 + .625rem * 2);
     // min-height: calc(32px * 2 + .625rem * 2);
     background-color: $black;
-    width: calc(100% - var(--padding) * 2);
+    width: calc(100% - $padding * 2);
     // transition: $duration $cubic;
     &:focus-visible { outline: none; }
   }
@@ -424,7 +415,7 @@ footer {
     @include desktop { @include Galmuri7(2); }
     opacity: 0;
     position: absolute;
-    bottom: calc(var(--padding) * (3 / 4));
+    bottom: calc($padding * (3 / 4));
   }
   &.show {
     h1 { animation: title .5s $cubic forwards; }
