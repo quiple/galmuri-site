@@ -39,6 +39,14 @@ $black: #09090b;
 $padding: 10vw;
 $cubic: cubic-bezier(0, 0, 0, 1);
 $duration: .15s;
+$new-tab: url('data:image/svg+xml,\
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">\
+  <polygon points="6,5 6,7 1,7 1,2 3,2 3,1 1,1 0,1 0,2 0,7 0,8 1,8 6,8 7,8 7,7 7,5"/>\
+  <polygon points="6,1 5,1 4,1 4,2 5,2 5,3 6,3 6,4 7,4 7,3 7,2 7,1"/>\
+  <rect x="4" y="3" width="1" height="1"/>\
+  <rect x="3" y="4" width="1" height="1"/>\
+  <rect x="2" y="5" width="1" height="1"/>\
+</svg>');
 
 ::selection { color: $foreground; background-color: $primary; }
 html {
@@ -99,8 +107,10 @@ pre {
 }
 .new::after {
   content: '';
+  mask-image: $new-tab;
+  background-color: currentColor;
   display: inline-block;
-  background: {
+  mask: {
     repeat: no-repeat;
     position: center;
     size: calc(100% - .125em * 2);
@@ -112,7 +122,7 @@ pre {
   ol:not([class]) &,
   ul:not([class]) &,
   .splide__slide p & {
-    background-size: 100%;
+    mask-size: 100%;
   }
 }
 select, input:not([type="checkbox"]):not([type="radio"]), textarea {
@@ -172,7 +182,6 @@ a {
     }
   }
   &.new::after {
-    background-image: url('../assets/new-anchor.svg');
     .btns &,
     small &,
     ol:not([class]) &,
@@ -256,16 +265,11 @@ table:not([class]) {
     transform: none;
   }
   &.new { padding-right: calc(1rem - .125em * 2); }
-  &.new::after {
-    background-image: url('../assets/new.svg');
-    margin-left: .375em;
-  }
-  &.new:active::after { background-image: url('../assets/new-white.svg'); }
+  &.new::after { margin-left: .375em; }
   &.outline {
     background-color: transparent;
     color: $foreground;
     &:active { background-color: $primary; }
-    &.new::after { background-image: url('../assets/new-white.svg'); }
   }
 }
 .fea {
