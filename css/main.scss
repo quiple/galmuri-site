@@ -271,6 +271,7 @@ table:not([class]) {
     background-color: transparent;
     color: $foreground;
     &:active { background-color: $primary; }
+    &.new::after { background-color: $foreground; }
   }
 }
 .fea {
