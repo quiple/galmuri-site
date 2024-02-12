@@ -266,6 +266,7 @@ table:not([class]) {
   }
   &.new { padding-right: calc(1rem - .125em * 2); }
   &.new::after { margin-left: .375em; }
+  &.new:active::after { background-color: $primary; }
   &.outline {
     background-color: transparent;
     color: $foreground;
